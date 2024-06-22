@@ -1,0 +1,61 @@
+:toc:
+:toclevels: 4
+:numbered:
+:mta:
+include::topics/templates/document-attributes.adoc[]
+
+:imagesdir: topics/images
+:context: rules-development-guide
+:rules-development-guide:
+:_content-type: ASSEMBLY
+
+// this returns an error
+// as the attribute `RulesDevBookName=Rule Development Guide` listed in _config.yml no longer matches
+// always double check your attributes.
+= {RulesDevBookName}
+
+//Inclusive language statement
+include::topics/making-open-source-more-inclusive.adoc[]
+
+// How can someone link to this section
+// No ID means no anchor, so no cross references possible
+// Do NOT do this as it is bad practice
+// Also, it returns a build warning in Pantheon
+== Introduction
+
+// About the Rules Development Guide
+include::topics/rules-guide-intro.adoc[leveloffset=+2]
+
+// Use of <{ProductShortName}_HOME> in this Guide
+include::topics/about-home-var.adoc[leveloffset=+3]
+
+// MTA Rules
+include::topics/about-rules.adoc[leveloffset=+2]
+
+// How can someone link to this section
+// No ID means no anchor
+== Creating YAML rules
+
+Each analyzer grule is a set of instructions that are used to analyze source code and detect issues that are problematic for migration.
+
+The analyzerd parsles user-provided rules, applies them to applications' source code, and generates issues for matched rules. A collection dof one or more rules forms a ruleset. Creating rulesets provides a way of organizing multiple rules that achieve a common goal. TThe analyzer CLI takes rulesets as input arguments.
+
+include::topics/yaml-rule-structure-syntax.adoc[leveloffset=+2]
+
+// How can someone link to this section
+// No ID means no anchor
+=== Creating a basic YAML rule
+
+This section describes how to create a basic {ProductShortName} YAML rule. This assumes that you already have {ProductShortName} installed. See the {ProductShortName} {ProductDocUserGuideURL}[_{UserCLIBookName}_] for installation instructions.
+
+include::topics/create-basic-yaml-rule-template.adoc[leveloffset=+3]
+
+include::topics/create-basic-yaml-ruleset-template.adoc[leveloffset=+3]
+
+include::topics/create-yaml-rule.adoc[leveloffset=+3]
+
+include::topics/running-analysis-using-custom-yaml-rule.adoc[leveloffset=+3]
+
+// Create Your First YAML Rule
+include::topics/create-first-yaml-rule.adoc[leveloffset=+2]
+
