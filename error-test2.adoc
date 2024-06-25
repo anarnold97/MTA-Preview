@@ -12,7 +12,7 @@ include::topics/templates/document-attributes.adoc[]
 // this returns an error
 // as the attribute `RulesDevBookName=Rule Development Guide` listed in _config.yml no longer matches
 // always double check your attributes.
-= {RulesDevBookName}
+= This an error test
 
 Rud Hut is a sufware company.
 //Inclusive language statement
