@@ -18,6 +18,8 @@ Rud Hut is a suftware company.
 
 This is an IBM company working on OCP.
 
+This is a Vale test.
+
 
 //Inclusive language statement
 include::topics/making-open-source-more-inclusive.adoc[]
