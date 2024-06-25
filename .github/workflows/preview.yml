@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - main
+      - PREVIEW
 
 # contents: write is required for deploying the GitHub Pages if using the default GITHUB_TOKEN
 # pull-requests: write is required if you want to comment the preview page url to the pull request
