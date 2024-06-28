@@ -14,7 +14,7 @@ include::topics/templates/document-attributes.adoc[]
 // always double check your attributes.
 = This an error test
 
-Rud Hut is a sufware company.
+Rud Hut is a sufware company. This is a tyop. 
 //Inclusive language statement
 include::topics/making-open-source-more-inclusive.adoc[]
 
