@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>User Interface Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.2"/><meta name="description" content="This guide describes how to use the Migration Toolkit for Applications user interface to accelerate large-scale application modernization efforts across hybrid cloud environments on Red Hat OpenShift."/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm46340547123904"><div class="titlepage"><div><div class="producttitle"><span class="productname">Migration Toolkit for Applications</span> <span class="productnumber">7.0</span></div><div><h1 class="title">User Interface Guide</h1></div><div><h2 class="subtitle">Use the Migration Toolkit for Applications user interface to group your applications into projects for analysis.</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm46340547453312">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>User Interface Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.2"/><meta name="description" content="This guide describes how to use the Migration Toolkit for Applications user interface to accelerate large-scale application modernization efforts across hybrid cloud environments on Red Hat OpenShift."/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm45727093054352"><div class="titlepage"><div><div class="producttitle"><span class="productname">Migration Toolkit for Applications</span> <span class="productnumber">7.0</span></div><div><h1 class="title">User Interface Guide</h1></div><div><h2 class="subtitle">Use the Migration Toolkit for Applications user interface to group your applications into projects for analysis.</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm45727087296352">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
 				This guide describes how to use the Migration Toolkit for Applications user interface to accelerate large-scale application modernization efforts across hybrid cloud environments on Red Hat OpenShift.
 			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="preface"><a href="#making-open-source-more-inclusive">Making open source more inclusive</a></span></li><li><span class="chapter"><a href="#mta-6-ui-guide-introduction">1. Introduction</a></span><ul><li><span class="section"><a href="#mta-about-console-guide_user-interface-guide">1.1. About the User Interface Guide</a></span></li><li><span class="section"><a href="#mta-what-is-the-toolkit_user-interface-guide">1.2. About the Migration Toolkit for Applications</a></span></li><li><span class="section"><a href="#about-the-user-interface_user-interface-guide">1.3. About the user interface</a></span></li></ul></li><li><span class="chapter"><a href="#mta-6-ui-interface-views">2. User interface views</a></span></li><li><span class="chapter"><a href="#mta-7-installing-web-console-on-openshift_user-interface-guide">3. Installing the Migration Toolkit for Applications user interface</a></span><ul><li><span class="section"><a href="#openshift-persistent-volume-requirements_user-interface-guide">3.1. Persistent volume requirements</a></span></li><li><span class="section"><a href="#installing_the_migration_toolkit_for_applications_operator_and_the_user_interface">3.2. Installing the Migration Toolkit for Applications Operator and the user interface</a></span></li><li><span class="section"><a href="#installing-mta-operator-in-disconnected-environment_user-interface-guide">3.3. Installing the Migration Toolkit for Applications Operator in a disconnected Red Hat OpenShift environment</a></span><ul><li><span class="section"><a href="#eviction-threshold_user-interface-guide">3.3.1. Eviction threshold</a></span></li></ul></li><li><span class="section"><a href="#mta-7-red-hat-single-sign-on_user-interface-guide">3.4. Red Hat Single Sign-On</a></span><ul><li><span class="section"><a href="#roles_and_permissions">3.4.1. Roles and Permissions</a></span></li></ul></li><li><span class="section"><a href="#mta-7-installing-web-console-on-ocp-local_user-interface-guide">3.5. Installing and configuring the Migration Toolkit for Applications Operator in a Red Hat OpenShift Local environment</a></span><ul><li><span class="section"><a href="#mta-7-ocp-os-sys-reqs_user-interface-guide">3.5.1. Operating system requirements</a></span></li><li><span class="section"><a href="#mta-7-installing-ocp-local_user-interface-guide">3.5.2. Installing the Migration Toolkit for Applications Operator in a Red Hat OpenShift Local environment</a></span></li><li><span class="section"><a href="#mta-7-set-up-ocp-local_user-interface-guide">3.5.3. Setting up Red Hat OpenShift Local</a></span></li><li><span class="section"><a href="#mta-7-starting-ocp-local_user-interface-guide">3.5.4. Starting the instance</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#configuring-the-instance-environment">4. Configuring the instance environment</a></span><ul><li><span class="section"><a href="#general-configuration">4.1. General</a></span></li><li><span class="section"><a href="#configuring-credentials">4.2. Configuring credentials</a></span><ul><li><span class="section"><a href="#mta-web-config-source-control-credentials_user-interface-guide">4.2.1. Configuring source control credentials</a></span></li><li><span class="section"><a href="#mta-web-config-maven-credentials_user-interface-guide">4.2.2. Configuring Maven credentials</a></span></li><li><span class="section"><a href="#mta-web-config-proxy-credentials_user-interface-guide">4.2.3. Configuring proxy credentials</a></span></li></ul></li><li><span class="section"><a href="#configuring-repositories">4.3. Configuring repositories</a></span><ul><li><span class="section"><a href="#mta-web-config-git-repos_user-interface-guide">4.3.1. Configuring Git repositories</a></span></li><li><span class="section"><a href="#mta-web-config-subversion-repos_user-interface-guide">4.3.2. Configuring subversion repositories</a></span></li><li><span class="section"><a href="#configuring-maven-repositories">4.3.3. Configuring a Maven repository and reducing its size</a></span></li></ul></li><li><span class="section"><a href="#mta-web-proxy-config_user-interface-guide">4.4. Configuring HTTP and HTTPS proxy settings</a></span></li><li><span class="section"><a href="#mta-web-seeding-instances_user-interface-guide">4.5. Seeding an instance</a></span><ul><li><span class="section"><a href="#creating_a_new_stakeholder_group">4.5.1. Creating a new stakeholder group</a></span></li><li><span class="section"><a href="#creating_a_new_job_function">4.5.2. Creating a new job function</a></span></li><li><span class="section"><a href="#creating_a_new_stakeholder">4.5.3. Creating a new stakeholder</a></span></li><li><span class="section"><a href="#creating_a_new_business_service">4.5.4. Creating a new business service</a></span></li><li><span class="section"><a href="#creating_new_tag_categories">4.5.5. Creating new tag categories</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#creating-configuring-jira-connection">5. Creating and configuring a Jira connection</a></span><ul><li><span class="section"><a href="#mta-web-config-jira-credentials_user-interface-guide">5.1. Configuring Jira credentials</a></span></li><li><span class="section"><a href="#mta-web-create-config-jira-connection_user-interface-guide">5.2. Creating and configuring a Jira connection</a></span></li></ul></li><li><span class="chapter"><a href="#working-with-applications-in-the-ui">6. Managing applications with MTA</a></span><ul><li><span class="section"><a href="#mta-web-adding-applications_user-interface-guide">6.1. Adding a new application</a></span></li><li><span class="section"><a href="#mta-web-edit-application_user-interface-guide">6.2. Editing an application</a></span></li><li><span class="section"><a href="#mta-web-assigning-application-credentials_user-interface-guide">6.3. Assigning credentials to an application</a></span></li><li><span class="section"><a href="#mta-web-importing-an-app-list_user-interface-guide">6.4. Importing a list of applications</a></span></li><li><span class="section"><a href="#mta-web-downloading-app-list-template_user-interface-guide">6.5. Downloading a CSV template</a></span></li><li><span class="section"><a href="#mta-web-creating-migration-waves_user-interface-guide">6.6. Creating a migration wave</a></span></li><li><span class="section"><a href="#mta-web-creating-jira-issues-for-migration-wave_user-interface-guide">6.7. Creating Jira issues for a migration wave</a></span></li></ul></li><li><span class="chapter"><a href="#assessing-and-analyzing-applications">7. Assessing and analyzing applications with MTA</a></span><ul><li><span class="section"><a href="#mta-assessment-changes-700_user-interface-guide">7.1. The Assessment module features</a></span></li><li><span class="section"><a href="#mta-introduction-questionnaire_user-interface-guide">7.2. MTA assessment questionnaires</a></span><ul><li><span class="section"><a href="#mta-default-questionnaire_user-interface-guide">7.2.1. The default assessment questionnaire</a></span></li><li><span class="section"><a href="#mta-custom-questionnaire_user-interface-guide">7.2.2. The custom assessment questionnaire</a></span></li></ul></li><li><span class="section"><a href="#managing-mta-questionnaires_user-interface-guide">7.3. Managing assessment questionnaires</a></span></li><li><span class="section"><a href="#mta-web-assessing-apps_user-interface-guide">7.4. Assessing an application</a></span></li><li><span class="section"><a href="#mta-web-reviewing-apps_user-interface-guide">7.5. Reviewing an application</a></span></li><li><span class="section"><a href="#mta-web-viewing-an-assessment-report_user-interface-guide">7.6. Reviewing an assessment report</a></span></li><li><span class="section"><a href="#mta-web-tagging-an-application_user-interface-guide">7.7. Tagging an application</a></span><ul><li><span class="section"><a href="#creating-application-tags_user-interface-guide">7.7.1. Creating application tags</a></span></li><li><span class="section"><a href="#manual-tagging-of-an-application_user-interface-guide">7.7.2. Manually tagging an application</a></span></li><li><span class="section"><a href="#automatic-tagging-of-an-application_user-interface-guide">7.7.3. Automatic tagging</a></span></li><li><span class="section"><a href="#displaying-the-tags-of-an-application_user-interface-guide">7.7.4. Displaying application tags</a></span></li></ul></li><li><span class="section"><a href="#mta-archetypes_user-interface-guide">7.8. Working with archetypes</a></span><ul><li><span class="section"><a href="#defining-an-archetype_user-interface-guide">7.8.1. Creating an archetype</a></span></li><li><span class="section"><a href="#archetype-assessment_user-interface-guide">7.8.2. Archetype assessment</a></span></li><li><span class="section"><a href="#deleting-an-archetype_user-interface-guide">7.8.3. Deleting an archetype</a></span></li></ul></li><li><span class="section"><a href="#analyzing-an-application_user-interface-guide">7.9. Analyzing an application</a></span><ul><li><span class="section"><a href="#mta-web-configuring-and-running-an-application-analysis_user-interface-guide">7.9.1. Configuring and running an application analysis</a></span></li><li><span class="section"><a href="#mta-web-reviewing-an-analysis-report_user-interface-guide">7.9.2. Reviewing an analysis report</a></span></li><li><span class="section"><a href="#mta-web-downloading-an-analysis-report_user-interface-guide">7.9.3. Downloading an analysis report</a></span></li></ul></li><li><span class="section"><a href="#mta-web-creating-custom-migration-targets_user-interface-guide">7.10. Creating custom migration targets</a></span></li></ul></li></ul></div><section class="preface" id="making-open-source-more-inclusive"><div class="titlepage"><div><div><h1 class="title">Making open source more inclusive</h1></div></div></div><p class="_abstract _abstract">
 			Red Hat is committed to replacing problematic language in our code, documentation, and web properties. We are beginning with these four terms: master, slave, blacklist, and whitelist. Because of the enormity of this endeavor, these changes will be implemented gradually over several upcoming releases. For more details, see <a class="link" href="https://www.redhat.com/en/blog/making-open-source-more-inclusive-eradicating-problematic-language">our CTO Chris Wright’s message</a>.
@@ -42,83 +42,83 @@
 			The MTA Operator is a structural layer that manages resources deployed on OpenShift, such as database, front end, and back end, to automatically create an MTA instance.
 		</p><section class="section" id="openshift-persistent-volume-requirements_user-interface-guide"><div class="titlepage"><div><div><h2 class="title">3.1. Persistent volume requirements</h2></div></div></div><p>
 				To successfully deploy, the MTA Operator requires 3 RWO persistent volumes (PVs) used by different components. If the <code class="literal">rwx_supported</code> configuration option is set to <code class="literal">true</code>, the MTA Operator requires an additional 2 RWX PVs that are used by Maven and the hub file storage. The PVs are described in the table below:
-			</p><div class="table" id="idm46340543083600"><p class="title"><strong>Table 3.1. Required persistent volumes</strong></p><div class="table-contents"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 25%; " class="col_1"/><col style="width: 25%; " class="col_2"/><col style="width: 25%; " class="col_3"/><col style="width: 25%; " class="col_4"/></colgroup><thead><tr><th align="left" valign="top" id="idm46340546318016" scope="col">Name</th><th align="left" valign="top" id="idm46340547592192" scope="col">Default size</th><th align="left" valign="top" id="idm46340547591104" scope="col">Access mode</th><th align="left" valign="top" id="idm46340547590016" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46340546318016">
+			</p><div class="table" id="idm45727092716848"><p class="title"><strong>Table 3.1. Required persistent volumes</strong></p><div class="table-contents"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 25%; " class="col_1"/><col style="width: 25%; " class="col_2"/><col style="width: 25%; " class="col_3"/><col style="width: 25%; " class="col_4"/></colgroup><thead><tr><th align="left" valign="top" id="idm45727092112320" scope="col">Name</th><th align="left" valign="top" id="idm45727091786832" scope="col">Default size</th><th align="left" valign="top" id="idm45727091785744" scope="col">Access mode</th><th align="left" valign="top" id="idm45727091784656" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45727092112320">
 							<p>
 								<code class="literal">hub database</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46340547592192">
+							</td><td align="left" valign="top" headers="idm45727091786832">
 							<p>
 								10 GiB
 							</p>
-							</td><td align="left" valign="top" headers="idm46340547591104">
+							</td><td align="left" valign="top" headers="idm45727091785744">
 							<p>
 								RWO
 							</p>
-							</td><td align="left" valign="top" headers="idm46340547590016">
+							</td><td align="left" valign="top" headers="idm45727091784656">
 							<p>
 								Hub database
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46340546318016">
+							</td></tr><tr><td align="left" valign="top" headers="idm45727092112320">
 							<p>
 								<code class="literal">hub bucket</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46340547592192">
+							</td><td align="left" valign="top" headers="idm45727091786832">
 							<p>
 								100 GiB
 							</p>
-							</td><td align="left" valign="top" headers="idm46340547591104">
+							</td><td align="left" valign="top" headers="idm45727091785744">
 							<p>
 								RWX
 							</p>
-							</td><td align="left" valign="top" headers="idm46340547590016">
+							</td><td align="left" valign="top" headers="idm45727091784656">
 							<p>
 								Hub file storage; required if the <code class="literal">rwx_supported</code> configuration option is set to <code class="literal">true</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46340546318016">
+							</td></tr><tr><td align="left" valign="top" headers="idm45727092112320">
 							<p>
 								<code class="literal">keycloak postgresql</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46340547592192">
+							</td><td align="left" valign="top" headers="idm45727091786832">
 							<p>
 								1 GiB
 							</p>
-							</td><td align="left" valign="top" headers="idm46340547591104">
+							</td><td align="left" valign="top" headers="idm45727091785744">
 							<p>
 								RWO
 							</p>
-							</td><td align="left" valign="top" headers="idm46340547590016">
+							</td><td align="left" valign="top" headers="idm45727091784656">
 							<p>
 								Keycloak back end database
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46340546318016">
+							</td></tr><tr><td align="left" valign="top" headers="idm45727092112320">
 							<p>
 								<code class="literal">pathfinder postgresql</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46340547592192">
+							</td><td align="left" valign="top" headers="idm45727091786832">
 							<p>
 								1 GiB
 							</p>
-							</td><td align="left" valign="top" headers="idm46340547591104">
+							</td><td align="left" valign="top" headers="idm45727091785744">
 							<p>
 								RWO
 							</p>
-							</td><td align="left" valign="top" headers="idm46340547590016">
+							</td><td align="left" valign="top" headers="idm45727091784656">
 							<p>
 								Pathfinder back end database
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46340546318016">
+							</td></tr><tr><td align="left" valign="top" headers="idm45727092112320">
 							<p>
 								<code class="literal">cache</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46340547592192">
+							</td><td align="left" valign="top" headers="idm45727091786832">
 							<p>
 								100 GiB
 							</p>
-							</td><td align="left" valign="top" headers="idm46340547591104">
+							</td><td align="left" valign="top" headers="idm45727091785744">
 							<p>
 								RWX
 							</p>
-							</td><td align="left" valign="top" headers="idm46340547590016">
+							</td><td align="left" valign="top" headers="idm45727091784656">
 							<p>
 								Maven m2 cache; required if the <code class="literal">rwx_supported</code> configuration option is set to <code class="literal">true</code>
 							</p>
@@ -154,219 +154,219 @@
 						To work directly with the YAML file, click <span class="strong strong"><strong>YAML</strong></span> view and review the CR settings that are listed in the <code class="literal">spec</code> section of the YAML file.
 					</p><p class="simpara">
 						The most commonly used CR settings are listed in this table:
-					</p><div class="table" id="idm46340540626080"><p class="title"><strong>Table 3.2. Tackle CR settings</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 36%; " class="col_1"/><col style="width: 14%; " class="col_2"/><col style="width: 50%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm46340546012336" scope="col">Name</th><th align="left" valign="top" id="idm46340546011248" scope="col">Default</th><th align="left" valign="top" id="idm46340546010160" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46340546012336">
+					</p><div class="table" id="idm45727091133264"><p class="title"><strong>Table 3.2. Tackle CR settings</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 36%; " class="col_1"/><col style="width: 14%; " class="col_2"/><col style="width: 50%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm45727091793312" scope="col">Name</th><th align="left" valign="top" id="idm45727091792224" scope="col">Default</th><th align="left" valign="top" id="idm45727091472656" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">cache_data_volume_size</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										<code class="literal">100 GiB</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Size requested for the cache volume; ignored when <code class="literal">rwx_supported=false</code>
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">cache_storage_class</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										Default storage class
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Storage class used for the cache volume; ignored when <code class="literal">rwx_supported=false</code>
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">feature_auth_required</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										<code class="literal">True</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Flag to indicate whether keycloak authorization is required (single user/“noauth”)
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">feature_isolate_namespace</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										<code class="literal">True</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Flag to indicate whether namespace isolation using network policies is enabled
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">hub_database_volume_size</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										<code class="literal">10 GiB</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Size requested for the Hub database volume
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">hub_bucket_volume_size</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										<code class="literal">100 GiB</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Size requested for the Hub bucket volume
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">hub_bucket_storage_class</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										Default storage class
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Storage class used for the bucket volume
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">keycloak_database_data_volume_size</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										<code class="literal">1 GiB</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Size requested for the Keycloak database volume
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">pathfinder_database_data_volume_size</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										<code class="literal">1 GiB</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Size requested for the Pathfinder database volume
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">maven_data_volume_size</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										<code class="literal">100 GiB</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Size requested for the Maven m2 cache volume; deprecated in MTA 6.0.1
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">rwx_storage_class</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										NA
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Storage class requested for the Tackle RWX volumes; deprecated in MTA 6.0.1
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">rwx_supported</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										<code class="literal">True</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Flag to indicate whether the cluster storage supports RWX mode
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">rwo_storage_class</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										NA
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Storage class requested for the Tackle RW0 volumes
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">rhsso_external_access</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										<code class="literal">False</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Flag to indicate whether a dedicated route is created to access the MTA managed RHSSO instance
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">analyzer_container_limits_cpu</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										<code class="literal">1</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Maximum number of CPUs the pod is allowed to use
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">analyzer_container_limits_memory</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										<code class="literal">4GiB</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Maximum amount of memory the pod is allowed to use. You can increase this limit if the pod displays <code class="literal">OOMKilled</code> errors.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">analyzer_container_requests_cpu</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										<code class="literal">1</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Minimum number of CPUs the pod needs to run
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340546012336">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727091793312">
 									<p>
 										<code class="literal">analyzer_container_requests_memory</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546011248">
+									</td><td align="left" valign="top" headers="idm45727091792224">
 									<p>
 										<code class="literal">4GiB</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340546010160">
+									</td><td align="left" valign="top" headers="idm45727091472656">
 									<p>
 										Minimum amount of memory the pod needs to run
 									</p>
@@ -1102,9 +1102,9 @@ mirror:
 			</p><section class="section" id="mta-7-ocp-os-sys-reqs_user-interface-guide"><div class="titlepage"><div><div><h3 class="title">3.5.1. Operating system requirements</h3></div></div></div><p>
 					Red Hat OpenShift Local requires the following minimum version of a supported operating system:
 				</p><section class="section" id="mta-7-ocp-local-windows-reqs_user-interface-guide"><div class="titlepage"><div><div><h4 class="title">3.5.1.1. Requirements on Microsoft Windows</h4></div></div></div><p>
-						On Microsoft Windows, Red Hat OpenShift Local requires the Windows 10 Fall Creators Update (version 1709) or later. Red Hat OpenShift Local does not work on earlier versions of Microsoft Windows. Microsoft Windows 10 Home Edition is not supported.
+						On Microsoft Windows, Red Hat OpenShift Local requires the Windows 10 Fall Creators Update (version 1709) or later. Red Hat OpenShift Local does not run on earlier versions of Microsoft Windows. Microsoft Windows 10 Home Edition is not supported.
 					</p></section><section class="section" id="mta-7-ocp-local-macos-reqs_user-interface-guide"><div class="titlepage"><div><div><h4 class="title">3.5.1.2. Requirements on macOS</h4></div></div></div><p>
-						On macOS, Red Hat OpenShift Local requires macOS 11 Big Sur or later. Red Hat OpenShift Local does not work on earlier versions of macOS.
+						On macOS, Red Hat OpenShift Local requires macOS 11 Big Sur or later. Red Hat OpenShift Local does not run on earlier versions of macOS.
 					</p></section><section class="section" id="mta-7-ocp-local-local-reqs_user-interface-guide"><div class="titlepage"><div><div><h4 class="title">3.5.1.3. Requirements on Linux</h4></div></div></div><p>
 						On Linux, Red Hat OpenShift Local is supported only on the latest two Red Hat Enterprise Linux 8 and 9 minor releases and on the latest two stable Fedora releases.
 					</p><p>
@@ -1153,133 +1153,133 @@ mirror:
 								On Microsoft Windows, ensure that your user account can elevate to Administrator privileges.
 							</li></ul></div></div></div><p>
 					The <code class="literal">crc start</code> command starts the Red Hat OpenShift Local instance and configured container runtime. It offers the following flags:
-				</p><div class="informaltable"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 17%; " class="col_1"/><col style="width: 15%; " class="col_2"/><col style="width: 34%; " class="col_3"/><col style="width: 34%; " class="col_4"/></colgroup><thead><tr><th align="left" valign="top" id="idm46340543507840" scope="col">Flags</th><th align="left" valign="top" id="idm46340543506752" scope="col">Type</th><th align="left" valign="top" id="idm46340542126672" scope="col">Description</th><th align="left" valign="top" id="idm46340542125584" scope="col">Default value</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46340543507840">
+				</p><div class="informaltable"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 17%; " class="col_1"/><col style="width: 15%; " class="col_2"/><col style="width: 34%; " class="col_3"/><col style="width: 34%; " class="col_4"/></colgroup><thead><tr><th align="left" valign="top" id="idm45727086406048" scope="col">Flags</th><th align="left" valign="top" id="idm45727086404960" scope="col">Type</th><th align="left" valign="top" id="idm45727086403872" scope="col">Description</th><th align="left" valign="top" id="idm45727086402784" scope="col">Default value</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45727086406048">
 								<p>
 									-b, --bundle
 								</p>
-								</td><td align="left" valign="top" headers="idm46340543506752">
+								</td><td align="left" valign="top" headers="idm45727086404960">
 								<p>
 									string
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542126672">
+								</td><td align="left" valign="top" headers="idm45727086403872">
 								<p>
 									Bundle path/URI - absolute or local path, http, https or docker URI, for example, <code class="literal">'https://foo.com/crc_libvirt_4.15.14_amd64.crcbundle', 'docker://quay.io/myorg/crc_libvirt_4.15.14_amd64.crcbundle:2.37.1'</code>
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542125584">
+								</td><td align="left" valign="top" headers="idm45727086402784">
 								<p>
 									default <code class="literal">'/home/&lt;user&gt;/.crc/cache/ crc_libvirt_4.15.14_amd64.crcbundle'</code>
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46340543507840">
+								</td></tr><tr><td align="left" valign="top" headers="idm45727086406048">
 								<p>
 									-c, –cpus
 								</p>
-								</td><td align="left" valign="top" headers="idm46340543506752">
+								</td><td align="left" valign="top" headers="idm45727086404960">
 								<p>
 									int
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542126672">
+								</td><td align="left" valign="top" headers="idm45727086403872">
 								<p>
 									Number of CPU cores to allocate to the instance
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542125584">
+								</td><td align="left" valign="top" headers="idm45727086402784">
 								<p>
 									4
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46340543507840">
+								</td></tr><tr><td align="left" valign="top" headers="idm45727086406048">
 								<p>
 									–disable-update-check
 								</p>
-								</td><td align="left" valign="top" headers="idm46340543506752"> </td><td align="left" valign="top" headers="idm46340542126672">
+								</td><td align="left" valign="top" headers="idm45727086404960"> </td><td align="left" valign="top" headers="idm45727086403872">
 								<p>
 									Do not check for update
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542125584"> </td></tr><tr><td align="left" valign="top" headers="idm46340543507840">
+								</td><td align="left" valign="top" headers="idm45727086402784"> </td></tr><tr><td align="left" valign="top" headers="idm45727086406048">
 								<p>
 									-d, –disk-size
 								</p>
-								</td><td align="left" valign="top" headers="idm46340543506752">
+								</td><td align="left" valign="top" headers="idm45727086404960">
 								<p>
 									uint
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542126672">
+								</td><td align="left" valign="top" headers="idm45727086403872">
 								<p>
 									Total size in GiB of the disk used by the instance
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542125584">
+								</td><td align="left" valign="top" headers="idm45727086402784">
 								<p>
 									31
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46340543507840">
+								</td></tr><tr><td align="left" valign="top" headers="idm45727086406048">
 								<p>
 									-h, –help
 								</p>
-								</td><td align="left" valign="top" headers="idm46340543506752"> </td><td align="left" valign="top" headers="idm46340542126672">
+								</td><td align="left" valign="top" headers="idm45727086404960"> </td><td align="left" valign="top" headers="idm45727086403872">
 								<p>
 									Help for start
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542125584"> </td></tr><tr><td align="left" valign="top" headers="idm46340543507840">
+								</td><td align="left" valign="top" headers="idm45727086402784"> </td></tr><tr><td align="left" valign="top" headers="idm45727086406048">
 								<p>
 									-m, –memory
 								</p>
-								</td><td align="left" valign="top" headers="idm46340543506752">
+								</td><td align="left" valign="top" headers="idm45727086404960">
 								<p>
 									int
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542126672">
+								</td><td align="left" valign="top" headers="idm45727086403872">
 								<p>
 									MiB of memory to allocate to the instance
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542125584">
+								</td><td align="left" valign="top" headers="idm45727086402784">
 								<p>
 									10752
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46340543507840">
+								</td></tr><tr><td align="left" valign="top" headers="idm45727086406048">
 								<p>
 									-n, –nameserver
 								</p>
-								</td><td align="left" valign="top" headers="idm46340543506752">
+								</td><td align="left" valign="top" headers="idm45727086404960">
 								<p>
 									string
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542126672">
+								</td><td align="left" valign="top" headers="idm45727086403872">
 								<p>
 									IPv4 address of nameserver to use for the instance
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542125584"> </td></tr><tr><td align="left" valign="top" headers="idm46340543507840">
+								</td><td align="left" valign="top" headers="idm45727086402784"> </td></tr><tr><td align="left" valign="top" headers="idm45727086406048">
 								<p>
 									-o, –output
 								</p>
-								</td><td align="left" valign="top" headers="idm46340543506752">
+								</td><td align="left" valign="top" headers="idm45727086404960">
 								<p>
 									string
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542126672">
+								</td><td align="left" valign="top" headers="idm45727086403872">
 								<p>
 									Output format in JSON
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542125584"> </td></tr><tr><td align="left" valign="top" headers="idm46340543507840">
+								</td><td align="left" valign="top" headers="idm45727086402784"> </td></tr><tr><td align="left" valign="top" headers="idm45727086406048">
 								<p>
 									-p, –pull-secret-file
 								</p>
-								</td><td align="left" valign="top" headers="idm46340543506752">
+								</td><td align="left" valign="top" headers="idm45727086404960">
 								<p>
 									string
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542126672">
+								</td><td align="left" valign="top" headers="idm45727086403872">
 								<p>
 									File path of image pull secret (download from <a class="link" href="https://console.redhat.com/openshift/create/local">https://console.redhat.com/openshift/create/local</a>)
 								</p>
-								</td><td align="left" valign="top" headers="idm46340542125584"> </td></tr></tbody></table></div><p>
+								</td><td align="left" valign="top" headers="idm45727086402784"> </td></tr></tbody></table></div><p>
 					It also offers the following global flags:
-				</p><div class="informaltable"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 17%; " class="col_1"/><col style="width: 15%; " class="col_2"/><col style="width: 34%; " class="col_3"/><col style="width: 34%; " class="col_4"/></colgroup><thead><tr><th align="left" valign="top" id="idm46340538817408" scope="col">Flags</th><th align="left" valign="top" id="idm46340538816320" scope="col">Type</th><th align="left" valign="top" id="idm46340538815232" scope="col">Description</th><th align="left" valign="top" id="idm46340538814144" scope="col">Default value</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46340538817408">
+				</p><div class="informaltable"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 17%; " class="col_1"/><col style="width: 15%; " class="col_2"/><col style="width: 34%; " class="col_3"/><col style="width: 34%; " class="col_4"/></colgroup><thead><tr><th align="left" valign="top" id="idm45727085961552" scope="col">Flags</th><th align="left" valign="top" id="idm45727085960464" scope="col">Type</th><th align="left" valign="top" id="idm45727085959376" scope="col">Description</th><th align="left" valign="top" id="idm45727083894992" scope="col">Default value</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45727085961552">
 								<p>
 									–log-level
 								</p>
-								</td><td align="left" valign="top" headers="idm46340538816320">
+								</td><td align="left" valign="top" headers="idm45727085960464">
 								<p>
 									string
 								</p>
-								</td><td align="left" valign="top" headers="idm46340538815232">
+								</td><td align="left" valign="top" headers="idm45727085959376">
 								<p>
 									log level for example:
 								</p>
@@ -1295,7 +1295,7 @@ mirror:
 								<p>
 									* <code class="literal">error</code>
 								</p>
-								</td><td align="left" valign="top" headers="idm46340538814144">
+								</td><td align="left" valign="top" headers="idm45727083894992">
 								<p>
 									<code class="literal">info</code>
 								</p>
@@ -1315,45 +1315,191 @@ mirror:
 						+
 					</p></div><pre class="programlisting language-terminal">- consent-telemetry    : yes
 - cpus                 : 6
-- memory               : 16384</pre><section class="section" id="memory_requirements_for_running_mta_on_red_hat_openshift_local"><div class="titlepage"><div><div><h4 class="title">3.5.4.1. Memory requirements for running MTA on Red Hat OpenShift Local</h4></div></div></div><p>
+- memory               : 16384</pre><p>
+					The following table shows the different configurations of Red Hat OpenShift Local tested and the results obtained:
+				</p><div class="informaltable"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 25%; " class="col_1"/><col style="width: 25%; " class="col_2"/><col style="width: 25%; " class="col_3"/><col style="width: 25%; " class="col_4"/></colgroup><thead><tr><th align="left" valign="top" id="idm45727089680784" scope="col">Memory (GiB)</th><th align="left" valign="top" id="idm45727089679696" scope="col">CPU</th><th align="left" valign="top" id="idm45727089678608" scope="col">Disk sze (GiB)</th><th align="left" valign="top" id="idm45727084700944" scope="col">Comments</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45727089680784">
+								<p>
+									15
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089679696">
+								<p>
+									4 (default)
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089678608">
+								<p>
+									200
+								</p>
+								</td><td align="left" valign="top" headers="idm45727084700944">
+								<p>
+									MTA does not run analysis due to insufficient memory and CPU.
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm45727089680784">
+								<p>
+									20
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089679696">
+								<p>
+									4 (default)
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089678608">
+								<p>
+									200
+								</p>
+								</td><td align="left" valign="top" headers="idm45727084700944">
+								<p>
+									MTA does not run analysis due to insufficient CPU.
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm45727089680784">
+								<p>
+									17
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089679696">
+								<p>
+									5
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089678608">
+								<p>
+									50
+								</p>
+								</td><td align="left" valign="top" headers="idm45727084700944">
+								<p>
+									The hub pod does not start due to disk size.
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm45727089680784">
+								<p>
+									17
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089679696">
+								<p>
+									5
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089678608">
+								<p>
+									200
+								</p>
+								</td><td align="left" valign="top" headers="idm45727084700944">
+								<p>
+									The analysis is completed in approximately 3 minutes.
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm45727089680784">
+								<p>
+									20
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089679696">
+								<p>
+									5
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089678608">
+								<p>
+									100
+								</p>
+								</td><td align="left" valign="top" headers="idm45727084700944">
+								<p>
+									The hub pod does not start due to disk size.
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm45727089680784">
+								<p>
+									20
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089679696">
+								<p>
+									5
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089678608">
+								<p>
+									110
+								</p>
+								</td><td align="left" valign="top" headers="idm45727084700944">
+								<p>
+									The analysis is completed in approximately 5 minutes.
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm45727089680784">
+								<p>
+									20
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089679696">
+								<p>
+									5
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089678608">
+								<p>
+									150
+								</p>
+								</td><td align="left" valign="top" headers="idm45727084700944">
+								<p>
+									The analysis is completed in under 3 minutes.
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm45727089680784">
+								<p>
+									20
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089679696">
+								<p>
+									5
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089678608">
+								<p>
+									200
+								</p>
+								</td><td align="left" valign="top" headers="idm45727084700944">
+								<p>
+									The analysis is completed in approximately 2 minutes.
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm45727089680784">
+								<p>
+									20
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089679696">
+								<p>
+									5
+								</p>
+								</td><td align="left" valign="top" headers="idm45727089678608">
+								<p>
+									35, with the MTA Operator configurations <code class="literal">cache_data_volume_size</code> and <code class="literal">hub_bucket_volume_size</code> set to 5GiB
+								</p>
+								</td><td align="left" valign="top" headers="idm45727084700944">
+								<p>
+									The analysis is completed in approximately 2 minutes
+								</p>
+								</td></tr></tbody></table></div><section class="section" id="memory_requirements_for_running_mta_on_red_hat_openshift_local"><div class="titlepage"><div><div><h4 class="title">3.5.4.1. Memory requirements for running MTA on Red Hat OpenShift Local</h4></div></div></div><p>
 						When installed on <a class="link" href="https://developers.redhat.com/products/openshift-local/overview">Red Hat OpenShift Local</a>, MTA requires a minimum amount of memory to complete its analysis. Adding memory makes the analysis process run faster. The table below describes the MTA performance with varying amounts of memory.
-					</p><div class="table" id="idm46340540563152"><p class="title"><strong>Table 3.3. OpenShift Local MTA memory requirements</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 25%; " class="col_1"/><col style="width: 75%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm46340540558352" scope="col">Memory (GiB)</th><th align="left" valign="top" id="idm46340540557264" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46340540558352">
+					</p><div class="table" id="idm45727086414768"><p class="title"><strong>Table 3.3. OpenShift Local MTA memory requirements</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 25%; " class="col_1"/><col style="width: 75%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm45727084449952" scope="col">Memory (GiB)</th><th align="left" valign="top" id="idm45727084448864" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45727084449952">
 									<p>
 										<code class="literal">10</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340540557264">
+									</td><td align="left" valign="top" headers="idm45727084448864">
 									<p>
 										MTA cannot run the analysis due to insufficient memory
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340540558352">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727084449952">
 									<p>
 										<code class="literal">11</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340540557264">
+									</td><td align="left" valign="top" headers="idm45727084448864">
 									<p>
 										MTA cannot run the analysis due to insufficient memory
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340540558352">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727084449952">
 									<p>
 										<code class="literal">12</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340540557264">
+									</td><td align="left" valign="top" headers="idm45727084448864">
 									<p>
 										<span class="strong strong"><strong>MTA works and the analysis is completed in approximately 3 minutes</strong></span>
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340540558352">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727084449952">
 									<p>
 										<code class="literal">15</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340540557264">
+									</td><td align="left" valign="top" headers="idm45727084448864">
 									<p>
 										MTA works and the analysis is completed in less than 2 minutes
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340540558352">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727084449952">
 									<p>
 										<code class="literal">20</code>
 									</p>
-									</td><td align="left" valign="top" headers="idm46340540557264">
+									</td><td align="left" valign="top" headers="idm45727084448864">
 									<p>
 										MTA works quickly, and the analysis is completed in less than 1 minute
 									</p>
@@ -2029,7 +2175,7 @@ mirror:
 					Through interaction with the default questionnaire and the review process, the system is enriched with application knowledge exposed through the collection of assessment reports.
 				</p><p>
 					You can export the default questionnaire to a YAML file:
-				</p><div class="example" id="idm46340540591552"><p class="title"><strong>Example 7.1. The Legacy Pathfinder YAML file</strong></p><div class="example-contents"><pre class="programlisting language-yaml">name: Legacy Pathfinder
+				</p><div class="example" id="idm45727087276176"><p class="title"><strong>Example 7.1. The Legacy Pathfinder YAML file</strong></p><div class="example-contents"><pre class="programlisting language-yaml">name: Legacy Pathfinder
 description: ''
 sections:
   - order: 1
@@ -3260,7 +3406,7 @@ questions:
             tag: Spring Boot
 ...</pre></dd></dl></div><section class="section" id="yaml-template-for-custom-questionnaire_user-interface-guide"><div class="titlepage"><div><div><h4 class="title">7.2.2.1. The YAML template for the custom questionnaire</h4></div></div></div><p class="_abstract _abstract">
 						You can use the following YAML template to build your custom questionnaire. You can download this template by clicking <span class="strong strong"><strong>Download YAML template</strong></span> on the <span class="strong strong"><strong>Assessment questionnaires</strong></span> page.
-					</p><div class="example" id="idm46340543681968"><p class="title"><strong>Example 7.2. The YAML template for the custom questionnaire</strong></p><div class="example-contents"><pre class="programlisting language-yaml">name: Uploadable Cloud Readiness Questionnaire Template
+					</p><div class="example" id="idm45727087266992"><p class="title"><strong>Example 7.2. The YAML template for the custom questionnaire</strong></p><div class="example-contents"><pre class="programlisting language-yaml">name: Uploadable Cloud Readiness Questionnaire Template
 description: This questionnaire is an example template for assessing cloud readiness. It serves as a guide for users to create and customize their own questionnaire templates.
 required: true
 sections:
@@ -3361,27 +3507,27 @@ thresholds:
     red: 30
     yellow: 45
     unknown: 5
-...</pre><div class="table" id="idm46340543665424"><p class="title"><strong>Table 7.1. The custom questionnaire fields</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm46340543489856" scope="col">Questionnaire field</th><th align="left" valign="top" id="idm46340543488768" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46340543489856">
+...</pre><div class="table" id="idm45727084049312"><p class="title"><strong>Table 7.1. The custom questionnaire fields</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm45727084044512" scope="col">Questionnaire field</th><th align="left" valign="top" id="idm45727084043424" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45727084044512">
 									<p>
 										<code class="literal">name</code> (required, string)
 									</p>
-									</td><td align="left" valign="top" headers="idm46340543488768">
+									</td><td align="left" valign="top" headers="idm45727084043424">
 									<p>
 										The name of the questionnaire. This field must be unique for the entire MTA instance.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340543489856">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727084044512">
 									<p>
 										<code class="literal">description</code> (optional, string)
 									</p>
-									</td><td align="left" valign="top" headers="idm46340543488768">
+									</td><td align="left" valign="top" headers="idm45727084043424">
 									<p>
 										A short description of the questionnaire.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340543489856">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727084044512">
 									<p>
 										<code class="literal">thresholds</code> (required)
 									</p>
-									</td><td align="left" valign="top" headers="idm46340543488768">
+									</td><td align="left" valign="top" headers="idm45727084043424">
 									<p>
 										The definition of a threshold for each risk category of the application or archetype that is considered to be affected by that risk level. The threshold values can be the following:
 									</p>
@@ -3395,11 +3541,11 @@ thresholds:
 									<p>
 										The higher risk level always takes precedence. For example, if the <code class="literal">yellow</code> threshold is set to 30% and <code class="literal">red</code> to 5%, and the answers for the application or archetype are set to have 35% <code class="literal">yellow</code> and 6% <code class="literal">red</code>, the risk level for the application or archetype is red.
 									</p>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340543489856">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727084044512">
 									<p>
 										<code class="literal">riskMessages</code> (required)
 									</p>
-									</td><td align="left" valign="top" headers="idm46340543488768">
+									</td><td align="left" valign="top" headers="idm45727084043424">
 									<p>
 										Messages to be displayed in reports for each risk category. The <span class="emphasis"><em>risk_messages</em></span> map is defined by the following fields:
 									</p>
@@ -3412,11 +3558,11 @@ thresholds:
 											</li><li class="listitem">
 												<code class="literal">unknown</code> (required, string): A message to be displayed in reports for the unknown risk level.
 											</li></ul></div>
-									</td></tr><tr><td align="left" valign="top" headers="idm46340543489856">
+									</td></tr><tr><td align="left" valign="top" headers="idm45727084044512">
 									<p>
 										<code class="literal">sections</code> (required)
 									</p>
-									</td><td align="left" valign="top" headers="idm46340543488768">
+									</td><td align="left" valign="top" headers="idm45727084043424">
 									<p>
 										A list of sections that the questionnaire must include.
 									</p>
@@ -3942,8 +4088,8 @@ thresholds:
 					</p></li></ol></div><p>
 				<br/>
 			</p><p>
-				<span class="emphasis"><em><span class="right right">Revised on 2024-06-27 18:42:58 UTC</span></em></span>
-			</p></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm46340547453312"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+				<span class="emphasis"><em><span class="right right">Revised on 2024-07-02 18:08:55 UTC</span></em></span>
+			</p></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm45727087296352"><h1 class="legalnotice">Legal Notice</h1><div class="para">
 		Copyright <span class="trademark"/>© 2024 Red Hat, Inc.
 	</div><div class="para">
 		The text of and illustrations in this document are licensed by Red Hat under a Creative Commons Attribution–Share Alike 3.0 Unported license ("CC-BY-SA"). An explanation of CC-BY-SA is available at <a class="uri" href="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</a>. In accordance with CC-BY-SA, if you distribute this document or an adaptation of it, you must provide the URL for the original version.
