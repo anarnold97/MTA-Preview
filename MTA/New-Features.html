@@ -1,0 +1,648 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Introduction to the Migration Toolkit for Applications</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.2"/><meta name="description" content="By using the Migration Toolkit for Applications (MTA), you can accelerate large-scale application modernization efforts across hybrid cloud environments on Red Hat OpenShift. For example, you can inventory, assess, analyze, and manage applications for faster migration to OpenShift through the user interface at both the portfolio and application levels."/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm46349023634000"><div class="titlepage"><div><div class="producttitle"><span class="productname">Migration Toolkit for Applications</span> <span class="productnumber">7.1</span></div><div><h1 class="title">Introduction to the Migration Toolkit for Applications</h1></div><div><h2 class="subtitle">Introduction to the Migration Toolkit for Applications for managing applications during their migration to OpenShift Container Platform.</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm46349000412160">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+				By using the Migration Toolkit for Applications (MTA), you can accelerate large-scale application modernization efforts across hybrid cloud environments on Red Hat OpenShift. For example, you can inventory, assess, analyze, and manage applications for faster migration to OpenShift through the user interface at both the portfolio and application levels.
+			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="preface"><a href="#making-open-source-more-inclusive">Making open source more inclusive</a></span></li><li><span class="chapter"><a href="#mta-about-the-intro-to-mta-guide_getting-started-guide">1. Introduction to the Migration Toolkit for Applications</a></span><ul><li><span class="section"><a href="#new-mta-features_getting-started-guide">1.1. The MTA features</a></span></li><li><span class="section"><a href="#about-rules_getting-started-guide">1.2. The MTA rules</a></span></li></ul></li><li><span class="chapter"><a href="#migration-paths_getting-started-guide">2. Supported Migration Toolkit for Applications migration paths</a></span></li><li><span class="chapter"><a href="#prerequisites_for_the_migration_toolkit_for_applications_installation">3. Prerequisites for the Migration Toolkit for Applications installation</a></span></li><li><span class="chapter"><a href="#about-tools_getting-started-guide">4. The Migration Toolkit for Applications tools</a></span><ul><li><span class="section"><a href="#about-the-mta-operator_getting-started-guide">4.1. The MTA Operator</a></span></li><li><span class="section"><a href="#about-the-web-console_getting-started-guide">4.2. The MTA user interface</a></span></li><li><span class="section"><a href="#about-cli_getting-started-guide">4.3. The MTA CLI</a></span></li><li><span class="section"><a href="#getting-started-about-ide-addons_getting-started-guide">4.4. The MTA IDE add-ons</a></span></li></ul></li><li><span class="appendix"><a href="#getting_involved_in_the_migration_toolkit_for_applications_development">A. Getting involved in the Migration Toolkit for Applications development</a></span><ul><li><span class="section"><a href="#get-involved_getting-started-guide">A.1. Contributing to the project</a></span></li><li><span class="section"><a href="#reporting_issues">A.2. Reporting issues</a></span></li><li><span class="section"><a href="#important-links_getting-started-guide">A.3. Migration Toolkit for Applications development resources</a></span></li></ul></li></ul></div><section class="preface" id="making-open-source-more-inclusive"><div class="titlepage"><div><div><h1 class="title">Making open source more inclusive</h1></div></div></div><p class="_abstract _abstract">
+			Red Hat is committed to replacing problematic language in our code, documentation, and web properties. We are beginning with these four terms: master, slave, blacklist, and whitelist. Because of the enormity of this endeavor, these changes will be implemented gradually over several upcoming releases. For more details, see <a class="link" href="https://www.redhat.com/en/blog/making-open-source-more-inclusive-eradicating-problematic-language">our CTO Chris Wright’s message</a>.
+		</p></section><section class="chapter" id="mta-about-the-intro-to-mta-guide_getting-started-guide"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Introduction to the Migration Toolkit for Applications</h1></div></div></div><p>
+			Migration Toolkit for Applications (MTA) is a set of tools that you can use to accelerate large-scale application modernization efforts across hybrid cloud environments on Red Hat OpenShift. MTA looks for common resources and known trouble spots when migrating applications. It provides a high-level view of the technologies used by the application. MTA also generates a detailed report that evaluates a migration or modernization path. By using this report, you can estimate the effort required for large-scale projects and reduce the work involved.
+		</p><p>
+			By using the MTA, you can perform the following tasks:
+		</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+					Use the MTA extensive default questionnaire to assess your applications, or create your own custom questionnaire to estimate the difficulty, time, and other resources needed to prepare an application for containerization. You can use the results of an assessment for discussions between stakeholders to determine which applications are suitable for containerization.
+				</li><li class="listitem">
+					Analyze applications by applying one or more sets of rules to each application. You can use these rules to determine which specific lines of the application must be modified before the application can be modernized.
+				</li><li class="listitem">
+					Examine application artifacts, including project source directories and application archives, and produce an HTML report that highlights areas that require changes.
+				</li></ul></div><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+				The migration solution for Java applications that was provided in the Migration Toolkit for Applications 5.x releases (migration and modernization of Java applications) is now available with Migration Toolkit for Runtimes 1.0.
+			</p></div></div><section class="section" id="new-mta-features_getting-started-guide"><div class="titlepage"><div><div><h2 class="title">1.1. The MTA features</h2></div></div></div><p>
+				Migration Toolkit for Applications (MTA) provides the following features to simplify upgrades with more migration paths:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						<span class="strong strong"><strong>New application inventory and assessment modules</strong></span> to assist organizations in managing, classifying, and tagging their applications while assessing application suitability for deployment in containers, including flagging potential risks for migration strategies.
+					</li><li class="listitem">
+						<span class="strong strong"><strong>Full integration with source code and binary repositories</strong></span> to automate the retrieval of applications for analysis along with proxy integration, including HTTP and HTTPS proxy configuration managed in the user interface.
+					</li><li class="listitem">
+						<span class="strong strong"><strong>Improved analysis capabilities</strong></span> with new analysis modes, including source and dependency modes that parse repositories to gather dependencies and add these dependencies to the overall scope of the analysis. You can also use a simplified user experience to configure the analysis scope, including open source libraries.
+					</li><li class="listitem">
+						<span class="strong strong"><strong>Enhanced Role-Based Access Control (RBAC)</strong></span> powered by <a class="link" href="https://access.redhat.com/products/red-hat-single-sign-on">Red Hat Single Sign-On</a> to define new differentiated personas (administrator, architect, and migrator) with different permissions to suit the needs of each user, including credentials management for multiple credential types.
+					</li><li class="listitem">
+						<span class="strong strong"><strong>Administration perspective</strong></span> to provide tool-wide configuration management for administrators.
+					</li><li class="listitem">
+						<span class="strong strong"><strong>Support for Red Hat OpenShift on AWS (ROSA)</strong></span> is introduced in MTA 7.0.0.
+					</li><li class="listitem">
+						<span class="strong strong"><strong>Support added for Azure Red Hat OpenShift (ARO)</strong></span> is introduced in MTA 7.0.0.
+					</li><li class="listitem">
+						<span class="strong strong"><strong>Multi language support</strong></span> is introduced in 7.1.0. In Migration Toolkit for Applications (MTA) 7.1.0, you can use MTA to analyze applications written in languages other than Java. (<span class="strong strong"><strong>Developer Preview</strong></span>)
+					</li></ul></div></section><section class="section" id="about-rules_getting-started-guide"><div class="titlepage"><div><div><h2 class="title">1.2. The MTA rules</h2></div></div></div><p>
+				The Migration Toolkit for Applications (MTA) contains rule-based migration tools (analyzers) that you can use to analyze the application user interfaces (APIs), technologies, and architectures used by the applications you plan to migrate. MTA analyzer rules use the following rule pattern:
+			</p><pre class="screen">when(condition)
+ message(message)
+ tag(tags)</pre><p>
+				You can use the MTA rules internally to perform the following tasks:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						Extract files from archives.
+					</li><li class="listitem">
+						Decompile files.
+					</li><li class="listitem">
+						Scan and classify file types.
+					</li><li class="listitem">
+						Analyze XML and other file content.
+					</li><li class="listitem">
+						Analyze the application code.
+					</li><li class="listitem">
+						Build the reports.
+					</li></ul></div><p>
+				MTA builds a data model based on the rule execution results and stores component data and relationships in a graph database. This database can then be queried and updated as required by the migration rules and for reporting purposes.
+			</p><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+					You can create your own custom analyzer rules. You can use custom rules to identify the use of custom libraries or other components that might not be covered by the provided standard migration rules.
+				</p><p>
+					For instructions on how to write custom rules, see [<span class="emphasis"><em>Rule Development Guide</em></span>].
+				</p></div></div></section></section><section class="chapter" id="migration-paths_getting-started-guide"><div class="titlepage"><div><div><h1 class="title">Chapter 2. Supported Migration Toolkit for Applications migration paths</h1></div></div></div><p>
+			The Migration Toolkit for Applications (MTA) supports the following migrations:
+		</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+					Migrating from third-party enterprise application servers, such as Oracle WebLogic Server, to JBoss Enterprise Application Platform (JBoss EAP).
+				</li><li class="listitem">
+					Upgrading to the latest release of JBoss EAP.
+				</li></ul></div><p>
+			MTA provides a comprehensive set of rules to assess the suitability of your applications for containerization and deployment on Red Hat OpenShift Container Platform (RHOCP). You can run an MTA analysis to assess your applications' suitability for migration to multiple target platforms.
+		</p><div class="table" id="idm46349023346800"><p class="title"><strong>Table 2.1. Supported migration paths: Source platform ⇒ Target platform</strong></p><div class="table-contents"><table class="gt-8-cols lt-7-rows"><colgroup><col style="width: 19%; " class="col_1"/><col style="width: 10%; " class="col_2"/><col style="width: 10%; " class="col_3"/><col style="width: 10%; " class="col_4"/><col style="width: 10%; " class="col_5"/><col style="width: 10%; " class="col_6"/><col style="width: 10%; " class="col_7"/><col style="width: 10%; " class="col_8"/><col style="width: 10%; " class="col_9"/></colgroup><thead><tr><th align="left" valign="top" id="idm46349022069808" scope="col">Source platform ⇒</th><th align="left" valign="top" id="idm46349021863984" scope="col">Migration to JBoss EAP 7 &amp; 8</th><th align="left" valign="top" id="idm46349021783440" scope="col">OpenShift (cloud readiness)</th><th align="left" valign="top" id="idm46349021661504" scope="col">OpenJDK 11, 17, and 21</th><th align="left" valign="top" id="idm46349021816512" scope="col">Jakarta EE 9</th><th align="left" valign="top" id="idm46349021697136" scope="col">Camel 3 &amp; 4</th><th align="left" valign="top" id="idm46349021773648" scope="col">Spring Boot in Red Hat Runtimes</th><th align="left" valign="top" id="idm46349021556912" scope="col">Quarkus</th><th align="left" valign="top" id="idm46349021756160" scope="col">Open Liberty</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46349022069808">
+						<p>
+							Oracle WebLogic Server
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021863984">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021783440">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021661504">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021816512">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021697136">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021773648">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021556912">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021756160">
+						<p>
+							-
+						</p>
+						</td></tr><tr><td align="left" valign="top" headers="idm46349022069808">
+						<p>
+							IBM WebSphere Application Server
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021863984">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021783440">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021661504">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021816512">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021697136">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021773648">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021556912">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021756160">
+						<p>
+							✔
+						</p>
+						</td></tr><tr><td align="left" valign="top" headers="idm46349022069808">
+						<p>
+							JBoss EAP 4
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021863984">
+						<p>
+							✘ <a href="#ftn.note2" class="footnote"><sup class="footnote" id="note2">[a]</sup></a>
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021783440">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021661504">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021816512">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021697136">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021773648">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021556912">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021756160">
+						<p>
+							-
+						</p>
+						</td></tr><tr><td align="left" valign="top" headers="idm46349022069808">
+						<p>
+							JBoss EAP 5
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021863984">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021783440">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021661504">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021816512">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021697136">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021773648">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021556912">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021756160">
+						<p>
+							-
+						</p>
+						</td></tr><tr><td align="left" valign="top" headers="idm46349022069808">
+						<p>
+							JBoss EAP 6
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021863984">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021783440">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021661504">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021816512">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021697136">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021773648">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021556912">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021756160">
+						<p>
+							-
+						</p>
+						</td></tr><tr><td align="left" valign="top" headers="idm46349022069808">
+						<p>
+							JBoss EAP 7
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021863984">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021783440">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021661504">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021816512">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021697136">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021773648">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021556912">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021756160">
+						<p>
+							-
+						</p>
+						</td></tr><tr><td align="left" valign="top" headers="idm46349022069808">
+						<p>
+							Thorntail
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021863984">
+						<p>
+							✔ <a href="#ftn.note3" class="footnote"><sup class="footnote" id="note3">[b]</sup></a>
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021783440">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021661504">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021816512">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021697136">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021773648">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021556912">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021756160">
+						<p>
+							-
+						</p>
+						</td></tr><tr><td align="left" valign="top" headers="idm46349022069808">
+						<p>
+							Oracle JDK
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021863984">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021783440">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021661504">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021816512">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021697136">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021773648">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021556912">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021756160">
+						<p>
+							-
+						</p>
+						</td></tr><tr><td align="left" valign="top" headers="idm46349022069808">
+						<p>
+							Camel 2
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021863984">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021783440">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021661504">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021816512">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021697136">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021773648">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021556912">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021756160">
+						<p>
+							-
+						</p>
+						</td></tr><tr><td align="left" valign="top" headers="idm46349022069808">
+						<p>
+							Spring Boot
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021863984">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021783440">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021661504">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021816512">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021697136">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021773648">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021556912">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021756160">
+						<p>
+							-
+						</p>
+						</td></tr><tr><td align="left" valign="top" headers="idm46349022069808">
+						<p>
+							Any Java application
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021863984">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021783440">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021661504">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021816512">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021697136">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021773648">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021556912">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021756160">
+						<p>
+							-
+						</p>
+						</td></tr><tr><td align="left" valign="top" headers="idm46349022069808">
+						<p>
+							Any Java EE application
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021863984">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021783440">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021661504">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021816512">
+						<p>
+							✔
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021697136">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021773648">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021556912">
+						<p>
+							-
+						</p>
+						</td><td align="left" valign="top" headers="idm46349021756160">
+						<p>
+							-
+						</p>
+						</td></tr></tbody><tbody class="footnotes"><tr><td colspan="9"><div id="ftn.note2" class="footnote"><div class="para"><a href="#note2" class="simpara"><sup class="simpara">[a] </sup></a>
+								Although MTA does not currently provide rules for this migration path, Red Hat Consulting can assist with migration from any source platform to JBoss EAP 7.
+							</div></div><div id="ftn.note3" class="footnote"><div class="para"><a href="#note3" class="simpara"><sup class="simpara">[b] </sup></a>
+								Requires JBoss Enterprise Application Platform expansion pack 2 (EAP XP 2)
+							</div></div></td></tr></tbody></table></div></div></section><section class="chapter" id="prerequisites_for_the_migration_toolkit_for_applications_installation"><div class="titlepage"><div><div><h1 class="title">Chapter 3. Prerequisites for the Migration Toolkit for Applications installation</h1></div></div></div><p>
+			The following are the prerequisites for the Migration Toolkit for Applications (MTA) installation:
+		</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+					Java Development Kit (JDK) is installed. MTA supports the following JDKs:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+							OpenJDK 11
+						</li><li class="listitem">
+							OpenJDK 17
+						</li><li class="listitem">
+							Oracle JDK 11
+						</li><li class="listitem">
+							Oracle JDK 17
+						</li><li class="listitem">
+							Eclipse Temurin™ JDK 11
+						</li><li class="listitem">
+							Eclipse Temurin™ JDK 17
+						</li></ul></div></li><li class="listitem">
+					8 GB RAM
+				</li><li class="listitem">
+					macOS installation: the value of <code class="literal">maxproc</code> must be <code class="literal">2048</code> or greater.
+				</li></ul></div></section><section class="chapter" id="about-tools_getting-started-guide"><div class="titlepage"><div><div><h1 class="title">Chapter 4. The Migration Toolkit for Applications tools</h1></div></div></div><p>
+			You can use the following Migration Toolkit for Applications (MTA) tools for assistance in the various stages of your migration and modernization efforts:
+		</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+					User interface
+				</li><li class="listitem">
+					Migration Toolkit for Applications Operator
+				</li><li class="listitem">
+					CLI
+				</li><li class="listitem"><p class="simpara">
+					IDE add-ons for the following applications:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+							Eclipse
+						</li><li class="listitem">
+							Visual Studio Code, Visual Studio Codespaces, and Eclipse Che
+						</li><li class="listitem">
+							IntelliJ IDEA
+						</li></ul></div></li><li class="listitem">
+					Maven plugin
+				</li></ul></div><p>
+			Review the details of each tool to determine which tool is suitable for your project.
+		</p><section class="section" id="about-the-mta-operator_getting-started-guide"><div class="titlepage"><div><div><h2 class="title">4.1. The MTA Operator</h2></div></div></div><p>
+				By using the Migration Toolkit for Applications Operator, you can install the user interface on OpenShift Container Platform versions 4.13-4.15.
+			</p><p>
+				For more information about the prerequisites for the MTA Operator installation, see <a class="link" href="https://access.redhat.com/support/policy/updates/openshift_operators">OpenShift Operator Life Cycles</a>.
+			</p></section><section class="section" id="about-the-web-console_getting-started-guide"><div class="titlepage"><div><div><h2 class="title">4.2. The MTA user interface</h2></div></div></div><p>
+				By using the user interface for the Migration Toolkit for Applications, you can perform the following tasks:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						Assess the risks involved in containerizing an application for hybrid cloud environments on Red Hat OpenShift.
+					</li><li class="listitem">
+						Analyze the changes that must be made in the code of an application to containerize the application.
+					</li></ul></div></section><section class="section" id="about-cli_getting-started-guide"><div class="titlepage"><div><div><h2 class="title">4.3. The MTA CLI</h2></div></div></div><p>
+				The CLI is a command-line tool in the Migration Toolkit for Applications that you can use to assess and prioritize migration and modernization efforts for applications. It provides numerous reports that highlight the analysis without using the other tools. The CLI includes a wide array of customization options. By using the CLI, you can tune MTA analysis options or integrate with external automation tools.
+			</p><p>
+				For more information about using the CLI, see <a class="link" href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_applications/7.1/html-single/cli_guide"><span class="emphasis"><em>CLI Guide</em></span></a>.
+			</p></section><section class="section" id="getting-started-about-ide-addons_getting-started-guide"><div class="titlepage"><div><div><h2 class="title">4.4. The MTA IDE add-ons</h2></div></div></div><p>
+				You can migrate and modernize applications by using the Migration Toolkit for Applications (MTA) add-ons for the following applications:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						Eclipse
+					</li><li class="listitem">
+						Visual Studio Code, Visual Studio Codespaces, and Eclipse Che
+					</li><li class="listitem">
+						IntelliJ IDEA, both the Community and Ultimate versions
+					</li></ul></div><p>
+				You can use these add-on to perform the following tasks:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						Analyze your projects by using customizable sets of rules.
+					</li><li class="listitem">
+						Mark issues in the source code.
+					</li><li class="listitem">
+						Fix the issues by using the provided guidance.
+					</li><li class="listitem">
+						Use the automatic code replacement, if possible.
+					</li></ul></div></section></section><section class="appendix" id="getting_involved_in_the_migration_toolkit_for_applications_development"><div class="titlepage"><div><div><h1 class="title">Appendix A. Getting involved in the Migration Toolkit for Applications development</h1></div></div></div><section class="section" id="get-involved_getting-started-guide"><div class="titlepage"><div><div><h2 class="title">A.1. Contributing to the project</h2></div></div></div><p>
+				To help the Migration Toolkit for Applications cover most application constructs and server configurations, including yours, you can help with any of the following items:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						Send an email to <a class="link" href="mailto:jboss-migration-feedback@redhat.com">jboss-migration-feedback@redhat.com</a> and let us know what MTA migration rules must cover.
+					</li><li class="listitem">
+						Provide example applications to test migration rules.
+					</li><li class="listitem"><p class="simpara">
+						Identify application components and problem areas that might be difficult to migrate:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+								Write a short description of the problem migration areas.
+							</li><li class="listitem">
+								Write a brief overview describing how to solve the problem in migration areas.
+							</li></ul></div></li><li class="listitem">
+						Try Migration Toolkit for Applications on your application. Make sure to report any issues you meet.
+					</li><li class="listitem"><p class="simpara">
+						Contribute to the Migration Toolkit for Applications rules repository:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+								Write a Migration Toolkit for Applications rule to identify or automate a migration process.
+							</li><li class="listitem">
+								Create a test for the new rule.
+							</li></ul></div><p class="simpara">
+						For more information, see <a class="link" href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_applications/7.1/html-single/rules_development_guide"><span class="emphasis"><em>Rule Development Guide</em></span></a>.
+					</p></li><li class="listitem"><p class="simpara">
+						Contribute to the project source code:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+								Create a core rule.
+							</li><li class="listitem">
+								Improve MTA performance or efficiency.
+							</li></ul></div></li></ul></div><p>
+				Any level of involvement is greatly appreciated!
+			</p></section><section class="section" id="reporting_issues"><div class="titlepage"><div><div><h2 class="title">A.2. Reporting issues</h2></div></div></div><p>
+				MTA uses Jira as its issue tracking system. If you encounter an issue executing MTA, submit a <a class="link" href="https://issues.redhat.com/projects/MTA/issues">Jira issue</a>.
+			</p></section><section class="section" id="important-links_getting-started-guide"><div class="titlepage"><div><div><h2 class="title">A.3. Migration Toolkit for Applications development resources</h2></div></div></div><p>
+				Use the following resources to learn and contribute to the Migration Toolkit for Applications development:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						MTA forums: <a class="link" href="https://developer.jboss.org/en/windup">https://developer.jboss.org/en/windup</a>
+					</li><li class="listitem">
+						Jira issue tracker: <a class="link" href="https://issues.redhat.com/projects/MTA/issues">https://issues.redhat.com/projects/MTA/issues</a>
+					</li><li class="listitem">
+						MTA mailing list: <a class="link" href="mailto:jboss-migration-feedback@redhat.com">jboss-migration-feedback@redhat.com</a>
+					</li></ul></div><p>
+				<br/>
+			</p><p>
+				<span class="emphasis"><em><span class="right right">Revised on 2024-08-12 21:18:58 UTC</span></em></span>
+			</p></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm46349000412160"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+		Copyright <span class="trademark"/>© 2024 Red Hat, Inc.
+	</div><div class="para">
+		The text of and illustrations in this document are licensed by Red Hat under a Creative Commons Attribution–Share Alike 3.0 Unported license ("CC-BY-SA"). An explanation of CC-BY-SA is available at <a class="uri" href="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</a>. In accordance with CC-BY-SA, if you distribute this document or an adaptation of it, you must provide the URL for the original version.
+	</div><div class="para">
+		Red Hat, as the licensor of this document, waives the right to enforce, and agrees not to assert, Section 4d of CC-BY-SA to the fullest extent permitted by applicable law.
+	</div><div class="para">
+		Red Hat, Red Hat Enterprise Linux, the Shadowman logo, the Red Hat logo, JBoss, OpenShift, Fedora, the Infinity logo, and RHCE are trademarks of Red Hat, Inc., registered in the United States and other countries.
+	</div><div class="para">
+		<span class="trademark">Linux</span>® is the registered trademark of Linus Torvalds in the United States and other countries.
+	</div><div class="para">
+		<span class="trademark">Java</span>® is a registered trademark of Oracle and/or its affiliates.
+	</div><div class="para">
+		<span class="trademark">XFS</span>® is a trademark of Silicon Graphics International Corp. or its subsidiaries in the United States and/or other countries.
+	</div><div class="para">
+		<span class="trademark">MySQL</span>® is a registered trademark of MySQL AB in the United States, the European Union and other countries.
+	</div><div class="para">
+		<span class="trademark">Node.js</span>® is an official trademark of Joyent. Red Hat is not formally related to or endorsed by the official Joyent Node.js open source or commercial project.
+	</div><div class="para">
+		The <span class="trademark">OpenStack</span>® Word Mark and OpenStack logo are either registered trademarks/service marks or trademarks/service marks of the OpenStack Foundation, in the United States and other countries and are used with the OpenStack Foundation's permission. We are not affiliated with, endorsed or sponsored by the OpenStack Foundation, or the OpenStack community.
+	</div><div class="para">
+		All other trademarks are the property of their respective owners.
+	</div></div></div></div></div></div><script type="text/javascript">
+                        jQuery(document).ready(function() {
+                            initSwitchery();
+                            jQuery('pre[class*="language-"]').each(function(i, block){hljs.highlightBlock(block);});
+                        });
+                    </script></body></html>
