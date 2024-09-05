@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Visual Studio Code Extension Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.2"/><meta name="description" content="This guide describes how to use the Migration Toolkit for Runtimes extension for Visual Studio Code to simplify the migration of Java applications."/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm46614127384000"><div class="titlepage"><div><div class="producttitle"><span class="productname">Migration Toolkit for Runtimes</span> <span class="productnumber">1.2</span></div><div><h1 class="title">Visual Studio Code Extension Guide</h1></div><div><h2 class="subtitle">Identify and resolve migration issues by analyzing your applications with the Migration Toolkit for Runtimes extension for Visual Studio Code.</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm46614109533248">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+				This guide describes how to use the Migration Toolkit for Runtimes extension for Visual Studio Code to simplify the migration of Java applications.
+			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="preface"><a href="#making-open-source-more-inclusive">Making open source more inclusive</a></span></li><li><span class="chapter"><a href="#introduction">1. Introduction</a></span><ul><li><span class="section"><a href="#about-ide-addons_vsc-extension-guide-mtr">1.1. About the MTR extension for Microsoft Visual Studio Code</a></span></li><li><span class="section"><a href="#what-is-the-toolkit_vsc-extension-guide-mtr">1.2. About the Migration Toolkit for Runtimes</a></span></li></ul></li><li><span class="chapter"><a href="#installing-vs-code-extension_vsc-extension-guide-mtr">2. Installing the MTR extension for Visual Studio Code</a></span></li><li><span class="chapter"><a href="#analyzing-projects-with-vs-code-extension_vsc-extension-guide-mtr">3. Analyzing your projects with the MTR extension</a></span><ul><li><span class="section"><a href="#vs-code-extension-interface_vsc-extension-guide-mtr">3.1. MTR extension interface</a></span></li><li><span class="section"><a href="#vs-code-extension-run-configuration_vsc-extension-guide-mtr">3.2. Configuring a run configuration</a></span></li></ul></li><li><span class="chapter"><a href="#reviewing-and-resolving-issues-with-vs-code-extension_vsc-extension-guide-mtr">4. Reviewing and resolving migration issues</a></span><ul><li><span class="section"><a href="#vs-code-extension-reviewing-issues_vsc-extension-guide-mtr">4.1. Reviewing issues</a></span></li><li><span class="section"><a href="#vs-code-extension-resolving-issues_vsc-extension-guide-mtr">4.2. Resolving issues</a></span><ul><li><span class="section"><a href="#editing_the_code_of_a_file">4.2.1. Editing the code of a file</a></span></li></ul></li></ul></li></ul></div><section class="preface" id="making-open-source-more-inclusive"><div class="titlepage"><div><div><h1 class="title">Making open source more inclusive</h1></div></div></div><p class="_abstract _abstract">
+			Red Hat is committed to replacing problematic language in our code, documentation, and web properties. We are beginning with these four terms: master, slave, blacklist, and whitelist. Because of the enormity of this endeavor, these changes will be implemented gradually over several upcoming releases. For more details, see <a class="link" href="https://www.redhat.com/en/blog/making-open-source-more-inclusive-eradicating-problematic-language">our CTO Chris Wright’s message</a>.
+		</p></section><section class="chapter" id="introduction"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Introduction</h1></div></div></div><div class="admonition important"><div class="admonition_header">Migration Toolkit for Runtimes product will be End of Life on September 30th, 2024</div><div><p>
+				All customers using this product should start their transition to <a class="link" href="https://developers.redhat.com/products/mta/overview">Migration Toolkit for Applications</a>.
+			</p><p>
+				Migration Toolkit for Applications is fully backwards compatible with all features and rulesets available in Migration Toolkit for Runtimes and will be maintained in the long term.
+			</p></div></div><section class="section" id="about-ide-addons_vsc-extension-guide-mtr"><div class="titlepage"><div><div><h2 class="title">1.1. About the MTR extension for Microsoft Visual Studio Code</h2></div></div></div><p>
+				You can migrate and modernize applications by using the Migration Toolkit for Runtimes (MTR) extension for Microsoft Visual Studio Code.
+			</p><p>
+				The MTR extension analyzes your projects using customizable rulesets, marks issues in the source code, provides guidance to fix the issues, and offers automatic code replacement, if possible.
+			</p><p>
+				The MTR extension is also compatible with Visual Studio Codespaces, the Microsoft cloud-hosted development environment.
+			</p></section><section class="section" id="what-is-the-toolkit_vsc-extension-guide-mtr"><div class="titlepage"><div><div><h2 class="title">1.2. About the Migration Toolkit for Runtimes</h2></div></div></div><h4 id="what_is_the_migration_toolkit_for_runtimes">What is the Migration Toolkit for Runtimes?</h4><p>
+				The Migration Toolkit for Runtimes (MTR) is an extensible and customizable rule-based tool that simplifies the migration and modernization of Java applications.
+			</p><p>
+				MTR examines application artifacts, including project source directories and application archives, and then produces an HTML report highlighting areas needing changes. MTR supports many migration paths, including the following examples:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						Upgrading to the latest release of Red Hat JBoss Enterprise Application Platform
+					</li><li class="listitem">
+						Migrating from Oracle WebLogic or IBM WebSphere Application Server to Red Hat JBoss Enterprise Application Platform
+					</li><li class="listitem">
+						Containerizing applications and making them cloud-ready
+					</li><li class="listitem">
+						Migrating from Java Spring Boot to Quarkus
+					</li><li class="listitem">
+						Updating from Oracle JDK to OpenJDK
+					</li><li class="listitem">
+						Upgrading from OpenJDK 8 to OpenJDK 11
+					</li><li class="listitem">
+						Upgrading from OpenJDK 11 to OpenJDK 17
+					</li><li class="listitem">
+						Upgrading from OpenJDK 17 to OpenJDK 21
+					</li><li class="listitem">
+						Migrating EAP Java applications to Azure
+					</li><li class="listitem">
+						Migrating Spring Boot Java applications to Azure
+					</li></ul></div><p>
+				For more information about use cases and migration paths, see the <a class="link" href="https://developers.redhat.com/products/mtr/use-cases">MTR for developers</a> web page.
+			</p><h4 id="how_does_the_migration_toolkit_for_runtimes_simplify_migration">How does the Migration Toolkit for Runtimes simplify migration?</h4><p>
+				The Migration Toolkit for Runtimes looks for common resources and known trouble spots when migrating applications. It provides a high-level view of the technologies used by the application.
+			</p><p>
+				MTR generates a detailed report evaluating a migration or modernization path. This report can help you to estimate the effort required for large-scale projects and to reduce the work involved.
+			</p><h4 id="how_do_i_learn_more">How do I learn more?</h4><p>
+				See the <a class="link" href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_runtimes/1.2/html-single/introduction_to_the_migration_toolkit_for_runtimes">Introduction to the Migration Toolkit for Runtimes</a> to learn more about the features, supported configurations, system requirements, and available tools in the Migration Toolkit for Runtimes.
+			</p></section></section><section class="chapter" id="installing-vs-code-extension_vsc-extension-guide-mtr"><div class="titlepage"><div><div><h1 class="title">Chapter 2. Installing the MTR extension for Visual Studio Code</h1></div></div></div><p>
+			You can install the MTR extension for Visual Studio Code (VS Code).
+		</p><div class="formalpara"><p class="title"><strong>Prerequisites</strong></p><p>
+				The following are the prerequisites for the Migration Toolkit for Runtimes (MTR) installation:
+			</p></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+					Java Development Kit (JDK) is installed. MTR supports the following JDKs:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+							OpenJDK 11
+						</li><li class="listitem">
+							OpenJDK 17
+						</li><li class="listitem">
+							Oracle JDK 11
+						</li><li class="listitem">
+							Oracle JDK 17
+						</li><li class="listitem">
+							Eclipse Temurin™ JDK 11
+						</li><li class="listitem">
+							Eclipse Temurin™ JDK 17
+						</li></ul></div></li><li class="listitem">
+					8 GB RAM
+				</li><li class="listitem">
+					macOS installation: the value of <code class="literal">maxproc</code> must be <code class="literal">2048</code> or greater.
+				</li></ul></div><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+					Set the environmental variable <code class="literal">JAVA_HOME</code>:
+				</p><pre class="programlisting language-terminal">$ export JAVA_HOME=jdk11</pre></li><li class="listitem">
+					In VS Code, click the <span class="strong strong"><strong>Extensions</strong></span> icon on the Activity bar to open the <span class="strong strong"><strong>Extensions</strong></span> view.
+				</li><li class="listitem">
+					Enter <code class="literal">Migration Toolkit for Runtimes</code> in the Search field.
+				</li><li class="listitem"><p class="simpara">
+					Select the <span class="strong strong"><strong>Migration Toolkit for Runtimes</strong></span> extension and click <span class="strong strong"><strong>Install</strong></span>.
+				</p><p class="simpara">
+					The MTR extension icon (
+					<span class="inlinemediaobject"><img src="images/topics/images/vs_extension_icon.png" alt="MTR code extension"/></span>
+					) is displayed on the Activity bar.
+				</p></li></ol></div></section><section class="chapter" id="analyzing-projects-with-vs-code-extension_vsc-extension-guide-mtr"><div class="titlepage"><div><div><h1 class="title">Chapter 3. Analyzing your projects with the MTR extension</h1></div></div></div><p>
+			You can analyze your projects with the MTR extension by creating a run configuration and running an analysis.
+		</p><section class="section" id="vs-code-extension-interface_vsc-extension-guide-mtr"><div class="titlepage"><div><div><h2 class="title">3.1. MTR extension interface</h2></div></div></div><p>
+				The interface of the Migration Toolkit for Runtimes (MTR) extension is designed to make it easier for you to find information and perform actions:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						In the left pane, you can see a directory tree named <span class="strong strong"><strong>Analysis Results</strong></span> with a report icon at its top. You can click the icon to open the MTR report in your browser. Beneath the report icon are the other elements of the tree: the applications analyzed by MTR, the rulesets used, and the issues discovered by the analysis.
+					</li><li class="listitem">
+						In the upper right pane, you can configure an analysis.
+					</li><li class="listitem">
+						In the lower right pane, you can see the settings of the configuration, including source, target, and advanced options. You can view the progress of an analysis in this pane. When the analysis is completed, you can click the <span class="strong strong"><strong>Open Report</strong></span> button to open the MTR report, which describes any issues you need to address before you migrate or modernize your application. For more information, see <a class="link" href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_runtimes/1.2/html-single/cli_guide#review-reports_cli-guide">Reviewing the reports</a> in the <span class="emphasis"><em>CLI Guide</em></span>.
+					</li></ul></div><div class="figure" id="idm46614130023888"><p class="title"><strong>Figure 3.1. MTR extension interface</strong></p><div class="figure-contents"><div class="mediaobject"><img src="images/topics/images/mtr-extension-interface.png" alt="MTR extension interface"/></div></div></div></section><section class="section" id="vs-code-extension-run-configuration_vsc-extension-guide-mtr"><div class="titlepage"><div><div><h2 class="title">3.2. Configuring a run configuration</h2></div></div></div><p>
+				You can configure multiple run configurations to run against each project you import to VS Code.
+			</p><div class="itemizedlist"><p class="title"><strong>Prerequisites</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+						<code class="literal">mta-cli</code> executable installed. You can download the <code class="literal">mta-cli</code> executable from <a class="link" href="https://developers.redhat.com/products/mtr/download">mtr download</a>.
+					</li></ul></div><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+						In <span class="strong strong"><strong>Extensions</strong></span> view, click the Migration Toolkit for Runtimes icon (
+						<span class="inlinemediaobject"><img src="images/topics/images/vs_extension_icon.png" alt="MTR code extension"/></span>
+						) on the Activity bar.
+					</li><li class="listitem">
+						Click the <span class="strong strong"><strong>+</strong></span> (plus sign) next to <span class="strong strong"><strong>Migration Toolkit for Runtimes</strong></span> to add a run configuration.
+					</li><li class="listitem"><p class="simpara">
+						Complete the following configuration fields:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								<span class="strong strong"><strong>Name</strong></span>: Enter a meaningful name for the analysis configuration or accept the default.
+							</li><li class="listitem">
+								<span class="strong strong"><strong>cli</strong></span>: Enter the path to the cli executable. For example: <code class="literal">$HOME/mta-cli-1.2.5.GA-redhat-00001/bin/mta-cli</code>.
+							</li><li class="listitem"><p class="simpara">
+								<span class="strong strong"><strong>Input</strong></span>: Set to the path of the project that you have open within your IDE by clicking <span class="strong strong"><strong>Add</strong></span> and doing one of the following:
+							</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+										Enter the input file or directory and press Enter.
+									</li><li class="listitem">
+										Click <span class="strong strong"><strong>Open File Explorer</strong></span> and select the directory.
+									</li></ul></div></li><li class="listitem">
+								<span class="strong strong"><strong>Target</strong></span>: Select one or more target migration paths.
+							</li></ul></div></li><li class="listitem"><p class="simpara">
+						Right-click the run configuration and select <span class="strong strong"><strong>Run</strong></span>.
+					</p><p class="simpara">
+						When the analysis is completed, you can click the <span class="strong strong"><strong>Open Report</strong></span> button to open the MTR report, which describes any issues you need to address before you migrate or modernize your application. For more information, see <a class="link" href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_runtimes/1.2/html-single/cli_guide#review-reports_cli-guide">Reviewing the reports</a> in the <span class="emphasis"><em>CLI Guide</em></span>.
+					</p></li></ol></div></section></section><section class="chapter" id="reviewing-and-resolving-issues-with-vs-code-extension_vsc-extension-guide-mtr"><div class="titlepage"><div><div><h1 class="title">Chapter 4. Reviewing and resolving migration issues</h1></div></div></div><p>
+			You can review and resolve migration issues identified by the MTR extension in the left pane.
+		</p><section class="section" id="vs-code-extension-reviewing-issues_vsc-extension-guide-mtr"><div class="titlepage"><div><div><h2 class="title">4.1. Reviewing issues</h2></div></div></div><p>
+				You can use the MTR extension icons to prioritize issues based on their severity.
+			</p><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+						Select a run configuration directory on the left pane.
+					</li><li class="listitem">
+						Expand its folders to view the <span class="strong strong"><strong>Hints</strong></span> generated for each application file.
+					</li><li class="listitem">
+						Select a hint to view the source code.
+					</li><li class="listitem">
+						Right-click a hint and select <span class="strong strong"><strong>View Details</strong></span> to view the Rule ID and other information.
+					</li><li class="listitem"><p class="simpara">
+						Prioritize issues based on the following icons, which are displayed next to each hint:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								<span class="inlinemediaobject"><img src="images/topics/images/vs_mandatory.png" alt="Mandatory"/></span>
+								 : The issue must be fixed for a successful migration.
+							</li><li class="listitem">
+								<span class="inlinemediaobject"><img src="images/topics/images/vs_potential.png" alt="Warning"/></span>
+								 : The issue might need to be addressed during migration.
+							</li></ul></div></li></ol></div></section><section class="section" id="vs-code-extension-resolving-issues_vsc-extension-guide-mtr"><div class="titlepage"><div><div><h2 class="title">4.2. Resolving issues</h2></div></div></div><p>
+				You can resolve issues by editing the code of a file with a hint
+			</p><section class="section" id="editing_the_code_of_a_file"><div class="titlepage"><div><div><h3 class="title">4.2.1. Editing the code of a file</h3></div></div></div><p>
+					You can edit the file of a project imported to VS Code.
+				</p><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+							In the left pane, right-click an issue and select <span class="strong strong"><strong>Open Code</strong></span>.
+						</li><li class="listitem">
+							Make any changes needed to the code and save the file.
+						</li><li class="listitem">
+							Optional: Right-click the issue and select <span class="strong strong"><strong>Mark as Complete</strong></span> or <span class="strong strong"><strong>Delete</strong></span>.
+						</li></ol></div></section></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm46614109533248"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+		Copyright <span class="trademark"/>© 2024 Red Hat, Inc.
+	</div><div class="para">
+		The text of and illustrations in this document are licensed by Red Hat under a Creative Commons Attribution–Share Alike 3.0 Unported license ("CC-BY-SA"). An explanation of CC-BY-SA is available at <a class="uri" href="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</a>. In accordance with CC-BY-SA, if you distribute this document or an adaptation of it, you must provide the URL for the original version.
+	</div><div class="para">
+		Red Hat, as the licensor of this document, waives the right to enforce, and agrees not to assert, Section 4d of CC-BY-SA to the fullest extent permitted by applicable law.
+	</div><div class="para">
+		Red Hat, Red Hat Enterprise Linux, the Shadowman logo, the Red Hat logo, JBoss, OpenShift, Fedora, the Infinity logo, and RHCE are trademarks of Red Hat, Inc., registered in the United States and other countries.
+	</div><div class="para">
+		<span class="trademark">Linux</span>® is the registered trademark of Linus Torvalds in the United States and other countries.
+	</div><div class="para">
+		<span class="trademark">Java</span>® is a registered trademark of Oracle and/or its affiliates.
+	</div><div class="para">
+		<span class="trademark">XFS</span>® is a trademark of Silicon Graphics International Corp. or its subsidiaries in the United States and/or other countries.
+	</div><div class="para">
+		<span class="trademark">MySQL</span>® is a registered trademark of MySQL AB in the United States, the European Union and other countries.
+	</div><div class="para">
+		<span class="trademark">Node.js</span>® is an official trademark of Joyent. Red Hat is not formally related to or endorsed by the official Joyent Node.js open source or commercial project.
+	</div><div class="para">
+		The <span class="trademark">OpenStack</span>® Word Mark and OpenStack logo are either registered trademarks/service marks or trademarks/service marks of the OpenStack Foundation, in the United States and other countries and are used with the OpenStack Foundation's permission. We are not affiliated with, endorsed or sponsored by the OpenStack Foundation, or the OpenStack community.
+	</div><div class="para">
+		All other trademarks are the property of their respective owners.
+	</div></div></div></div></div></div><script type="text/javascript">
+                        jQuery(document).ready(function() {
+                            initSwitchery();
+                            jQuery('pre[class*="language-"]').each(function(i, block){hljs.highlightBlock(block);});
+                        });
+                    </script></body></html>

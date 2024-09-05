@@ -1,0 +1,510 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Web Console Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.2"/><meta name="description" content="This guide describes how to use the Migration Toolkit for Runtimes web console to simplify migration or modernization of Java applications."/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm46189572143744"><div class="titlepage"><div><div class="producttitle"><span class="productname">Migration Toolkit for Runtimes</span> <span class="productnumber">1.2</span></div><div><h1 class="title">Web Console Guide</h1></div><div><h2 class="subtitle">Use the Migration Toolkit for Runtimes web console to group your applications into projects for analysis.</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm46189557246304">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+				This guide describes how to use the Migration Toolkit for Runtimes web console to simplify migration or modernization of Java applications.
+			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="preface"><a href="#making-open-source-more-inclusive">Making open source more inclusive</a></span></li><li><span class="chapter"><a href="#introduction">1. Introduction</a></span><ul><li><span class="section"><a href="#about-console-guide_web-console-guide">1.1. About the Web Console</a></span></li><li><span class="section"><a href="#what-is-the-toolkit_web-console-guide">1.2. About the Migration Toolkit for Runtimes</a></span></li><li><span class="section"><a href="#about-the-web-console_web-console-guide">1.3. The MTR web console</a></span></li></ul></li><li><span class="chapter"><a href="#installing_the_web_console">2. Installing the web console</a></span><ul><li><span class="section"><a href="#installing-web-console-linux-win-mac_web-console-guide">2.1. Installing the web console on Linux, Windows, or macOS</a></span></li><li><span class="section"><a href="#installing-web-console-on-openshift_web-console-guide">2.2. Installing the web console on OpenShift Container Platform 4.11 and later</a></span><ul><li><span class="section"><a href="#troubleshooting_a_web_console_installation_on_openshift">2.2.1. Troubleshooting a web console installation on OpenShift</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#using_the_web_console_to_analyze_applications">3. Using the web console to analyze applications</a></span><ul><li><span class="section"><a href="#web-create-project_web-console-guide">3.1. Creating a project</a></span></li><li><span class="section"><a href="#web-running-saved-analysis_web-console-guide">3.2. Running a saved analysis</a></span></li><li><span class="section"><a href="#web-view-results_web-console-guide">3.3. Viewing analysis results</a></span></li><li><span class="section"><a href="#web-review-reports_web-console-guide">3.4. Reviewing reports</a></span></li><li><span class="section"><a href="#web-updating-an-analysis_web-console-guide">3.5. Updating an analysis configuration</a></span></li><li><span class="section"><a href="#web-adding-global-custom-rules_web-console-guide">3.6. Adding global custom rules</a></span></li><li><span class="section"><a href="#web-adding-global-custom-labels_web-console-guide">3.7. Adding global custom labels</a></span></li></ul></li><li><span class="chapter"><a href="#configuring-web-console-authentication-for-linux-windows-macos_web-console-guide">4. Configuring authentication for the web console on Linux, Windows, or macOS</a></span></li></ul></div><section class="preface" id="making-open-source-more-inclusive"><div class="titlepage"><div><div><h1 class="title">Making open source more inclusive</h1></div></div></div><p class="_abstract _abstract">
+			Red Hat is committed to replacing problematic language in our code, documentation, and web properties. We are beginning with these four terms: master, slave, blacklist, and whitelist. Because of the enormity of this endeavor, these changes will be implemented gradually over several upcoming releases. For more details, see <a class="link" href="https://www.redhat.com/en/blog/making-open-source-more-inclusive-eradicating-problematic-language">our CTO Chris Wright’s message</a>.
+		</p></section><section class="chapter" id="introduction"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Introduction</h1></div></div></div><div class="admonition important"><div class="admonition_header">Migration Toolkit for Runtimes product will be End of Life on September 30th, 2024</div><div><p>
+				All customers using this product should start their transition to <a class="link" href="https://developers.redhat.com/products/mta/overview">Migration Toolkit for Applications</a>.
+			</p><p>
+				Migration Toolkit for Applications is fully backwards compatible with all features and rulesets available in Migration Toolkit for Runtimes and will be maintained in the long term.
+			</p></div></div><section class="section" id="about-console-guide_web-console-guide"><div class="titlepage"><div><div><h2 class="title">1.1. About the Web Console</h2></div></div></div><p>
+				This guide is for engineers, consultants, and others who want to use the Migration Toolkit for Runtimes (MTR) to migrate or modernize Java applications or other components. It describes how to install and use the web console to manage migration or modernization projects and analyze applications.
+			</p></section><section class="section" id="what-is-the-toolkit_web-console-guide"><div class="titlepage"><div><div><h2 class="title">1.2. About the Migration Toolkit for Runtimes</h2></div></div></div><h4 id="what_is_the_migration_toolkit_for_runtimes">What is the Migration Toolkit for Runtimes?</h4><p>
+				The Migration Toolkit for Runtimes (MTR) is an extensible and customizable rule-based tool that simplifies the migration and modernization of Java applications.
+			</p><p>
+				MTR examines application artifacts, including project source directories and application archives, and then produces an HTML report highlighting areas needing changes. MTR supports many migration paths, including the following examples:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						Upgrading to the latest release of Red Hat JBoss Enterprise Application Platform
+					</li><li class="listitem">
+						Migrating from Oracle WebLogic or IBM WebSphere Application Server to Red Hat JBoss Enterprise Application Platform
+					</li><li class="listitem">
+						Containerizing applications and making them cloud-ready
+					</li><li class="listitem">
+						Migrating from Java Spring Boot to Quarkus
+					</li><li class="listitem">
+						Updating from Oracle JDK to OpenJDK
+					</li><li class="listitem">
+						Upgrading from OpenJDK 8 to OpenJDK 11
+					</li><li class="listitem">
+						Upgrading from OpenJDK 11 to OpenJDK 17
+					</li><li class="listitem">
+						Upgrading from OpenJDK 17 to OpenJDK 21
+					</li><li class="listitem">
+						Migrating EAP Java applications to Azure
+					</li><li class="listitem">
+						Migrating Spring Boot Java applications to Azure
+					</li></ul></div><p>
+				For more information about use cases and migration paths, see the <a class="link" href="https://developers.redhat.com/products/mtr/use-cases">MTR for developers</a> web page.
+			</p><h4 id="how_does_the_migration_toolkit_for_runtimes_simplify_migration">How does the Migration Toolkit for Runtimes simplify migration?</h4><p>
+				The Migration Toolkit for Runtimes looks for common resources and known trouble spots when migrating applications. It provides a high-level view of the technologies used by the application.
+			</p><p>
+				MTR generates a detailed report evaluating a migration or modernization path. This report can help you to estimate the effort required for large-scale projects and to reduce the work involved.
+			</p><h4 id="how_do_i_learn_more">How do I learn more?</h4><p>
+				See the <a class="link" href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_runtimes/1.2/html-single/introduction_to_the_migration_toolkit_for_runtimes">Introduction to the Migration Toolkit for Runtimes</a> to learn more about the features, supported configurations, system requirements, and available tools in the Migration Toolkit for Runtimes.
+			</p></section><section class="section" id="about-the-web-console_web-console-guide"><div class="titlepage"><div><div><h2 class="title">1.3. The MTR web console</h2></div></div></div><p>
+				By using the web console for the Migration Toolkit for Runtimes, a team of users can assess and prioritize migration and modernization efforts for a large number of applications. You can use the web console to group applications into projects for analysis and provide numerous reports that highlight the results.
+			</p></section></section><section class="chapter" id="installing_the_web_console"><div class="titlepage"><div><div><h1 class="title">Chapter 2. Installing the web console</h1></div></div></div><p>
+			You can install the web console on Linux, Windows, macOS, or Red Hat OpenShift Container Platform.
+		</p><section class="section" id="installing-web-console-linux-win-mac_web-console-guide"><div class="titlepage"><div><div><h2 class="title">2.1. Installing the web console on Linux, Windows, or macOS</h2></div></div></div><p>
+				You can install the web console on Linux, Windows, or macOS operating systems and access the web console in a browser.
+			</p><p>
+				The web console has been tested with Chrome and Firefox.
+			</p><div class="formalpara"><p class="title"><strong>Prerequisites</strong></p><p>
+					The following are the prerequisites for the Migration Toolkit for Runtimes (MTR) installation:
+				</p></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+						Java Development Kit (JDK) is installed. MTR supports the following JDKs:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+								OpenJDK 11
+							</li><li class="listitem">
+								OpenJDK 17
+							</li><li class="listitem">
+								Oracle JDK 11
+							</li><li class="listitem">
+								Oracle JDK 17
+							</li><li class="listitem">
+								Eclipse Temurin™ JDK 11
+							</li><li class="listitem">
+								Eclipse Temurin™ JDK 17
+							</li></ul></div></li><li class="listitem">
+						8 GB RAM
+					</li><li class="listitem">
+						macOS installation: the value of <code class="literal">maxproc</code> must be <code class="literal">2048</code> or greater.
+					</li></ul></div><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+						Navigate to the <a class="link" href="https://developers.redhat.com/products/mtr/download">MTR Download page</a> and download the web console <code class="literal">Local install &amp; OpenShift</code> file.
+					</li><li class="listitem"><p class="simpara">
+						Extract the <code class="literal">.zip</code> file to a directory of your choice.
+					</p><p class="simpara">
+						When you encounter <code class="literal">&lt;MTR_HOME&gt;</code> in this guide, replace it with the actual path to your MTR installation.
+					</p></li><li class="listitem">
+						By default, no authentication is required. If you wish to enable authentication, do this before starting the web console.
+					</li><li class="listitem"><p class="simpara">
+						Start the web console:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+								Linux or macOS operating system:
+							</p><pre class="programlisting language-terminal">$ &lt;MTR_HOME&gt;/run_windup.sh</pre></li><li class="listitem"><p class="simpara">
+								Windows operating system:
+							</p><pre class="programlisting language-terminal">C:\&lt;MTR_HOME&gt;\run_windup.bat</pre></li></ul></div></li><li class="listitem"><p class="simpara">
+						Open a browser and navigate to <code class="literal">http://localhost:8080/windup-ui</code>.
+					</p><p class="simpara">
+						If authentication is not configured, the Projects screen is displayed in your browser.
+					</p><div class="figure" id="idm46189572562832"><p class="title"><strong>Figure 2.1. MTR Projects screen</strong></p><div class="figure-contents"><div class="mediaobject"><img src="images/topics/images/mtr_web_console.png" alt="web console projects screen"/></div></div></div></li></ol></div></section><section class="section" id="installing-web-console-on-openshift_web-console-guide"><div class="titlepage"><div><div><h2 class="title">2.2. Installing the web console on OpenShift Container Platform 4.11 and later</h2></div></div></div><p>
+				You can install the web console on OpenShift Container Platform 4.11 and later versions with the Migration Toolkit for Runtimes Operator.
+			</p><div class="itemizedlist"><p class="title"><strong>Prerequisites</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+						6 vCPUs, 8 GB RAM, and 40 GB persistent storage.
+					</li><li class="listitem"><p class="simpara">
+						One or more projects in which you can install the web console.
+					</p><div class="admonition important"><div class="admonition_header">Important</div><div><p>
+							Do not install the web console in a default project.
+						</p></div></div></li><li class="listitem">
+						<code class="literal">cluster-admin</code> privileges to install the Migration Toolkit for Runtimes Operator.
+					</li><li class="listitem">
+						<code class="literal">project-admin-user</code> privileges to install the web console application in a project.
+					</li></ul></div><div class="formalpara"><p class="title"><strong>Configuring Red Hat Single Sign-on (SSO)</strong></p><p>
+					You must decide at installation time whether the web console requires authentication. If it does, you must first install and configure Red Hat SSO and input some RH SSO settings when instantiating the MTR Operator.
+				</p></div><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+					Authentication can not be added or removed after installation.
+				</p></div></div><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+						Open the Red Hat SSO administration console.
+					</li><li class="listitem">
+						Add a realm named <span class="strong strong"><strong>windup</strong></span>.
+					</li><li class="listitem">
+						In the realm, create a client named <span class="strong strong"><strong>windup-web</strong></span>.
+					</li><li class="listitem"><p class="simpara">
+						Check that <span class="strong strong"><strong>Access Type</strong></span> is set to <code class="literal">public</code>. Set <span class="strong strong"><strong>Valid Redirect URIs</strong></span> and <span class="strong strong"><strong>Web Origins</strong></span> to <code class="literal">*</code>. Click *Save*.
+					</p><p class="simpara">
+						Note that after the MTR operator has been instantiated, the <span class="strong strong"><strong>Valid Redirect URIs</strong></span> and <span class="strong strong"><strong>Web Origins</strong></span> fields have to be set to the secure-mtr-web-console route.
+					</p></li><li class="listitem">
+						Create a role named <span class="strong strong"><strong>user</strong></span>.
+					</li><li class="listitem">
+						Create a user with any name.
+					</li><li class="listitem">
+						Set the credentials of the user, disable <span class="strong strong"><strong>Temporary</strong></span>, and assign the role "user" to the user.
+					</li></ol></div><div class="orderedlist"><p class="title"><strong>Installing the MTR Operator</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+						Log in to the OpenShift web console as a user with <code class="literal">cluster-admin</code> privileges.
+					</li><li class="listitem">
+						Click <span class="strong strong"><strong>Operators</strong></span> → <span class="strong strong"><strong>OperatorHub</strong></span>.
+					</li><li class="listitem">
+						Use the <span class="strong strong"><strong>Search by keyword</strong></span> field to locate the <span class="strong strong"><strong>Migration Toolkit for Runtimes</strong></span> Operator.
+					</li><li class="listitem">
+						Click <span class="strong strong"><strong>Install</strong></span>.
+					</li><li class="listitem">
+						Select a project from the <span class="strong strong"><strong>Installed Namespace</strong></span> list and click <span class="strong strong"><strong>Install</strong></span>.
+					</li><li class="listitem">
+						Click <span class="strong strong"><strong>Operators</strong></span> → <span class="strong strong"><strong>Installed Operators</strong></span> to verify that the Operator is installed.
+					</li></ol></div><div class="orderedlist"><p class="title"><strong>Installing the web console application</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+						Log in to the OpenShift web console as a user with <code class="literal">project-admin-user</code> privileges.
+					</li><li class="listitem">
+						Switch to the <span class="strong strong"><strong>Migration</strong></span> perspective and click <span class="strong strong"><strong>+Add</strong></span>.
+					</li><li class="listitem">
+						In the <span class="strong strong"><strong>Add</strong></span> view, click <span class="strong strong"><strong>Operator Backed</strong></span>.
+					</li><li class="listitem">
+						Click the <span class="strong strong"><strong>Migration Toolkit for Runtimes</strong></span> Operator.
+					</li><li class="listitem">
+						Click <span class="strong strong"><strong>Create</strong></span>.
+					</li><li class="listitem">
+						Review the application settings. If the web console requires authentication, input the RH SSO settings and click <span class="strong strong"><strong>Create</strong></span>.
+					</li><li class="listitem">
+						In the <span class="strong strong"><strong>Topology</strong></span> view, click the <code class="literal">mtr-web-console</code> application and then click the <span class="strong strong"><strong>Resources</strong></span> tab.
+					</li><li class="listitem">
+						If authentication is required, set the RH SSO <span class="strong strong"><strong>Valid Redirect URIs</strong></span> and <span class="strong strong"><strong>Web Origins</strong></span> fields to the secure-mtr-web-console route.
+					</li><li class="listitem">
+						Click the <code class="literal">secure-mtr-web-console</code> route to open the web console in a new browser window.
+					</li></ol></div><section class="section" id="troubleshooting_a_web_console_installation_on_openshift"><div class="titlepage"><div><div><h3 class="title">2.2.1. Troubleshooting a web console installation on OpenShift</h3></div></div></div><p>
+					This section describes how to troubleshoot a web console installation on OpenShift Container Platform.
+				</p><section class="section" id="proc_web-downloading-logs-console_web-console-guide"><div class="titlepage"><div><div><h4 class="title">2.2.1.1. Downloading logs using the OpenShift console</h4></div></div></div><p class="_abstract _abstract">
+						You can download pod logs using the OpenShift console.
+					</p><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+								Open the OpenShift console and navigate to <span class="strong strong"><strong>Applications</strong></span> → <span class="strong strong"><strong>Pods</strong></span>.
+							</li><li class="listitem">
+								Click the <code class="literal">mtr-web-console</code> pod.
+							</li><li class="listitem">
+								Click <span class="strong strong"><strong>Logs</strong></span>.
+							</li><li class="listitem">
+								Click <span class="strong strong"><strong>Download</strong></span> to download and save a log.
+							</li></ol></div></section><section class="section" id="proc_web-downloading-logs-cli_web-console-guide"><div class="titlepage"><div><div><h4 class="title">2.2.1.2. Downloading logs using the CLI</h4></div></div></div><p class="_abstract _abstract">
+						You can download pod logs using the CLI.
+					</p><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+								Obtain the pod names:
+							</p><pre class="screen">$ oc get pods -n &lt;project-name&gt;</pre><p class="simpara">
+								The output resembles the following:
+							</p><pre class="programlisting language-terminal">NAME                       READY     STATUS      RESTARTS   AGE
+eap-builder-1-build        0/1       Completed   0          1d
+mtr-postgresql-1-hfbdn     1/1       Running     0          1d
+mtr-sso-1-build            0/1       Completed   0          1d
+mtr-web-console-1-build    0/1       Completed   0          1d
+mtr-web-console-1-vt7s5    1/1       Running     1          1d
+sso-1-wjl2n                1/1       Running     1          1d</pre></li><li class="listitem"><p class="simpara">
+								Use <code class="literal">oc logs</code> to examine the pod log:
+							</p><pre class="screen">$ oc logs &lt;pod&gt;</pre><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+									You can redirect the output to obtain a copy of the current log:
+								</p><pre class="screen">$ oc logs &lt;pod&gt; &gt; ./&lt;pod&gt;.log</pre></div></div></li></ol></div></section><section class="section" id="web-openshift-no-route-to-host-error_web-console-guide"><div class="titlepage"><div><div><h4 class="title">2.2.1.3. <code class="literal">No route to host</code> error</h4></div></div></div><p>
+						The <code class="literal">No route to host</code> error in the <code class="literal">mtr-web-console-executor</code> log indicates that the <code class="literal">mtr-web-console-executor</code> pod cannot connect to the <code class="literal">mtr-web-console</code> pod:
+					</p><pre class="programlisting language-terminal">13:44:03,501 SEVERE [org.jboss.windup.web.messaging.executor.ExecutorBootstrap] (main) Could not start messaging listener due to: Failed to connect to any server. Servers tried: [http-remoting://192.0.2.4:8080 (java.net.NoRouteToHostException: No route to host)]: javax.naming.CommunicationException: Failed to connect to any server. Servers tried: [http-remoting://192.0.2.4:8080 (java.net.NoRouteToHostException: No route to host)]</pre><p>
+						This error occurs because the <code class="literal">mtr-web-console-executor</code> pod starts running before the <code class="literal">mtr-web-console</code> pod.
+					</p><p>
+						Check the <code class="literal">mtr-web-console-executor</code> log after the <code class="literal">mtr-web-console</code> pod has been running for a few minutes.
+					</p></section><section class="section" id="web-openshift-insufficient-resources_web-console-guide"><div class="titlepage"><div><div><h4 class="title">2.2.1.4. Resolving insufficient resources</h4></div></div></div><p>
+						The following conditions indicate insufficient resources:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+								The <code class="literal">mtr-web-console</code> pod is not running and the following error is displayed on the <span class="strong strong"><strong>Events</strong></span> tab of the <span class="strong strong"><strong>Pod Details</strong></span> screen in the OpenShift console:
+							</p><pre class="programlisting language-terminal">0/9 nodes are available: 4 Insufficient cpu, 4 MatchNodeSelector, 9 Insufficient memory.</pre></li><li class="listitem"><p class="simpara">
+								The <code class="literal">mtr-web-console-deploy</code>, <code class="literal">mtr-web-console-executor-deploy</code>, and <code class="literal">mtr-web-console-postgresql-deploy</code> pods time out and the following error is displayed in the logs:
+							</p><pre class="programlisting language-terminal">error: update acceptor rejected mtr-web-console-executor-1: Pods for rc 'mtr/mtr-web-console-executor-1' took longer than 600 seconds to become available</pre></li></ul></div><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+								Install and run the <a class="link" href="https://docs.openshift.com/container-platform/4.11/nodes/clusters/nodes-cluster-resource-levels.html">cluster capacity tool</a> to determine how many pods you can schedule.
+							</li><li class="listitem"><p class="simpara">
+								Change the load on the cluster resources by performing one of the following actions:
+							</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+										Increase the <a class="link" href="https://docs.openshift.com/container-platform/4.11/nodes/clusters/nodes-cluster-limit-ranges.html">limit ranges</a> or the <a class="link" href="https://docs.openshift.com/container-platform/4.11/applications/quotas/quotas-setting-per-project.html">resource quotas</a> of your project.
+									</li><li class="listitem">
+										Reduce the requested resources of your project. The web console requires a minimum of 4 vCPUs and 8 GB RAM.
+									</li><li class="listitem">
+										Run fewer jobs.
+									</li></ul></div></li><li class="listitem">
+								Redeploy the web console.
+							</li></ol></div></section><section class="section" id="reporting_issues"><div class="titlepage"><div><div><h4 class="title">2.2.1.5. Reporting issues</h4></div></div></div><p>
+						MTR uses Jira as its issue tracking system. If you encounter an issue executing MTR, submit a <a class="link" href="https://issues.redhat.com/projects/WINDUP">Jira issue</a>.
+					</p></section></section></section></section><section class="chapter" id="using_the_web_console_to_analyze_applications"><div class="titlepage"><div><div><h1 class="title">Chapter 3. Using the web console to analyze applications</h1></div></div></div><p>
+			You can create a project in the web console to analyze your applications.
+		</p><p>
+			Each project groups the applications for a specific analysis, which you can configure with custom rules and labels.
+		</p><p>
+			The analysis process generates reports that describe the readiness of your applications for migration or modernization.
+		</p><section class="section" id="web-create-project_web-console-guide"><div class="titlepage"><div><div><h2 class="title">3.1. Creating a project</h2></div></div></div><p>
+				You can create a project in the web console with the <span class="strong strong"><strong>Create project</strong></span> wizard.
+			</p><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+						In the web console, click <span class="strong strong"><strong>Projects</strong></span>.
+					</li><li class="listitem">
+						Click <span class="strong strong"><strong>Create project</strong></span>.
+					</li><li class="listitem">
+						Enter a unique name for the project, an optional description, and click <span class="strong strong"><strong>Next</strong></span>.
+					</li><li class="listitem"><p class="simpara">
+						To upload applications, click the <span class="strong strong"><strong>Upload</strong></span> tab, click <span class="strong strong"><strong>Browse</strong></span>, select the application files you want to upload, and click <span class="strong strong"><strong>Close</strong></span>.
+					</p><p class="simpara">
+						Uploading applications stores them directly on the MTR server.
+					</p></li><li class="listitem"><p class="simpara">
+						To register a server path, click the <span class="strong strong"><strong>Server path</strong></span> tab and enter the <span class="strong strong"><strong>Server-side path</strong></span> of the application in the field.
+					</p><p class="simpara">
+						Registering the server path of an application ensures that MTR always uses the latest version.
+					</p></li><li class="listitem">
+						Click <span class="strong strong"><strong>Next</strong></span>.
+					</li><li class="listitem"><p class="simpara">
+						Click one or more transformation targets.
+					</p><div class="informalfigure"><div class="mediaobject"><img src="images/topics/images/web-console-transformation-targets.png" alt="Transformation targets"/></div></div></li><li class="listitem">
+						Click <span class="strong strong"><strong>Next</strong></span>.
+					</li><li class="listitem">
+						Select packages and click <span class="strong strong"><strong>&gt;</strong></span> to include them in the analysis.
+					</li><li class="listitem">
+						Click <span class="strong strong"><strong>Next</strong></span>.
+					</li><li class="listitem"><p class="simpara">
+						If you want to add a custom rule, click <span class="strong strong"><strong>Add rule</strong></span>.
+					</p><p class="simpara">
+						See the <a class="link" href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_runtimes/1.2/html-single/rules_development_guide">Rule Development Guide</a> for more information.
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+								To upload a ruleset file, click the <span class="strong strong"><strong>Upload</strong></span> tab, click <span class="strong strong"><strong>Browse</strong></span>, select one or more files, and click <span class="strong strong"><strong>Close</strong></span>.
+							</p><p class="simpara">
+								A ruleset file must have a <code class="literal">.windup.xml</code> extension. The uploaded file is stored on the MTR server.
+							</p></li><li class="listitem"><p class="simpara">
+								To register the server path of a ruleset file, click the <span class="strong strong"><strong>Server path</strong></span> tab, enter the <span class="strong strong"><strong>Rules</strong></span> path, and click <span class="strong strong"><strong>Save</strong></span>.
+							</p><p class="simpara">
+								Registering the server path ensures that the MTR server always uses the latest version of the ruleset files.
+							</p></li></ul></div></li><li class="listitem">
+						Click <span class="strong strong"><strong>Next</strong></span>.
+					</li><li class="listitem"><p class="simpara">
+						If you want to add a custom label, click <span class="strong strong"><strong>Add label</strong></span>.
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+								To upload a labelset file, click the <span class="strong strong"><strong>Upload</strong></span> tab, click <span class="strong strong"><strong>Browse</strong></span>, select one or more files, and click <span class="strong strong"><strong>Close</strong></span>.
+							</p><p class="simpara">
+								A labelset file must have a <code class="literal">.windup.label.xml</code> extension. The uploaded file is stored on the MTR server.
+							</p></li><li class="listitem"><p class="simpara">
+								To register a server path, click the <span class="strong strong"><strong>Server path</strong></span> tab, enter the <span class="strong strong"><strong>Labels path</strong></span> of the label files in the field, and click <span class="strong strong"><strong>Save</strong></span>.
+							</p><p class="simpara">
+								Registering the server path ensures that the MTR server always uses the latest version of the labelset files.
+							</p></li></ul></div></li><li class="listitem">
+						Click <span class="strong strong"><strong>Next</strong></span>.
+					</li><li class="listitem"><p class="simpara">
+						Review the following <span class="strong strong"><strong>Advanced options</strong></span> and make any necessary changes:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								<span class="strong strong"><strong>Target</strong></span>
+							</li><li class="listitem">
+								<span class="strong strong"><strong>Source</strong></span>
+							</li><li class="listitem">
+								<span class="strong strong"><strong>Exclude tags</strong></span>: Rules with these tags are not processed.
+							</li><li class="listitem">
+								<span class="strong strong"><strong>Additional classpath</strong></span>: Enter a space-delimited list of additional <code class="literal">.jar</code> files or directories so that they are available for decompilation or other analysis.
+							</li><li class="listitem">
+								<span class="strong strong"><strong>Application name</strong></span>
+							</li><li class="listitem">
+								<span class="strong strong"><strong>Mavenize group ID</strong></span>
+							</li><li class="listitem">
+								<span class="strong strong"><strong>Ignore path</strong></span>: Enter a path for files to exclude from analysis.
+							</li><li class="listitem">
+								<span class="strong strong"><strong>Export CSV</strong></span>: Exports the report data as a CSV file.
+							</li><li class="listitem">
+								<span class="strong strong"><strong>Export Summary</strong></span>: Generates an <code class="literal">analysisSummary.json</code> export file in the output directory. The file contains analysis summary information for each application analyzed, including the number of incidents and story points by category, and all of the technology tags associated with the analyzed applications.
+							</li><li class="listitem">
+								<span class="strong strong"><strong>Export reports zip</strong></span>: Creates a <code class="literal">reports.zip</code> file in the output folder. The file contains the analysis output, typically, the reports. If requested, it can also contain the CSV export files.
+							</li><li class="listitem">
+								<span class="strong strong"><strong>Disable Tattletale</strong></span>: Disables generation of a Tattletale report for each application.
+							</li><li class="listitem"><p class="simpara">
+								<span class="strong strong"><strong>Class Not Found analysis</strong></span>: Enables analysis of Java files that are not available on the class path.
+							</p><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+									This option should not be used if some classes are unavailable for analysis.
+								</p></div></div></li><li class="listitem">
+								<span class="strong strong"><strong>Compatible Files report</strong></span>: Generating a Compatible Files report might take a long time for large applications.
+							</li><li class="listitem">
+								<span class="strong strong"><strong>Exploded app</strong></span>: The input directory contains the unpackaged source files of an application.
+							</li><li class="listitem">
+								<span class="strong strong"><strong>Keep work dirs</strong></span>: Retains temporary files, for example, the graph database or extracted archive files, for debugging purposes.
+							</li><li class="listitem">
+								<span class="strong strong"><strong>Skip reports</strong></span>: HTML reports are not generated. Must be enabled if you enabled <span class="strong strong"><strong>Export CSV</strong></span>.
+							</li><li class="listitem"><p class="simpara">
+								<span class="strong strong"><strong>Allow network access</strong></span>: Validates any XML files within the analyzed applications against their schema.
+							</p><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+									This option might reduce performance.
+								</p></div></div></li><li class="listitem">
+								<span class="strong strong"><strong>Mavenize</strong></span>: Creates a Maven project directory structure based on the structure and content of the application.
+							</li><li class="listitem">
+								<span class="strong strong"><strong>Source mode</strong></span>: Indicates that the application files are raw source files, not compiled binaries. The sourceMode argument has been deprecated. There is no longer the need to specify it. MTR can intuitively process any inputs that are presented to it. In addition, project source folders can be analyzed with binary inputs within the same analysis execution.
+							</li><li class="listitem"><p class="simpara">
+								<span class="strong strong"><strong>Analyze known libraries</strong></span>: Analyze known software artifacts embedded within your application. By default, MTR only analyzes application code.
+							</p><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+									This option might result in a longer execution time and a large number of migration issues being reported.
+								</p></div></div></li><li class="listitem"><p class="simpara">
+								<span class="strong strong"><strong>Transaction analysis</strong></span>: [Tech Preview] Generates a Transactions report that displays the call stack, which executes operations on relational database tables. The Enable Transaction Analysis feature supports Spring Data JPA and the traditional <code class="literal">preparedStatement()</code> method for SQL statement execution. It does not support ORM frameworks, such as Hibernate.
+							</p><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+									Transaction analysis is a Technology Preview feature only. Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process.
+								</p></div></div></li><li class="listitem">
+								<span class="strong strong"><strong>Skip source code reports:</strong></span> Adding this option skips generating a <span class="emphasis"><em>Source code report</em></span> when generating the application analysis report. Use this advanced option when concerned about source code information appearing in the application analysis.
+							</li></ul></div></li><li class="listitem">
+						Click <span class="strong strong"><strong>Next</strong></span>.
+					</li><li class="listitem"><p class="simpara">
+						Review your project and click <span class="strong strong"><strong>Save</strong></span> or <span class="strong strong"><strong>Save and run</strong></span>.
+					</p><p class="simpara">
+						The project is displayed in the <span class="strong strong"><strong>Projects</strong></span> screen.
+					</p></li></ol></div></section><section class="section" id="web-running-saved-analysis_web-console-guide"><div class="titlepage"><div><div><h2 class="title">3.2. Running a saved analysis</h2></div></div></div><p>
+				You can run a saved analysis.
+			</p><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+						In the web console, click <span class="strong strong"><strong>Analysis results</strong></span>.
+					</li><li class="listitem">
+						Select a project.
+					</li><li class="listitem">
+						Click <span class="strong strong"><strong>Run analysis</strong></span>.
+					</li></ol></div><p>
+				A progress bar displays the progress of your analysis.
+			</p></section><section class="section" id="web-view-results_web-console-guide"><div class="titlepage"><div><div><h2 class="title">3.3. Viewing analysis results</h2></div></div></div><p>
+				The results of all analyses are grouped and listed by project on the <span class="strong strong"><strong>Analysis results</strong></span> screen.
+			</p><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+						In the web console, click <span class="strong strong"><strong>Analysis results</strong></span>.
+					</li><li class="listitem"><p class="simpara">
+						Select a project from the list.
+					</p><div class="informalfigure"><div class="mediaobject"><img src="images/topics/images/AnalysisResults1.png" alt="Analysis results screen"/></div></div><p class="simpara">
+						The Analysis Reports can be accessed via the Reports bar chart icon or by the Reports action on the right-hand side of the screen.
+					</p></li><li class="listitem"><p class="simpara">
+						Click on the number of the analysis you want to review to see details of the analysis configuration settings and the analysis execution statistics.
+					</p><p class="simpara">
+						The results are displayed in the <span class="strong strong"><strong>Results</strong></span> screen, which contains two tabs: <span class="strong strong"><strong>Details</strong></span> and <span class="strong strong"><strong>Logs</strong></span>.
+					</p></li></ol></div><p>
+				The <span class="strong strong"><strong>Details</strong></span> tab displays important details of the analysis, such as status, start date, duration, and configuration settings.
+			</p><div class="figure" id="idm46189553567840"><p class="title"><strong>Figure 3.1. Analysis details screen</strong></p><div class="figure-contents"><div class="mediaobject"><img src="images/topics/images/AnalysisResults2.png" alt="Analysis details screen"/></div></div></div><p>
+				The <span class="strong strong"><strong>Logs</strong></span> tab displays the logs generated during the analysis.
+			</p><div class="figure" id="idm46189556761280"><p class="title"><strong>Figure 3.2. Analysis logs screen</strong></p><div class="figure-contents"><div class="mediaobject"><img src="images/topics/images/AnalysisLogs.png" alt="Analysis logs screen"/></div></div></div></section><section class="section" id="web-review-reports_web-console-guide"><div class="titlepage"><div><div><h2 class="title">3.4. Reviewing reports</h2></div></div></div><p>
+				The MTR web console provides a set of detailed reports that can help you decide if you need to make any changes to your applications. You access these reports from the <span class="strong strong"><strong>Analysis results</strong></span> screen.
+			</p><p>
+				The reports are described in detail in <a class="link" href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_runtimes/1.2/html-single/cli_guide#review-reports_cli-guide">Reviewing the reports</a> in the <span class="emphasis"><em>CLI Guide</em></span>.
+			</p><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+						In the web console, click <span class="strong strong"><strong>Analysis results</strong></span>.
+					</li><li class="listitem"><p class="simpara">
+						Click the <span class="strong strong"><strong>Reports</strong></span> icon 
+						<span class="inlinemediaobject"><img src="images/topics/images/reports.png" alt="reports"/></span>
+						 beside the analysis you want to investigate.
+					</p><p class="simpara">
+						The <span class="strong strong"><strong>All applications</strong></span> screen of the reports is displayed.
+					</p><div class="informalfigure"><div class="mediaobject"><img src="images/topics/images/3-1-applications.png" alt="Analysis logs screen"/></div></div></li></ol></div></section><section class="section" id="web-updating-an-analysis_web-console-guide"><div class="titlepage"><div><div><h2 class="title">3.5. Updating an analysis configuration</h2></div></div></div><p>
+				You can update an analysis configuration, for example, with a different transformation target, advanced option, or a custom rule. Then you can run the updated analysis in your project.
+			</p><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+						In the web console, click <span class="strong strong"><strong>Analysis configuration</strong></span>.
+					</p><div class="informalfigure"><div class="mediaobject"><img src="images/topics/images/3-5-analysis-configuration-mtr-1-2.png" alt="Analysis configuration screen"/></div></div></li><li class="listitem">
+						Select a <span class="strong strong"><strong>Project</strong></span>.
+					</li><li class="listitem">
+						Click the appropriate tabs and make your changes.
+					</li><li class="listitem"><p class="simpara">
+						Click <span class="strong strong"><strong>Save</strong></span> or <span class="strong strong"><strong>Save and run</strong></span>.
+					</p><p class="simpara">
+						The project is displayed in the <span class="strong strong"><strong>Projects</strong></span> screen.
+					</p></li></ol></div></section><section class="section" id="web-adding-global-custom-rules_web-console-guide"><div class="titlepage"><div><div><h2 class="title">3.6. Adding global custom rules</h2></div></div></div><p>
+				MTR includes a preconfigured set of global rules, which apply to all projects.
+			</p><p>
+				You can define your own custom global rules.
+			</p><p>
+				For information on writing custom MTR rules, see the MTR <a class="link" href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_runtimes/1.2/html-single/rules_development_guide"><span class="emphasis"><em>Rule Development Guide</em></span></a>.
+			</p><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+						In the web console, click <span class="strong strong"><strong>Rules configuration</strong></span>.
+					</li><li class="listitem">
+						Click <span class="strong strong"><strong>Add rules</strong></span>.
+					</li><li class="listitem"><p class="simpara">
+						To upload a ruleset file, click the <span class="strong strong"><strong>Upload</strong></span> tab, click <span class="strong strong"><strong>Browse</strong></span>, select one or more files, and click <span class="strong strong"><strong>Close</strong></span>.
+					</p><p class="simpara">
+						A ruleset file must have a <code class="literal">.windup.xml</code> extension. The uploaded file is stored on the MTR server.
+					</p></li><li class="listitem"><p class="simpara">
+						To register the server path of a ruleset file, click the <span class="strong strong"><strong>Server path</strong></span> tab, enter the <span class="strong strong"><strong>Rules</strong></span> path, and click <span class="strong strong"><strong>Save</strong></span>.
+					</p><p class="simpara">
+						Registering the server path ensures that the MTR server always uses the latest version of the ruleset files.
+					</p><p class="simpara">
+						The <span class="strong strong"><strong>Custom rules</strong></span> list displays the rules.
+					</p></li></ol></div></section><section class="section" id="web-adding-global-custom-labels_web-console-guide"><div class="titlepage"><div><div><h2 class="title">3.7. Adding global custom labels</h2></div></div></div><p>
+				MTR includes a preconfigured set of global labels, which apply to all projects.
+			</p><p>
+				You can define your own custom global labels.
+			</p><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem">
+						In the web console, click <span class="strong strong"><strong>Labels configuration</strong></span>.
+					</li><li class="listitem">
+						Click <span class="strong strong"><strong>Add label</strong></span>.
+					</li><li class="listitem"><p class="simpara">
+						To upload a labelset file, click the <span class="strong strong"><strong>Upload</strong></span> tab, click <span class="strong strong"><strong>Browse</strong></span>, select one or more files, and click <span class="strong strong"><strong>Close</strong></span>.
+					</p><p class="simpara">
+						A labelset file must have a <code class="literal">.windup.label.xml</code> extension. The uploaded file is stored on the MTR server.
+					</p></li><li class="listitem"><p class="simpara">
+						To register the server path of a labelset file, click the <span class="strong strong"><strong>Server path</strong></span> tab, enter the <span class="strong strong"><strong>Labels</strong></span> path, and click <span class="strong strong"><strong>Save</strong></span>.
+					</p><p class="simpara">
+						Registering the server path ensures that the MTR server always uses the latest version of the labelset files.
+					</p><p class="simpara">
+						The <span class="strong strong"><strong>Custom labels</strong></span> list displays the labels.
+					</p></li></ol></div></section></section><section class="chapter" id="configuring-web-console-authentication-for-linux-windows-macos_web-console-guide"><div class="titlepage"><div><div><h1 class="title">Chapter 4. Configuring authentication for the web console on Linux, Windows, or macOS</h1></div></div></div><p>
+			You can configure the web console to require authentication for access. To enable authentication, you have to install Red Hat Single Sign-On (SSO).
+		</p><h3 id="enabling-authentication_web-console-guide">Enabling authentication</h3><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+					Adjust the port number that the Red Hat SSO server opens to avoid conflicts with the port that the web console uses by entering the following:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+							For Linux and macOS:
+						</p><pre class="screen">$ ./standalone.sh -Djboss.socket.binding.port-offset=&lt;offset_value&gt;</pre></li><li class="listitem"><p class="simpara">
+							For Windows:
+						</p><pre class="screen">&gt; ...\bin\standalone.bat -Djboss.socket.binding.port-offset=&lt;offset_value&gt;</pre></li></ul></div></li><li class="listitem"><p class="simpara">
+					Open the Red Hat SSO administration console from <code class="literal">http://localhost:8180</code>:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+							Username: <code class="literal">admin</code>
+						</li><li class="listitem">
+							Password: <code class="literal">admin</code>
+						</li></ul></div></li><li class="listitem">
+					Add a realm named <span class="strong strong"><strong>mtr</strong></span>.
+				</li><li class="listitem">
+					In the realm, create a client named <span class="strong strong"><strong>mtr-web</strong></span>.
+				</li><li class="listitem">
+					Check that <span class="strong strong"><strong>Access Type</strong></span> is set to <code class="literal">public</code>.
+				</li><li class="listitem">
+					Set <span class="strong strong"><strong>Valid Redirect URIs</strong></span> to <code class="literal">http://localhost:8080/windup-ui/*</code>.
+				</li><li class="listitem">
+					Set <span class="strong strong"><strong>Web Origins</strong></span> to <code class="literal">*</code> and click <span class="strong strong"><strong>Save</strong></span>.
+				</li><li class="listitem">
+					Create a role named <span class="strong strong"><strong>user</strong></span>.
+				</li><li class="listitem">
+					Create a user with any name.
+				</li><li class="listitem">
+					Set the credentials of the user, disable <span class="strong strong"><strong>Temporary</strong></span>, and assign the role "user" to the user.
+				</li><li class="listitem"><p class="simpara">
+					Switch the web console to <span class="strong strong"><strong>Authentication required</strong></span> mode by doing the following:
+				</p><div class="orderedlist"><ol class="orderedlist" type="a"><li class="listitem"><p class="simpara">
+							Export the following ENV variables:
+						</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+									For Linux and macOS:
+								</p><pre class="screen">export SSO_AUTH_SERVER_URL=http://localhost:8180/auth
+export SSO_REALM=windup
+export SSO_SSL_REQUIRED=EXTERNAL
+export SSO_CLIENT_ID=windup-web</pre></li><li class="listitem"><p class="simpara">
+									For Windows:
+								</p><pre class="screen">set SSO_AUTH_SERVER_URL=http://localhost:8180/auth
+set SSO_REALM=windup
+set SSO_SSL_REQUIRED=EXTERNAL
+set SSO_CLIENT_ID=windup-web</pre><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+										Environment variables that are set by the <code class="literal">set</code> command in CMD are local, available to the current CMD session only. Use the Windows Control Panel to permanently set the environment variables.
+									</p></div></div></li></ul></div></li><li class="listitem"><p class="simpara">
+							Run the following script:
+						</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+									For Linux and macOS:
+								</p><pre class="screen">$ &lt;MTR_HOME&gt;/switch_to_authentication_required.sh</pre></li><li class="listitem"><p class="simpara">
+									For Windows:
+								</p><pre class="screen">C:\&lt;MTR_HOME&gt;\switch_to_authentication_required.bat</pre></li></ul></div></li></ol></div></li><li class="listitem"><p class="simpara">
+					Start the web console by entering the following:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+							For Linux and macOS:
+						</p><pre class="screen">$ &lt;MTR_HOME&gt;/run_windup.sh</pre></li><li class="listitem"><p class="simpara">
+							For Windows:
+						</p><pre class="screen">C:\&lt;MTR_HOME&gt;\run_windup.bat</pre></li></ul></div></li><li class="listitem">
+					Open the browser at <code class="literal">http://localhost:8080/windup-ui</code>.
+				</li></ol></div><h3 id="disabling-authentication_web-console-guide">Disabling authentication</h3><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+					Run the following script:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+							For Linux and macOS:
+						</p><pre class="screen">$ &lt;MTR_HOME&gt;/switch_to_automatic_authentication.sh</pre></li><li class="listitem"><p class="simpara">
+							For Windows:
+						</p><pre class="screen">C:\&lt;MTR_HOME&gt;\switch_to_automatic_authentication.bat</pre></li></ul></div></li></ol></div><p>
+			<br/>
+		</p><p>
+			<span class="emphasis"><em><span class="right right">Revised on 2024-09-05 14:18:32 UTC</span></em></span>
+		</p></section><div><div xml:lang="en-US" class="legalnotice" id="idm46189557246304"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+		Copyright <span class="trademark"/>© 2024 Red Hat, Inc.
+	</div><div class="para">
+		The text of and illustrations in this document are licensed by Red Hat under a Creative Commons Attribution–Share Alike 3.0 Unported license ("CC-BY-SA"). An explanation of CC-BY-SA is available at <a class="uri" href="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</a>. In accordance with CC-BY-SA, if you distribute this document or an adaptation of it, you must provide the URL for the original version.
+	</div><div class="para">
+		Red Hat, as the licensor of this document, waives the right to enforce, and agrees not to assert, Section 4d of CC-BY-SA to the fullest extent permitted by applicable law.
+	</div><div class="para">
+		Red Hat, Red Hat Enterprise Linux, the Shadowman logo, the Red Hat logo, JBoss, OpenShift, Fedora, the Infinity logo, and RHCE are trademarks of Red Hat, Inc., registered in the United States and other countries.
+	</div><div class="para">
+		<span class="trademark">Linux</span>® is the registered trademark of Linus Torvalds in the United States and other countries.
+	</div><div class="para">
+		<span class="trademark">Java</span>® is a registered trademark of Oracle and/or its affiliates.
+	</div><div class="para">
+		<span class="trademark">XFS</span>® is a trademark of Silicon Graphics International Corp. or its subsidiaries in the United States and/or other countries.
+	</div><div class="para">
+		<span class="trademark">MySQL</span>® is a registered trademark of MySQL AB in the United States, the European Union and other countries.
+	</div><div class="para">
+		<span class="trademark">Node.js</span>® is an official trademark of Joyent. Red Hat is not formally related to or endorsed by the official Joyent Node.js open source or commercial project.
+	</div><div class="para">
+		The <span class="trademark">OpenStack</span>® Word Mark and OpenStack logo are either registered trademarks/service marks or trademarks/service marks of the OpenStack Foundation, in the United States and other countries and are used with the OpenStack Foundation's permission. We are not affiliated with, endorsed or sponsored by the OpenStack Foundation, or the OpenStack community.
+	</div><div class="para">
+		All other trademarks are the property of their respective owners.
+	</div></div></div></div></div></div><script type="text/javascript">
+                        jQuery(document).ready(function() {
+                            initSwitchery();
+                            jQuery('pre[class*="language-"]').each(function(i, block){hljs.highlightBlock(block);});
+                        });
+                    </script></body></html>

@@ -1,0 +1,676 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Maven Plugin Guide</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.2"/><meta name="description" content="This guide describes how to use the Migration Toolkit for Runtimes Maven plugin to simplify migration of Java applications."/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm45658765572928"><div class="titlepage"><div><div class="producttitle"><span class="productname">Migration Toolkit for Runtimes</span> <span class="productnumber">1.2</span></div><div><h1 class="title">Maven Plugin Guide</h1></div><div><h2 class="subtitle">Integrate the Migration Toolkit for Runtimes into the Maven build process.</h2></div><div><div xml:lang="en-US" class="authorgroup"><span class="orgname">Red Hat Customer Content Services</span></div></div><div><a href="#idm45658742664448">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+				This guide describes how to use the Migration Toolkit for Runtimes Maven plugin to simplify migration of Java applications.
+			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="preface"><a href="#making-open-source-more-inclusive">Making open source more inclusive</a></span></li><li><span class="chapter"><a href="#introduction">1. Introduction</a></span><ul><li><span class="section"><a href="#about-maven-guide_maven-guide">1.1. About the Maven Plugin Guide</a></span></li><li><span class="section"><a href="#what-is-the-toolkit_maven-guide">1.2. About the Migration Toolkit for Runtimes</a></span></li><li><span class="section"><a href="#about-maven_maven-guide">1.3. About the Maven Plugin</a></span></li></ul></li><li><span class="chapter"><a href="#getting_started">2. Getting started</a></span><ul><li><span class="section"><a href="#maven-run_maven-guide">2.1. Running the Maven Plugin</a></span></li><li><span class="section"><a href="#maven-multi-module_maven-guide">2.2. Running the Maven Plugin with multiple modules</a></span></li><li><span class="section"><a href="#maven-access-reports_maven-guide">2.3. Accessing the report</a></span></li></ul></li><li><span class="chapter"><a href="#csv-export_maven-guide">3. Exporting the report in CSV format</a></span><ul><li><span class="section"><a href="#export-the-report_maven-guide">3.1. Exporting the report</a></span></li><li><span class="section"><a href="#importing_the_csv_file_into_a_spreadsheet_program">3.2. Importing the CSV file into a spreadsheet program</a></span></li><li><span class="section"><a href="#about_the_csv_data_structure">3.3. About the CSV data structure</a></span></li></ul></li><li><span class="appendix"><a href="#reference_material">A. Reference material</a></span><ul><li><span class="section"><a href="#maven-arguments_maven-guide">A.1. About Maven Plugin arguments</a></span><ul><li><span class="section"><a href="#maven-input-argument_maven-guide">A.1.1. Specifying the input directory</a></span></li><li><span class="section"><a href="#maven-input-file-type-arguments_maven-guide">A.1.2. Evaluating an input file</a></span></li><li><span class="section"><a href="#maven-output-argument_maven-guide">A.1.3. Specifying the output directory</a></span></li><li><span class="section"><a href="#maven-source-argument_maven-guide">A.1.4. Setting the source technology</a></span></li><li><span class="section"><a href="#maven-target-argument_maven-guide">A.1.5. Setting the target argument</a></span></li><li><span class="section"><a href="#maven-packages-argument_maven-guide">A.1.6. Selecting packages</a></span></li></ul></li><li><span class="section"><a href="#maven-logging-properties_maven-guide">A.2. Default logging properties</a></span></li><li><span class="section"><a href="#about-story-points_maven-guide">A.3. About rule story points</a></span><ul><li><span class="section"><a href="#what_are_story_points">A.3.1. What are story points?</a></span></li><li><span class="section"><a href="#how_story_points_are_estimated_in_rules">A.3.2. How story points are estimated in rules</a></span></li><li><span class="section"><a href="#task_category">A.3.3. Task category</a></span></li></ul></li><li><span class="section"><a href="#additional_resources">A.4. Additional resources</a></span><ul><li><span class="section"><a href="#get-involved_maven-guide">A.4.1. Contributing to the project</a></span></li><li><span class="section"><a href="#important-links_maven-guide">A.4.2. Migration Toolkit for Runtimes development resources</a></span></li><li><span class="section"><a href="#reporting_issues">A.4.3. Reporting issues</a></span></li></ul></li></ul></li></ul></div><section class="preface" id="making-open-source-more-inclusive"><div class="titlepage"><div><div><h1 class="title">Making open source more inclusive</h1></div></div></div><p class="_abstract _abstract">
+			Red Hat is committed to replacing problematic language in our code, documentation, and web properties. We are beginning with these four terms: master, slave, blacklist, and whitelist. Because of the enormity of this endeavor, these changes will be implemented gradually over several upcoming releases. For more details, see <a class="link" href="https://www.redhat.com/en/blog/making-open-source-more-inclusive-eradicating-problematic-language">our CTO Chris Wright’s message</a>.
+		</p></section><section class="chapter" id="introduction"><div class="titlepage"><div><div><h1 class="title">Chapter 1. Introduction</h1></div></div></div><div class="admonition important"><div class="admonition_header">Migration Toolkit for Runtimes product will be End of Life on September 30th, 2024</div><div><p>
+				All customers using this product should start their transition to <a class="link" href="https://developers.redhat.com/products/mta/overview">Migration Toolkit for Applications</a>.
+			</p><p>
+				Migration Toolkit for Applications is fully backwards compatible with all features and rulesets available in Migration Toolkit for Runtimes and will be maintained in the long term.
+			</p></div></div><section class="section" id="about-maven-guide_maven-guide"><div class="titlepage"><div><div><h2 class="title">1.1. About the Maven Plugin Guide</h2></div></div></div><p>
+				This guide is for engineers, consultants, and others who want to use the Migration Toolkit for Runtimes (MTR) to migrate Java applications or other components. It describes how to install and run the Maven plugin, review the generated reports, and take advantage of additional features.
+			</p></section><section class="section" id="what-is-the-toolkit_maven-guide"><div class="titlepage"><div><div><h2 class="title">1.2. About the Migration Toolkit for Runtimes</h2></div></div></div><h4 id="what_is_the_migration_toolkit_for_runtimes">What is the Migration Toolkit for Runtimes?</h4><p>
+				The Migration Toolkit for Runtimes (MTR) is an extensible and customizable rule-based tool that simplifies the migration and modernization of Java applications.
+			</p><p>
+				MTR examines application artifacts, including project source directories and application archives, and then produces an HTML report highlighting areas needing changes. MTR supports many migration paths, including the following examples:
+			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+						Upgrading to the latest release of Red Hat JBoss Enterprise Application Platform
+					</li><li class="listitem">
+						Migrating from Oracle WebLogic or IBM WebSphere Application Server to Red Hat JBoss Enterprise Application Platform
+					</li><li class="listitem">
+						Containerizing applications and making them cloud-ready
+					</li><li class="listitem">
+						Migrating from Java Spring Boot to Quarkus
+					</li><li class="listitem">
+						Updating from Oracle JDK to OpenJDK
+					</li><li class="listitem">
+						Upgrading from OpenJDK 8 to OpenJDK 11
+					</li><li class="listitem">
+						Upgrading from OpenJDK 11 to OpenJDK 17
+					</li><li class="listitem">
+						Upgrading from OpenJDK 17 to OpenJDK 21
+					</li><li class="listitem">
+						Migrating EAP Java applications to Azure
+					</li><li class="listitem">
+						Migrating Spring Boot Java applications to Azure
+					</li></ul></div><p>
+				For more information about use cases and migration paths, see the <a class="link" href="https://developers.redhat.com/products/mtr/use-cases">MTR for developers</a> web page.
+			</p><h4 id="how_does_the_migration_toolkit_for_runtimes_simplify_migration">How does the Migration Toolkit for Runtimes simplify migration?</h4><p>
+				The Migration Toolkit for Runtimes looks for common resources and known trouble spots when migrating applications. It provides a high-level view of the technologies used by the application.
+			</p><p>
+				MTR generates a detailed report evaluating a migration or modernization path. This report can help you to estimate the effort required for large-scale projects and to reduce the work involved.
+			</p><h4 id="how_do_i_learn_more">How do I learn more?</h4><p>
+				See the <a class="link" href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_runtimes/1.2/html-single/introduction_to_the_migration_toolkit_for_runtimes">Introduction to the Migration Toolkit for Runtimes</a> to learn more about the features, supported configurations, system requirements, and available tools in the Migration Toolkit for Runtimes.
+			</p></section><section class="section" id="about-maven_maven-guide"><div class="titlepage"><div><div><h2 class="title">1.3. About the Maven Plugin</h2></div></div></div><p>
+				The Maven plugin for the Migration Toolkit for Runtimes integrates into the Maven build process, allowing developers to continuously evaluate migration and modernization efforts with each iteration of source code. It provides numerous reports that highlight the analysis results, and is designed for developers who want updates with each build.
+			</p></section></section><section class="chapter" id="getting_started"><div class="titlepage"><div><div><h1 class="title">Chapter 2. Getting started</h1></div></div></div><section class="section" id="maven-run_maven-guide"><div class="titlepage"><div><div><h2 class="title">2.1. Running the Maven Plugin</h2></div></div></div><p>
+				The Maven plugin is run by including a reference to the plugin inside your application’s <code class="literal">pom.xml</code> file. When the application is built, the Maven plugin is run and generates the reports for analysis.
+			</p><div class="itemizedlist"><p class="title"><strong>Prerequisites</strong></p><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+						Java Development Kit (JDK) installed.
+					</p><p class="simpara">
+						MTR supports the following JDKs:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+								OpenJDK 11
+							</li><li class="listitem">
+								Oracle JDK 11
+							</li></ul></div></li><li class="listitem">
+						8 GB RAM
+					</li><li class="listitem">
+						macOS installation: the value of <code class="literal">maxproc</code> must be <code class="literal">2048</code> or greater.
+					</li><li class="listitem">
+						The Maven <code class="literal">settings.xml</code> file <a class="link" href="https://access.redhat.com/documentation/en-us/red_hat_jboss_enterprise_application_platform/7.4/html-single/development_guide/index#configure_the_jboss_eap_maven_repository_using_the_maven_settings">configured</a> to direct Maven to use the JBoss EAP Maven repository.
+					</li><li class="listitem"><p class="simpara">
+						To run the Maven plugin on OpenJDK 17 or Oracle JDK17, you first need to set MAVEN_OPTS on the command line by running the following command:
+					</p><pre class="programlisting language-terminal">export MAVEN_OPTS="--add-modules=java.se --add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED --add-opens java.base/java.util.stream=ALL-UNNAMED"</pre></li></ul></div><div class="orderedlist"><p class="title"><strong>Procedure</strong></p><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+						Add the following <code class="literal">&lt;plugin&gt;</code> to your application’s <code class="literal">pom.xml</code> file:
+					</p><pre class="programlisting language-xml">[...]
+&lt;plugin&gt;
+    &lt;groupId&gt;org.jboss.windup.plugin&lt;/groupId&gt;
+    &lt;artifactId&gt;mtr-maven-plugin&lt;/artifactId&gt;
+    &lt;version&gt;1.2.5.GA-redhat-00001&lt;/version&gt;
+    &lt;executions&gt;
+        &lt;execution&gt;
+            &lt;id&gt;run-windup&lt;/id&gt;
+            &lt;phase&gt;package&lt;/phase&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;windup&lt;/goal&gt;
+            &lt;/goals&gt;
+        &lt;/execution&gt;
+    &lt;/executions&gt;
+    &lt;configuration&gt;
+        &lt;target&gt;eap:7&lt;/target&gt; <span id="CO1-1"/><span class="callout">1</span>
+    &lt;/configuration&gt;
+&lt;/plugin&gt;
+[...]</pre><div class="calloutlist"><dl class="calloutlist"><dt><a href="#CO1-1"><span class="callout">1</span></a> </dt><dd><div class="para">
+								Specify a migration target. At least one migration target must be supplied within the configuration.
+							</div></dd></dl></div></li><li class="listitem"><p class="simpara">
+						Add <code class="literal">--add-modules=java.se</code> to the <code class="literal">MAVEN_OPTS</code> environment variable.
+					</p><pre class="programlisting language-terminal">export MAVEN_OPTS=--add-modules=java.se</pre></li><li class="listitem"><p class="simpara">
+						Build the project:
+					</p><pre class="programlisting language-terminal">$ mvn clean install</pre><p class="simpara">
+						You can access the generated reports.
+					</p></li></ol></div></section><section class="section" id="maven-multi-module_maven-guide"><div class="titlepage"><div><div><h2 class="title">2.2. Running the Maven Plugin with multiple modules</h2></div></div></div><p>
+				To use the Maven plugin in a project with multiple modules, place the configuration inside the parent’s <code class="literal">pom.xml</code>. The Maven plugin will generate a single report that contains the analysis for the parent and any child modules.
+			</p><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+					It is strongly recommended to set <code class="literal">inherited</code> to false in multi-module projects; otherwise, the Maven plugin will run when each child is compiled, resulting in multiple executions of the Maven plugin against the child modules. Setting <code class="literal">inherited</code> to false results in each project being analyzed a single time and drastically decreased run times.
+				</p></div></div><p>
+				To run the Maven plugin in a project with multiple modules, perform the following steps.
+			</p><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem"><p class="simpara">
+						Include the following plugin inside the parent project’s <code class="literal">pom.xml</code>. The following is a sample <code class="literal">pom.xml</code> for a parent module.
+					</p><pre class="programlisting language-xml">&lt;plugin&gt;
+    &lt;groupId&gt;org.jboss.windup.plugin&lt;/groupId&gt;
+    &lt;artifactId&gt;mtr-maven-plugin&lt;/artifactId&gt;
+    &lt;version&gt;1.2.5.GA-redhat-00001&lt;/version&gt;
+    &lt;inherited&gt;false&lt;/inherited&gt;
+    &lt;executions&gt;
+        &lt;execution&gt;
+            &lt;id&gt;run-windup&lt;/id&gt;
+            &lt;phase&gt;package&lt;/phase&gt;
+            &lt;goals&gt;
+                &lt;goal&gt;windup&lt;/goal&gt;
+            &lt;/goals&gt;
+        &lt;/execution&gt;
+    &lt;/executions&gt;
+    &lt;configuration&gt;
+        &lt;input&gt;${project.basedir}&lt;/input&gt;
+        &lt;target&gt;eap:7&lt;/target&gt; <span id="CO2-1"/><span class="callout">1</span>
+        &lt;windupHome&gt;&gt;/PATH/TO/CLI/&lt;&lt;/windupHome&gt;
+    &lt;/configuration&gt;
+&lt;/plugin&gt;</pre><div class="calloutlist"><dl class="calloutlist"><dt><a href="#CO2-1"><span class="callout">1</span></a> </dt><dd><div class="para">
+								Specify a migration target. At least one migration target must be supplied within the configuration.
+							</div></dd></dl></div><p class="simpara">
+						This <code class="literal">pom.xml</code> file differs from the default in the following attributes:
+					</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+								<code class="literal">inherited</code>: Defined at the plugin level, this attribute indicates whether or not this configuration should be used in child modules. Set to <code class="literal">false</code> for performance improvements.
+							</li><li class="listitem">
+								<code class="literal">input</code>: Specifies the path to the directory containing the projects to be analyzed. This attribute defaults to <code class="literal">{project.basedir}/src/main</code>, and should be defined if the parent project does not have source code to analyze.
+							</li><li class="listitem"><p class="simpara">
+								<code class="literal">windupHome</code>: A path to an extracted copy of the MTR CLI. This attribute is optional, but is recommended as a performance improvement.
+							</p><p class="simpara">
+								The above example demonstrates a set of recommended arguments.
+							</p></li></ul></div></li><li class="listitem"><p class="simpara">
+						Build the parent project. During the build process, the Maven plugin runs against all children in the project without further configuration.
+					</p><pre class="programlisting language-terminal">$ mvn clean install</pre></li><li class="listitem">
+						Once completed, you can access the generated reports. This report contains the analysis for the parent and all children.
+					</li></ol></div></section><section class="section" id="maven-access-reports_maven-guide"><div class="titlepage"><div><div><h2 class="title">2.3. Accessing the report</h2></div></div></div><p>
+				When you run Migration Toolkit for Runtimes, the report is generated in the <code class="literal">OUTPUT_REPORT_DIRECTORY</code> that you specify using the <code class="literal">outputDirectory</code> argument in the <code class="literal">pom.xml</code>. Upon completion of the build, you will see the following message in the build log.
+			</p><pre class="screen">Windup report created: &lt;OUTPUT_REPORT_DIRECTORY&gt;/index.html</pre><p>
+				The output directory contains the following files and subdirectories:
+			</p><pre class="screen">&lt;OUTPUT_REPORT_DIRECTORY&gt;/
+├── index.html          // Landing page for the report
+├── &lt;EXPORT_FILE&gt;.csv     // Optional export of data in CSV format
+├── graph/              // Generated graphs used for indexing
+├── reports/            // Generated HTML reports
+├── stats/              // Performance statistics</pre><p>
+				See the <a class="link" href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_runtimes/1.2/html-single/cli_guide#review-reports_cli-guide">Reviewing the reports</a> section of the MTR <span class="emphasis"><em>CLI Guide</em></span> for information on the MTR reports and how to use them to assess your migration or modernization effort.
+			</p></section></section><section class="chapter" id="csv-export_maven-guide"><div class="titlepage"><div><div><h1 class="title">Chapter 3. Exporting the report in CSV format</h1></div></div></div><p>
+			Migration Toolkit for Runtimes (MTR) provides the ability to export the report data, including the classifications and hints, to a flat file on your local file system. The export function currently supports the CSV file format, which presents the report data as fields separated by commas (<code class="literal">,</code>).
+		</p><p>
+			The CSV file can be imported and manipulated by spreadsheet software such as Microsoft Excel, OpenOffice Calc, or LibreOffice Calc. Spreadsheet software provides the ability to sort, analyze, evaluate, and manage the result data from an MTR report.
+		</p><section class="section" id="export-the-report_maven-guide"><div class="titlepage"><div><div><h2 class="title">3.1. Exporting the report</h2></div></div></div><p>
+				To export the report as a CSV file, run MTR with the <code class="literal">exportCSV</code> argument set to <code class="literal">true</code>.
+			</p><p>
+				A CSV file is created in the directory specified by the <code class="literal">--output</code> argument for each application analyzed. All discovered issues, spanning all the analyzed applications, are included in <code class="literal">AllIssues.csv</code> file.
+			</p><p>
+				The CSV files are exported to the directory specified by the <code class="literal">outputDirectory</code> argument.
+			</p></section><section class="section" id="importing_the_csv_file_into_a_spreadsheet_program"><div class="titlepage"><div><div><h2 class="title">3.2. Importing the CSV file into a spreadsheet program</h2></div></div></div><div class="orderedlist"><ol class="orderedlist" type="1"><li class="listitem">
+						Launch the spreadsheet software, for example, Microsoft Excel.
+					</li><li class="listitem">
+						Choose <span class="strong strong"><strong>File</strong></span> → <span class="strong strong"><strong>Open</strong></span>.
+					</li><li class="listitem">
+						Browse to the CSV exported file and select it.
+					</li><li class="listitem">
+						The data is now ready to analyze in the spreadsheet software.
+					</li></ol></div></section><section class="section" id="about_the_csv_data_structure"><div class="titlepage"><div><div><h2 class="title">3.3. About the CSV data structure</h2></div></div></div><p>
+				The CSV formatted output file contains the following data fields:
+			</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Rule Id</span></dt><dd>
+							The ID of the rule that generated the given item.
+						</dd><dt><span class="term">Problem type</span></dt><dd>
+							<span class="emphasis"><em>hint</em></span> or <span class="emphasis"><em>classification</em></span>
+						</dd><dt><span class="term">Title</span></dt><dd>
+							The title of the <span class="emphasis"><em>classification</em></span> or <span class="emphasis"><em>hint</em></span>. This field summarizes the issue for the given item.
+						</dd><dt><span class="term">Description</span></dt><dd>
+							The detailed description of the issue for the given item.
+						</dd><dt><span class="term">Links</span></dt><dd>
+							URLs that provide additional information about the issue. A link consists of two attributes: the link and a description of the link.
+						</dd><dt><span class="term">Application</span></dt><dd>
+							The name of the application for which this item was generated.
+						</dd><dt><span class="term">File Name</span></dt><dd>
+							The name of the file for the given item.
+						</dd><dt><span class="term">File Path</span></dt><dd>
+							The file path for the given item.
+						</dd><dt><span class="term">Line</span></dt><dd>
+							The line number of the file for the given item.
+						</dd><dt><span class="term">Story points</span></dt><dd>
+							The number of story points, which represent the level of effort, assigned to the given item.
+						</dd></dl></div></section></section><section class="appendix" id="reference_material"><div class="titlepage"><div><div><h1 class="title">Appendix A. Reference material</h1></div></div></div><section class="section" id="maven-arguments_maven-guide"><div class="titlepage"><div><div><h2 class="title">A.1. About Maven Plugin arguments</h2></div></div></div><p>
+				The following is a detailed description of the available MTR Maven plugin arguments.
+			</p><div class="table" id="idm45658742221200"><p class="title"><strong>Table A.1. MTR Maven plugin arguments</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 40%; " class="col_1"/><col style="width: 60%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm45658762336496" scope="col">Argument</th><th align="left" valign="top" id="idm45658763874368" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								analyzeKnownLibraries
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Flag to analyze known software artifacts embedded within your application. By default, MTR only analyzes application code.
+							</p>
+							<div class="admonition note"><div class="admonition_header">Note</div><div><p>
+									This option may result in a longer execution time and a large number of migration issues being reported.
+								</p></div></div>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								customLoggingPropertiesFile
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								An absolute path to a <code class="literal">logging.properties</code> file that contains a <code class="literal">java.util.logging.LogManager</code> logging configuration. If the specified path is invalid, or the option is not specified, then the logging reverts to using the <code class="literal">logging.properties</code> file included with the Maven plugin.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								disableTattletale
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Flag to disable generation of the Tattletale report. If both <code class="literal">enableTattletale</code> and <code class="literal">disableTattletale</code> are set to true, then <code class="literal">disableTattletale</code> will be ignored, and the Tattletale report will still be generated.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								enableCompatibleFilesReport
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Flag to enable generation of the Compatible Files report. Due to processing all files without found issues, this report may take a long time for large applications.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								enableTattletale
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Flag to enable generation of a Tattletale report for each application. This option is enabled by default when <code class="literal">eap</code> is in the included target. If both <code class="literal">enableTattletale</code> and <code class="literal">disableTattletale</code> are set to true, then <code class="literal">disableTattletale</code> will be ignored, and the Tattletale report will still be generated.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								enableTransactionAnalysis
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								[Technology Preview] Flag to enable generation of a Transactions report that displays the call stack, which executes operations on relational database tables. The Enable Transaction Analysis feature supports Spring Data JPA and the traditional <code class="literal">preparedStatement()</code> method for SQL statement execution. It does not support ORM frameworks such as Hibernate.
+							</p>
+							<div class="admonition note"><div class="admonition_header">Note</div><div><p>
+									enableTransactionAnalysis is a Technology Preview feature only. Technology Preview features are not supported with Red Hat production service level agreements (SLAs) and might not be functionally complete. Red Hat does not recommend using them in production. These features provide early access to upcoming product features, enabling customers to test functionality and provide feedback during the development process.
+								</p></div></div>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								excludePackages
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								A list of packages to exclude from evaluation. For example, entering "com.mycompany.commonutilities" would exclude all classes whose package name begins with "com.mycompany.commonutilities".
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								excludeTags
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								A list of tags to exclude. When specified, rules with these tags will not be processed.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								explodedApps
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Flag to indicate that the provided input directory contains source files for a single application.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								exportCSV
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Flag to export the report data to a CSV file on your local file system. MTR creates the file in the directory specified by the <code class="literal">outputDirectory</code> argument. The CSV file can be imported into a spreadsheet program for data manipulation and analysis.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								includeTags
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								A list of tags to use. When specified, only rules with these tags will be processed.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								inputDirectory
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Specify the path to the directory containing the applications to be analyzed. This argument defaults to <code class="literal">{project.basedir}/src/main/</code>.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								keepWorkDirs
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Flag to instruct MTR to not delete temporary working files, such as the graph database and unzipped archives. This is useful for debugging purposes.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								legacyReports
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Flag to instruct MTR to generate the old format reports instead of the new format reports.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								packages
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								A list of the packages to be evaluated by MTR. This argument is required.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								offlineMode
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Flag to operate in offline mode, disabling network access features, such as scheme validation. Used to improve performance.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								outputDirectory
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Specify the path to the directory to output the report information generated by MTR. This argument defaults to <code class="literal">{project.build.directory}/windup-report</code>.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								overwrite
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Flag to force delete the existing output directory specified by <code class="literal">outputDirectory</code>. Defaults to <code class="literal">true</code>.
+							</p>
+							<div class="admonition warning"><div class="admonition_header">Warning</div><div><p>
+									Be careful not to specify a report output directory that contains important information!
+								</p></div></div>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								sourceTechnologies
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								A list of one or more source technologies, servers, platforms, or frameworks to migrate from. This argument, in conjunction with the <code class="literal">targetTechnologies</code> argument, helps to determine which rulesets are used.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								sourceMode
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Flag to indicate that the application to be evaluated contains source files rather than compiled binaries. Defaults to <code class="literal">true</code>.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								targetTechnologies
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								A list of one or more target technologies, servers, platforms, or frameworks to migrate to. This argument, in conjunction with the <code class="literal">sourceTechnologies</code> argument, helps to determine which rulesets are used.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								userIgnorePath
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Specify a location for MTR to identify files that should be ignored.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								userRulesDirectory
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Specify a location for MTR to look for custom MTR rules. The value can be a directory containing ruleset files or a single ruleset file. The ruleset files must use the <code class="literal">.windup.xml</code> suffix.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								windupHome
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								An optional argument that points to the root of an extracted MTR CLI. By referencing a local installation of the CLI, the Maven plugin has direct access to all of the indexes, resulting in a performance increase.
+							</p>
+							</td></tr><tr><td align="left" valign="top" headers="idm45658762336496">
+							<p>
+								windupVersion
+							</p>
+							</td><td align="left" valign="top" headers="idm45658763874368">
+							<p>
+								Specify the version of MTR to run. By default, this is the Maven plugin’s build version.
+							</p>
+							</td></tr></tbody></table></div></div><section class="section" id="maven-input-argument_maven-guide"><div class="titlepage"><div><div><h3 class="title">A.1.1. Specifying the input directory</h3></div></div></div><p>
+					A path to the file or directory containing one or more applications to be analyzed. This defaults to <code class="literal">{project.basedir}/src/main/</code>.
+				</p><div class="formalpara"><p class="title"><strong>Usage</strong></p><p>
+						
+<pre class="programlisting language-xml">&lt;inputDirectory&gt;
+    &lt;INPUT_ARCHIVE_OR_DIRECTORY&gt;
+&lt;/inputDirectory&gt;</pre>
+					</p></div></section><section class="section" id="maven-input-file-type-arguments_maven-guide"><div class="titlepage"><div><div><h3 class="title">A.1.2. Evaluating an input file</h3></div></div></div><p>
+					Depending on whether the input file type provided to the <code class="literal">inputDirectory</code> argument is a file or directory, it will be evaluated as follows depending on the additional arguments provided.
+				</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Directory</span></dt><dd><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th style="text-align: left; vertical-align: top; " id="idm45658742634608" scope="col">--explodedApp</th><th style="text-align: left; vertical-align: top; " id="idm45658742207328" scope="col">--sourceMode</th><th style="text-align: left; vertical-align: top; " id="idm45658742628736" scope="col">Neither Argument</th></tr></thead><tbody><tr><td style="text-align: left; vertical-align: top; " headers="idm45658742634608">
+											<p>
+												The directory is evaluated as a single application.
+											</p>
+											</td><td style="text-align: left; vertical-align: top; " headers="idm45658742207328">
+											<p>
+												The directory is evaluated as a single application.
+											</p>
+											</td><td style="text-align: left; vertical-align: top; " headers="idm45658742628736">
+											<p>
+												Each subdirectory is evaluated as an application.
+											</p>
+											</td></tr></tbody></table></div></dd><dt><span class="term">File</span></dt><dd><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th style="text-align: left; vertical-align: top; " id="idm45658742198544" scope="col">--explodedApp</th><th style="text-align: left; vertical-align: top; " id="idm45658747326752" scope="col">--sourceMode</th><th style="text-align: left; vertical-align: top; " id="idm45658748178944" scope="col">Neither Argument</th></tr></thead><tbody><tr><td style="text-align: left; vertical-align: top; " headers="idm45658742198544">
+											<p>
+												Argument is ignored; the file is evaluated as a single application.
+											</p>
+											</td><td style="text-align: left; vertical-align: top; " headers="idm45658747326752">
+											<p>
+												The file is evaluated as a compressed project.
+											</p>
+											</td><td style="text-align: left; vertical-align: top; " headers="idm45658748178944">
+											<p>
+												The file is evaluated as a single application.
+											</p>
+											</td></tr></tbody></table></div></dd></dl></div></section><section class="section" id="maven-output-argument_maven-guide"><div class="titlepage"><div><div><h3 class="title">A.1.3. Specifying the output directory</h3></div></div></div><p>
+					Specify the path to the directory to output the report information generated by MTR.
+				</p><div class="formalpara"><p class="title"><strong>Usage</strong></p><p>
+						
+<pre class="programlisting language-xml">&lt;outputDirectory&gt;
+    &lt;OUTPUT_REPORT_DIRECTORY&gt;
+&lt;/outputDirectory&gt;</pre>
+					</p></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+							If omitted, the report will be generated in the <code class="literal">{project.build.directory}/windup-report</code> directory.
+						</li><li class="listitem">
+							If the output directory exists, it will be overwritten based on the value of the <code class="literal">overwrite</code> argument. This argument defaults to <code class="literal">true</code>, and causes MTR to delete and recreate the directory.
+						</li></ul></div></section><section class="section" id="maven-source-argument_maven-guide"><div class="titlepage"><div><div><h3 class="title">A.1.4. Setting the source technology</h3></div></div></div><p>
+					A list of one or more source technologies, servers, platforms, or frameworks to migrate from. This argument, in conjunction with the <code class="literal">targetTechnologies</code> argument, helps to determine which rulesets are used.
+				</p><div class="formalpara"><p class="title"><strong>Usage</strong></p><p>
+						
+<pre class="programlisting language-xml">&lt;sourceTechnologies&gt;
+    &lt;source&gt;eap:6&lt;/source&gt;
+&lt;/sourceTechnologies&gt;</pre>
+					</p></div><p>
+					The <code class="literal">sourceTechnologies</code> argument now provides version support, which follows the <a class="link" href="http://maven.apache.org/enforcer/enforcer-rules/versionRanges.html">Maven version range syntax</a>. This instructs MTR to only run the rulesets matching the specified versions. For example, <code class="literal">&lt;source&gt;eap:5&lt;/source&gt;</code>.
+				</p></section><section class="section" id="maven-target-argument_maven-guide"><div class="titlepage"><div><div><h3 class="title">A.1.5. Setting the target argument</h3></div></div></div><p>
+					A list of one or more target technologies, servers, platforms, or frameworks to migrate to. This argument, in conjunction with the <code class="literal">sourceTechnologies</code> argument, helps to determine which rulesets are used. This argument is required
+				</p><div class="formalpara"><p class="title"><strong>Usage</strong></p><p>
+						
+<pre class="programlisting language-xml">&lt;targetTechnologies&gt;
+  &lt;target&gt;eap:7&lt;/target&gt;
+&lt;/targetTechnologies&gt;</pre>
+					</p></div><p>
+					The <code class="literal">targetTechnologies</code> argument now provides version support, which follows the <a class="link" href="http://maven.apache.org/enforcer/enforcer-rules/versionRanges.html">Maven Version Range Specification</a>. This instructs MTR to only run the rulesets matching the specified versions. For example, <code class="literal">&lt;target&gt;eap:7&lt;/target&gt;</code>.
+				</p><div class="admonition warning"><div class="admonition_header">Warning</div><div><p>
+						When migrating to JBoss EAP, be sure to specify the version in the target, for example, <code class="literal">eap:6</code>. Specifying only <code class="literal">eap</code> will run rulesets for all versions of JBoss EAP, including those not relevant to your migration path.
+					</p><p>
+						See <a class="link" href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_runtimes/1.2/html-single/introduction_to_the_migration_toolkit_for_runtimes/index#supported_configurations">Supported migration paths</a> in <span class="emphasis"><em>Introduction to the Migration Toolkit for Runtimes</em></span> for the appropriate JBoss EAP version.
+					</p></div></div></section><section class="section" id="maven-packages-argument_maven-guide"><div class="titlepage"><div><div><h3 class="title">A.1.6. Selecting packages</h3></div></div></div><p>
+					A list of the packages to be evaluated by MTR. It is highly recommended to use this argument.
+				</p><div class="formalpara"><p class="title"><strong>Usage</strong></p><p>
+						
+<pre class="programlisting language-xml">&lt;packages&gt;
+  &lt;package&gt;
+    &lt;PACKAGE_1&gt;
+  &lt;/package&gt;
+  &lt;package&gt;
+    &lt;PACKAGE_2&gt;
+  &lt;/package&gt;
+&lt;/packages&gt;</pre>
+					</p></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem"><p class="simpara">
+							In most cases, you are interested only in evaluating custom application class packages and not standard Java EE or third party packages. The <code class="literal">&lt;PACKAGE_N&gt;</code> argument is a package prefix; all subpackages will be scanned. For example, to scan the packages <code class="literal">com.mycustomapp</code> and <code class="literal">com.myotherapp</code>, use the following snippet in your <code class="literal">pom.xml</code>.
+						</p><pre class="programlisting language-xml">&lt;packages&gt;
+  &lt;package&gt;com.mycustomapp&lt;/package&gt;
+  &lt;package&gt;com.myotherapp&lt;/package&gt;
+&lt;/packages&gt;</pre></li><li class="listitem">
+							While you can provide package names for standard Java EE third party software like <code class="literal">org.apache</code>, it is usually best not to include them as they should not impact the migration effort.
+						</li></ul></div></section></section><section class="section" id="maven-logging-properties_maven-guide"><div class="titlepage"><div><div><h2 class="title">A.2. Default logging properties</h2></div></div></div><p>
+				The default <code class="literal">logging.properties</code> file included with the Maven plugin is provided below. This configuration omits many extraneous messages while allowing you to view the progress of the Maven plugin.
+			</p><div class="formalpara"><p class="title"><strong>Default <code class="literal">logging.properties</code> file</strong></p><p>
+					
+<pre class="screen"># Licensed under the Eclipse Public License version 1.0, available at
+# http://www.eclipse.org/legal/epl-v10.html
+#
+
+# Additional loggers to configure (the root logger is always configured)
+#loggers=
+handlers=java.util.logging.ConsoleHandler
+.level=INFO
+#java.util.logging.ConsoleHandler.level=INFO
+
+#loggers=org.jboss.forge,org.jboss.weld,org.xnio,org.jboss.forge,org.ocpsoft.rewrite,org.jboss.windup.graph.GraphModelScanner,org.jboss.windup.reporting.xml.ClassificationHandler,org.jboss.windup.graph.GraphTyp$
+org.jboss.forge.level=SEVERE
+org.janusgraph.level=SEVERE
+org.janusgraph.diskstorage.berkeleyje.BerkeleyJEKeyValueStore.level=SEVERE
+org.janusgraph.diskstorage.berkeleyje.level=SEVERE
+org.jboss.weld.level=SEVERE
+org.xnio.level=SEVERE
+org.jboss.forge.level=SEVERE
+org.ocpsoft.rewrite.level=SEVERE
+org.jboss.windup.graph.GraphModelScanner.level=SEVERE
+org.jboss.windup.reporting.xml.ClassificationHandler.level=SEVERE
+org.jboss.windup.graph.GraphTypeManager.level=SEVERE
+org.jboss.windup.graph.GraphContextImpl.level=SEVERE
+org.jboss.windup.rules.files.FileMapping.level=SEVERE
+org.jboss.windup.exec.level=SEVERE
+org.jboss.windup.config.level=SEVERE
+com.thinkaurelius.level=SEVERE
+org.jboss.windup=INFO</pre>
+				</p></div></section><section class="section" id="about-story-points_maven-guide"><div class="titlepage"><div><div><h2 class="title">A.3. About rule story points</h2></div></div></div><section class="section" id="what_are_story_points"><div class="titlepage"><div><div><h3 class="title">A.3.1. What are story points?</h3></div></div></div><p>
+					<span class="emphasis"><em>Story points</em></span> are an abstract metric commonly used in Agile software development to estimate the <span class="emphasis"><em>level of effort</em></span> needed to implement a feature or change.
+				</p><p>
+					The Migration Toolkit for Runtimes uses story points to express the level of effort needed to migrate particular application constructs, and the application as a whole. It does not necessarily translate to man-hours, but the value should be consistent across tasks.
+				</p></section><section class="section" id="how_story_points_are_estimated_in_rules"><div class="titlepage"><div><div><h3 class="title">A.3.2. How story points are estimated in rules</h3></div></div></div><p>
+					Estimating the level of effort for the story points for a rule can be tricky. The following are the general guidelines MTR uses when estimating the level of effort required for a rule.
+				</p><div class="informaltable"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 25%; " class="col_1"/><col style="width: 15%; " class="col_2"/><col style="width: 60%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm45658748157584" scope="col">Level of Effort</th><th align="left" valign="top" id="idm45658748156720" scope="col">Story Points</th><th align="left" valign="top" id="idm45658748155856" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45658748157584">
+								<p>
+									Information
+								</p>
+								</td><td align="left" valign="top" headers="idm45658748156720">
+								<p>
+									0
+								</p>
+								</td><td align="left" valign="top" headers="idm45658748155856">
+								<p>
+									An informational warning with very low or no priority for migration.
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm45658748157584">
+								<p>
+									Trivial
+								</p>
+								</td><td align="left" valign="top" headers="idm45658748156720">
+								<p>
+									1
+								</p>
+								</td><td align="left" valign="top" headers="idm45658748155856">
+								<p>
+									The migration is a trivial change or a simple library swap with no or minimal API changes.
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm45658748157584">
+								<p>
+									Complex
+								</p>
+								</td><td align="left" valign="top" headers="idm45658748156720">
+								<p>
+									3
+								</p>
+								</td><td align="left" valign="top" headers="idm45658748155856">
+								<p>
+									The changes required for the migration task are complex, but have a documented solution.
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm45658748157584">
+								<p>
+									Redesign
+								</p>
+								</td><td align="left" valign="top" headers="idm45658748156720">
+								<p>
+									5
+								</p>
+								</td><td align="left" valign="top" headers="idm45658748155856">
+								<p>
+									The migration task requires a redesign or a complete library change, with significant API changes.
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm45658748157584">
+								<p>
+									Rearchitecture
+								</p>
+								</td><td align="left" valign="top" headers="idm45658748156720">
+								<p>
+									7
+								</p>
+								</td><td align="left" valign="top" headers="idm45658748155856">
+								<p>
+									The migration requires a complete rearchitecture of the component or subsystem.
+								</p>
+								</td></tr><tr><td align="left" valign="top" headers="idm45658748157584">
+								<p>
+									Unknown
+								</p>
+								</td><td align="left" valign="top" headers="idm45658748156720">
+								<p>
+									13
+								</p>
+								</td><td align="left" valign="top" headers="idm45658748155856">
+								<p>
+									The migration solution is not known and may need a complete rewrite.
+								</p>
+								</td></tr></tbody></table></div></section><section class="section" id="task_category"><div class="titlepage"><div><div><h3 class="title">A.3.3. Task category</h3></div></div></div><p>
+					In addition to the level of effort, you can categorize migration tasks to indicate the severity of the task. The following categories are used to group issues to help prioritize the migration effort.
+				</p><div class="variablelist"><dl class="variablelist"><dt><span class="term">Mandatory</span></dt><dd>
+								The task must be completed for a successful migration. If the changes are not made, the resulting application will not build or run successfully. Examples include replacement of proprietary APIs that are not supported in the target platform.
+							</dd><dt><span class="term">Optional</span></dt><dd>
+								If the migration task is not completed, the application should work, but the results may not be optimal. If the change is not made at the time of migration, it is recommended to put it on the schedule soon after your migration is completed.
+							</dd><dt><span class="term">Potential</span></dt><dd>
+								The task should be examined during the migration process, but there is not enough detailed information to determine if the task is mandatory for the migration to succeed. An example of this would be migrating a third-party proprietary type where there is no directly compatible type.
+							</dd><dt><span class="term">Information</span></dt><dd>
+								The task is included to inform you of the existence of certain files. These may need to be examined or modified as part of the modernization effort, but changes are typically not required.
+							</dd></dl></div><p>
+					For more information on categorizing tasks, see <a class="link" href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_runtimes/1.2/html-single/rules_development_guide/rule_categories_rules-development-guide#rule_categories_rules-development-guide">Using custom rule categories</a>.
+				</p></section></section><section class="section" id="additional_resources"><div class="titlepage"><div><div><h2 class="title">A.4. Additional resources</h2></div></div></div><section class="section" id="get-involved_maven-guide"><div class="titlepage"><div><div><h3 class="title">A.4.1. Contributing to the project</h3></div></div></div><p>
+					To help the Migration Toolkit for Runtimes cover most application constructs and server configurations, including yours, you can help with any of the following items:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+							Send an email to <a class="link" href="mailto:jboss-migration-feedback@redhat.com">jboss-migration-feedback@redhat.com</a> and let us know what MTR migration rules must cover.
+						</li><li class="listitem">
+							Provide example applications to test migration rules.
+						</li><li class="listitem"><p class="simpara">
+							Identify application components and problem areas that might be difficult to migrate:
+						</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+									Write a short description of the problem migration areas.
+								</li><li class="listitem">
+									Write a brief overview describing how to solve the problem in migration areas.
+								</li></ul></div></li><li class="listitem">
+							Try Migration Toolkit for Runtimes on your application. Make sure to report any issues you meet.
+						</li><li class="listitem"><p class="simpara">
+							Contribute to the Migration Toolkit for Runtimes rules repository:
+						</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+									Write a Migration Toolkit for Runtimes rule to identify or automate a migration process.
+								</li><li class="listitem">
+									Create a test for the new rule.
+								</li></ul></div><p class="simpara">
+							For more information, see <a class="link" href="https://access.redhat.com/documentation/en-us/migration_toolkit_for_runtimes/1.2/html-single/rules_development_guide"><span class="emphasis"><em>Rule Development Guide</em></span></a>.
+						</p></li><li class="listitem"><p class="simpara">
+							Contribute to the project source code:
+						</p><div class="itemizedlist"><ul class="itemizedlist" type="circle"><li class="listitem">
+									Create a core rule.
+								</li><li class="listitem">
+									Improve MTR performance or efficiency.
+								</li></ul></div></li></ul></div><p>
+					Any level of involvement is greatly appreciated!
+				</p></section><section class="section" id="important-links_maven-guide"><div class="titlepage"><div><div><h3 class="title">A.4.2. Migration Toolkit for Runtimes development resources</h3></div></div></div><p>
+					Use the following resources to learn and contribute to the Migration Toolkit for Runtimes development:
+				</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+							MTR forums: <a class="link" href="https://developer.jboss.org/en/windup">https://developer.jboss.org/en/windup</a>
+						</li><li class="listitem">
+							Jira issue tracker: <a class="link" href="https://issues.redhat.com/projects/WINDUP">https://issues.redhat.com/projects/WINDUP</a>
+						</li><li class="listitem">
+							MTR mailing list: <a class="link" href="mailto:jboss-migration-feedback@redhat.com">jboss-migration-feedback@redhat.com</a>
+						</li></ul></div></section><section class="section" id="reporting_issues"><div class="titlepage"><div><div><h3 class="title">A.4.3. Reporting issues</h3></div></div></div><p>
+					MTR uses Jira as its issue tracking system. If you encounter an issue executing MTR, submit a <a class="link" href="https://issues.redhat.com/projects/WINDUP">Jira issue</a>.
+				</p><p>
+					<br/>
+				</p><p>
+					<span class="emphasis"><em><span class="right right">Revised on 2024-09-05 13:55:57 UTC</span></em></span>
+				</p></section></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm45658742664448"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+		Copyright <span class="trademark"/>© 2024 Red Hat, Inc.
+	</div><div class="para">
+		The text of and illustrations in this document are licensed by Red Hat under a Creative Commons Attribution–Share Alike 3.0 Unported license ("CC-BY-SA"). An explanation of CC-BY-SA is available at <a class="uri" href="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</a>. In accordance with CC-BY-SA, if you distribute this document or an adaptation of it, you must provide the URL for the original version.
+	</div><div class="para">
+		Red Hat, as the licensor of this document, waives the right to enforce, and agrees not to assert, Section 4d of CC-BY-SA to the fullest extent permitted by applicable law.
+	</div><div class="para">
+		Red Hat, Red Hat Enterprise Linux, the Shadowman logo, the Red Hat logo, JBoss, OpenShift, Fedora, the Infinity logo, and RHCE are trademarks of Red Hat, Inc., registered in the United States and other countries.
+	</div><div class="para">
+		<span class="trademark">Linux</span>® is the registered trademark of Linus Torvalds in the United States and other countries.
+	</div><div class="para">
+		<span class="trademark">Java</span>® is a registered trademark of Oracle and/or its affiliates.
+	</div><div class="para">
+		<span class="trademark">XFS</span>® is a trademark of Silicon Graphics International Corp. or its subsidiaries in the United States and/or other countries.
+	</div><div class="para">
+		<span class="trademark">MySQL</span>® is a registered trademark of MySQL AB in the United States, the European Union and other countries.
+	</div><div class="para">
+		<span class="trademark">Node.js</span>® is an official trademark of Joyent. Red Hat is not formally related to or endorsed by the official Joyent Node.js open source or commercial project.
+	</div><div class="para">
+		The <span class="trademark">OpenStack</span>® Word Mark and OpenStack logo are either registered trademarks/service marks or trademarks/service marks of the OpenStack Foundation, in the United States and other countries and are used with the OpenStack Foundation's permission. We are not affiliated with, endorsed or sponsored by the OpenStack Foundation, or the OpenStack community.
+	</div><div class="para">
+		All other trademarks are the property of their respective owners.
+	</div></div></div></div></div></div><script type="text/javascript">
+                        jQuery(document).ready(function() {
+                            initSwitchery();
+                            jQuery('pre[class*="language-"]').each(function(i, block){hljs.highlightBlock(block);});
+                        });
+                    </script></body></html>
