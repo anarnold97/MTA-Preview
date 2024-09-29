@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Installing and using the Migration Toolkit for Virtualization</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.2"/><meta name="description" content="The Migration Toolkit for Virtualization (MTV) enables you to migrate virtual machines from VMware vSphere, Red Hat Virtualization, or OpenStack to OpenShift Virtualization running on Red Hat OpenShift."/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm46600552595888"><div class="titlepage"><div><div class="producttitle"><span class="productname">Migration Toolkit for Virtualization</span> <span class="productnumber">2.6</span></div><div><h1 class="title">Installing and using the Migration Toolkit for Virtualization</h1></div><div><h2 class="subtitle">Migrating from VMware vSphere or Red Hat Virtualization to Red Hat OpenShift Virtualization</h2></div><div><div xml:lang="en-US" class="authorgroup"><div class="author"><h3 class="author"><span class="firstname">Red Hat Modernization and Migration</span> <span class="surname">Documentation Team</span></h3><code class="email"><a class="email" href="mailto:ccs-mms-docs@redhat.com">ccs-mms-docs@redhat.com</a></code></div></div></div><div><a href="#idm46600549445952">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
+<html xmlns="http://www.w3.org/1999/xhtml" class="chrometwo"><head><title>Installing and using the Migration Toolkit for Virtualization</title><link rel="stylesheet" type="text/css" href="Common_Content/css/default.css"/><meta name="generator" content="publican v4.3.2"/><meta name="description" content="The Migration Toolkit for Virtualization (MTV) enables you to migrate virtual machines from VMware vSphere, Red Hat Virtualization, or OpenStack to OpenShift Virtualization running on Red Hat OpenShift."/><link rel="next" href="#making-open-source-more-inclusive" title="Making open source more inclusive"/><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><script type="text/javascript" src="Common_Content/scripts/jquery-1.7.1.min.js"> </script><script type="text/javascript" src="Common_Content/scripts/utils.js"> </script><script type="text/javascript" src="Common_Content/scripts/highlight.js/highlight.pack.js"> </script></head><body><div id="chrometwo"><div id="main"><div xml:lang="en-US" class="book" id="idm45194429428592"><div class="titlepage"><div><div class="producttitle"><span class="productname">Migration Toolkit for Virtualization</span> <span class="productnumber">2.6</span></div><div><h1 class="title">Installing and using the Migration Toolkit for Virtualization</h1></div><div><h2 class="subtitle">Migrating from VMware vSphere or Red Hat Virtualization to Red Hat OpenShift Virtualization</h2></div><div><div xml:lang="en-US" class="authorgroup"><div class="author"><h3 class="author"><span class="firstname">Red Hat Modernization and Migration</span> <span class="surname">Documentation Team</span></h3><code class="email"><a class="email" href="mailto:ccs-mms-docs@redhat.com">ccs-mms-docs@redhat.com</a></code></div></div></div><div><a href="#idm45194420727952">Legal Notice</a></div><div><div class="abstract"><p class="title"><strong>Abstract</strong></p><div class="para">
 				The Migration Toolkit for Virtualization (MTV) enables you to migrate virtual machines from VMware vSphere, Red Hat Virtualization, or OpenStack to OpenShift Virtualization running on Red Hat OpenShift.
-			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="preface"><a href="#making-open-source-more-inclusive">Making open source more inclusive</a></span></li><li><span class="chapter"><a href="#about-mtv_mtv">1. About the Migration Toolkit for Virtualization</a></span><ul><li><span class="section"><a href="#about-cold-warm-migration_mtv">1.1. About cold and warm migration</a></span><ul><li><span class="section"><a href="#cold-migration_mtv">1.1.1. Cold migration</a></span></li><li><span class="section"><a href="#warm-migration_mtv">1.1.2. Warm migration</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#prerequisites_mtv">2. Prerequisites</a></span><ul><li><span class="section"><a href="#software-requirements_mtv">2.1. Software requirements</a></span></li><li><span class="section"><a href="#about-storage_mtv">2.2. Storage support and default modes</a></span></li><li><span class="section"><a href="#network-prerequisites_mtv">2.3. Network prerequisites</a></span><ul><li><span class="section"><a href="#ports_mtv">2.3.1. Ports</a></span></li></ul></li><li><span class="section"><a href="#source-vm-prerequisites_mtv">2.4. Source virtual machine prerequisites</a></span></li><li><span class="section"><a href="#rhv-prerequisites_mtv">2.5. Red Hat Virtualization prerequisites</a></span></li><li><span class="section"><a href="#openstack-prerequisites_mtv">2.6. OpenStack prerequisites</a></span><ul><li><span class="section"><a href="#additional-authentication-for-osp_mtv">2.6.1. Additional authentication methods for migrations with OpenStack source providers</a></span></li></ul></li><li><span class="section"><a href="#vmware-prerequisites_mtv">2.7. VMware prerequisites</a></span><ul><li><span class="section"><a href="#creating-vddk-image_mtv">2.7.1. Creating a VDDK image</a></span></li><li><span class="section"><a href="#increasing-nfc-memory-vmware-host_mtv">2.7.2. Increasing the NFC service memory of an ESXi host</a></span></li></ul></li><li><span class="section"><a href="#ova-prerequisites_mtv">2.8. Open Virtual Appliance (OVA) prerequisites</a></span></li><li><span class="section"><a href="#compatibility-guidelines_mtv">2.9. Software compatibility guidelines</a></span><ul><li><span class="section"><a href="#openshift-operator-life-cycles">2.9.1. OpenShift Operator Life Cycles</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#installing-the-operator_mtv">3. Installing and configuring the MTV Operator</a></span><ul><li><span class="section"><a href="#installing-mtv-operator_web">3.1. Installing the MTV Operator by using the Red Hat OpenShift web console</a></span></li><li><span class="section"><a href="#installing-mtv-operator_cli">3.2. Installing the MTV Operator from the command line interface</a></span></li><li><span class="section"><a href="#configuring-mtv-operator_mtv">3.3. Configuring the MTV Operator</a></span></li></ul></li><li><span class="chapter"><a href="#migrating-vms-web-console_mtv">4. Migrating virtual machines by using the Red Hat OpenShift web console</a></span><ul><li><span class="section"><a href="#mtv-ui_mtv">4.1. The MTV user interface</a></span></li><li><span class="section"><a href="#mtv-overview-page_mtv">4.2. The MTV Overview page</a></span><ul><li><span class="section"><a href="#overview-tab_mtv">4.2.1. Overview tab</a></span></li><li><span class="section"><a href="#yaml-tab_mtv">4.2.2. YAML tab</a></span></li><li><span class="section"><a href="#metrics-tab_mtv">4.2.3. Metrics tab</a></span></li></ul></li><li><span class="section"><a href="#mtv-settings_mtv">4.3. Configuring MTV settings</a></span></li><li><span class="section"><a href="#adding-providers">4.4. Adding providers</a></span><ul><li><span class="section"><a href="#adding-source-providers">4.4.1. Adding source providers</a></span></li><li><span class="section"><a href="#adding-destination-providers">4.4.2. Adding destination providers</a></span></li></ul></li><li><span class="section"><a href="#creating-migration-plans-ui">4.5. Creating migration plans</a></span><ul><li><span class="section"><a href="#creating-migration-plan-2-6-3_provider">4.5.1. Creating a migration plan starting with a source provider</a></span></li><li><span class="section"><a href="#creating-migration-plan-2-6-3_vms">4.5.2. Creating a migration plan starting with specific VMs</a></span></li></ul></li><li><span class="section"><a href="#running-migration-plan_mtv">4.6. Running a migration plan</a></span></li><li><span class="section"><a href="#migration-plan-options-ui_mtv">4.7. Migration plan options</a></span></li><li><span class="section"><a href="#canceling-migration-ui_mtv">4.8. Canceling a migration</a></span></li></ul></li><li><span class="chapter"><a href="#migrating-virtual-machines-from-the-command-line_mtv">5. Migrating virtual machines from the command line</a></span><ul><li><span class="section"><a href="#non-admin-permissions_cli">5.1. Permissions needed by non-administrators to work with migration plan components</a></span></li><li><span class="section"><a href="#retrieving-vmware-moref_mtv">5.2. Retrieving a VMware vSphere moRef</a></span></li><li><span class="section"><a href="#migrating-virtual-machines_mtv">5.3. Migrating virtual machines</a></span><ul><li><span class="section"><a href="#new-migrating-virtual-machines-cli_vmware">5.3.1. Migrating from a VMware vSphere source provider</a></span></li><li><span class="section"><a href="#new-migrating-virtual-machines-cli_rhv">5.3.2. Migrating from a Red Hat Virtualization source provider</a></span></li><li><span class="section"><a href="#new-migrating-virtual-machines-cli_ostack">5.3.3. Migrating from an OpenStack source provider</a></span></li><li><span class="section"><a href="#new-migrating-virtual-machines-cli_ova">5.3.4. Migrating from an Open Virtual Appliance (OVA) source provider</a></span></li><li><span class="section"><a href="#new-migrating-virtual-machines-cli_cnv">5.3.5. Migrating from a Red Hat OpenShift Virtualization source provider</a></span></li></ul></li><li><span class="section"><a href="#canceling-migration-cli_mtv">5.4. Canceling a migration</a></span></li></ul></li><li><span class="chapter"><a href="#advanced-migration-options_mtv">6. Advanced migration options</a></span><ul><li><span class="section"><a href="#changing-precopy-intervals_mtv">6.1. Changing precopy intervals for warm migration</a></span></li><li><span class="section"><a href="#creating-custom-rules-for-validation-service">6.2. Creating custom rules for the Validation service</a></span><ul><li><span class="section"><a href="#about-rego-files_mtv">6.2.1. About Rego files</a></span></li><li><span class="section"><a href="#accessing-default-validation-rules_mtv">6.2.2. Checking the default validation rules</a></span></li><li><span class="section"><a href="#creating-validation-rule_mtv">6.2.3. Creating a validation rule</a></span></li><li><span class="section"><a href="#updating-inventory-rules-version_mtv">6.2.4. Updating the inventory rules version</a></span></li></ul></li><li><span class="section"><a href="#retrieving-validation-service-json_mtv">6.3. Retrieving the Inventory service JSON</a></span></li><li><span class="section"><a href="#adding-hooks-migration-plan-using-api">6.4. Adding hooks to a migration plan</a></span><ul><li><span class="section"><a href="#about-api-hooks-in-migration-plans_mtv">6.4.1. API-based hooks for MTV migration plans</a></span></li><li><span class="section"><a href="#adding-hook-crs-migration-plans-api_mtv">6.4.2. Adding Hook CRs to a VM migration by using the MTV API</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#upgrading-mtv-ui_mtv">7. Upgrading the Migration Toolkit for Virtualization</a></span></li><li><span class="chapter"><a href="#uninstalling-mtv_mtv">8. Uninstalling the Migration Toolkit for Virtualization</a></span><ul><li><span class="section"><a href="#uninstalling-mtv-ui_mtv">8.1. Uninstalling MTV by using the Red Hat OpenShift web console</a></span></li><li><span class="section"><a href="#uninstalling-mtv-cli_mtv">8.2. Uninstalling MTV from the command line interface</a></span></li></ul></li><li><span class="chapter"><a href="#mtv-performance-recommendation_mtv">9. MTV performance recommendations</a></span><ul><li><span class="section"><a href="#mtv-performance-storage-network_mtv">9.1. Ensure fast storage and network speeds</a></span></li><li><span class="section"><a href="#mtv-performance-datastore-read_mtv">9.2. Ensure fast datastore read speeds to ensure efficient and performant migrations.</a></span></li><li><span class="section"><a href="#mtv-performance-endpoint-types_mtv">9.3. Endpoint types </a></span></li><li><span class="section"><a href="#mtv-performance-network-loads_mtv">9.4. Avoid additional network load on VMware networks</a></span></li><li><span class="section"><a href="#mtv-performance-concurrent-disk_mtv">9.5. Control maximum concurrent disk migrations per ESXi host.</a></span></li><li><span class="section"><a href="#mtv-performance-multiple-hosts_mtv">9.6. Migrations complete faster using multiple hosts.</a></span></li><li><span class="section"><a href="#mtv-performance-bios-profile_mtv">9.7. Set ESXi hosts BIOS profile and ESXi Host Power Management for High Performance</a></span></li><li><span class="section"><a href="#mtv-performance-multiple-migration-plans_mtv">9.8. Multiple migration plans compared to a single large migration plan</a></span></li><li><span class="section"><a href="#mtv-performance-max-values_mtv">9.9. Maximum values tested</a></span></li></ul></li><li><span class="chapter"><a href="#troubleshooting_mtv">10. Troubleshooting</a></span><ul><li><span class="section"><a href="#error-messages_mtv">10.1. Error messages</a></span></li><li><span class="section"><a href="#using-must-gather_mtv">10.2. Using the must-gather tool</a></span></li><li><span class="section"><a href="#architecture_mtv">10.3. Architecture</a></span><ul><li><span class="section"><a href="#mtv-resources-and-services_mtv">10.3.1. MTV custom resources and services</a></span></li><li><span class="section"><a href="#mtv-workflow_mtv">10.3.2. High-level migration workflow</a></span></li><li><span class="section"><a href="#virt-migration-workflow_mtv">10.3.3. Detailed migration workflow</a></span></li></ul></li><li><span class="section"><a href="#logs-and-crs_mtv">10.4. Logs and custom resources</a></span><ul><li><span class="section"><a href="#collected-logs-cr-info_mtv">10.4.1. Collected logs and custom resource information</a></span></li><li><span class="section"><a href="#accessing-logs-ui_mtv">10.4.2. Downloading logs and custom resource information from the web console</a></span></li><li><span class="section"><a href="#accessing-logs-cli_mtv">10.4.3. Accessing logs and custom resource information from the command line interface</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#additional_information">11. Additional information</a></span><ul><li><span class="section"><a href="#mtv-performance-addendum_mtv">11.1. MTV performance addendum</a></span><ul><li><span class="section"><a href="#mtv-single-esxi-performance_mtv">11.1.1. Single ESXi performance</a></span></li><li><span class="section"><a href="#mtv-different-migration-network_mtv">11.1.2. Different migration network performance</a></span></li><li><span class="section"><a href="#mtv-multi-esxi-single-datastore_mtv">11.1.3. Multi ESXi hosts and single data store</a></span></li></ul></li></ul></li></ul></div><section class="preface" id="making-open-source-more-inclusive"><div class="titlepage"><div><div><h1 class="title">Making open source more inclusive</h1></div></div></div><p>
+			</div></div></div></div><hr/></div><div class="toc"><ul class="toc"><li><span class="preface"><a href="#making-open-source-more-inclusive">Making open source more inclusive</a></span></li><li><span class="chapter"><a href="#about-mtv_mtv">1. About the Migration Toolkit for Virtualization</a></span><ul><li><span class="section"><a href="#about-cold-warm-migration_mtv">1.1. About cold and warm migration</a></span><ul><li><span class="section"><a href="#cold-migration_mtv">1.1.1. Cold migration</a></span></li><li><span class="section"><a href="#warm-migration_mtv">1.1.2. Warm migration</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#prerequisites_mtv">2. Prerequisites</a></span><ul><li><span class="section"><a href="#software-requirements_mtv">2.1. Software requirements</a></span></li><li><span class="section"><a href="#about-storage_mtv">2.2. Storage support and default modes</a></span></li><li><span class="section"><a href="#network-prerequisites_mtv">2.3. Network prerequisites</a></span><ul><li><span class="section"><a href="#ports_mtv">2.3.1. Ports</a></span></li></ul></li><li><span class="section"><a href="#source-vm-prerequisites_mtv">2.4. Source virtual machine prerequisites</a></span></li><li><span class="section"><a href="#rhv-prerequisites_mtv">2.5. Red Hat Virtualization prerequisites</a></span></li><li><span class="section"><a href="#openstack-prerequisites_mtv">2.6. OpenStack prerequisites</a></span><ul><li><span class="section"><a href="#additional-authentication-for-osp_mtv">2.6.1. Additional authentication methods for migrations with OpenStack source providers</a></span></li></ul></li><li><span class="section"><a href="#vmware-prerequisites_mtv">2.7. VMware prerequisites</a></span><ul><li><span class="section"><a href="#creating-vddk-image_mtv">2.7.1. Creating a VDDK image</a></span></li><li><span class="section"><a href="#increasing-nfc-memory-vmware-host_mtv">2.7.2. Increasing the NFC service memory of an ESXi host</a></span></li></ul></li><li><span class="section"><a href="#ova-prerequisites_mtv">2.8. Open Virtual Appliance (OVA) prerequisites</a></span></li><li><span class="section"><a href="#compatibility-guidelines_mtv">2.9. Software compatibility guidelines</a></span><ul><li><span class="section"><a href="#openshift-operator-life-cycles">2.9.1. OpenShift Operator Life Cycles</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#installing-the-operator_mtv">3. Installing and configuring the MTV Operator</a></span><ul><li><span class="section"><a href="#installing-mtv-operator_web">3.1. Installing the MTV Operator by using the Red Hat OpenShift web console</a></span></li><li><span class="section"><a href="#installing-mtv-operator_cli">3.2. Installing the MTV Operator from the command line interface</a></span></li><li><span class="section"><a href="#configuring-mtv-operator_mtv">3.3. Configuring the MTV Operator</a></span></li></ul></li><li><span class="chapter"><a href="#migrating-vms-web-console_mtv">4. Migrating virtual machines by using the Red Hat OpenShift web console</a></span><ul><li><span class="section"><a href="#mtv-ui_mtv">4.1. The MTV user interface</a></span></li><li><span class="section"><a href="#mtv-overview-page_mtv">4.2. The MTV Overview page</a></span><ul><li><span class="section"><a href="#overview-tab_mtv">4.2.1. Overview tab</a></span></li><li><span class="section"><a href="#yaml-tab_mtv">4.2.2. YAML tab</a></span></li><li><span class="section"><a href="#metrics-tab_mtv">4.2.3. Metrics tab</a></span></li></ul></li><li><span class="section"><a href="#mtv-settings_mtv">4.3. Configuring MTV settings</a></span></li><li><span class="section"><a href="#adding-providers">4.4. Adding providers</a></span><ul><li><span class="section"><a href="#adding-source-providers">4.4.1. Adding source providers</a></span></li><li><span class="section"><a href="#adding-destination-providers">4.4.2. Adding destination providers</a></span></li></ul></li><li><span class="section"><a href="#creating-migration-plans-ui">4.5. Creating migration plans</a></span><ul><li><span class="section"><a href="#creating-migration-plan-2-6-3_provider">4.5.1. Creating a migration plan starting with a source provider</a></span></li><li><span class="section"><a href="#creating-migration-plan-2-6-3_vms">4.5.2. Creating a migration plan starting with specific VMs</a></span></li></ul></li><li><span class="section"><a href="#running-migration-plan_mtv">4.6. Running a migration plan</a></span></li><li><span class="section"><a href="#migration-plan-options-ui_mtv">4.7. Migration plan options</a></span></li><li><span class="section"><a href="#canceling-migration-ui_mtv">4.8. Canceling a migration</a></span></li></ul></li><li><span class="chapter"><a href="#migrating-virtual-machines-from-the-command-line_mtv">5. Migrating virtual machines from the command line</a></span><ul><li><span class="section"><a href="#non-admin-permissions_cli">5.1. Permissions needed by non-administrators to work with migration plan components</a></span></li><li><span class="section"><a href="#retrieving-vmware-moref_mtv">5.2. Retrieving a VMware vSphere moRef</a></span></li><li><span class="section"><a href="#migrating-virtual-machines_mtv">5.3. Migrating virtual machines</a></span><ul><li><span class="section"><a href="#new-migrating-virtual-machines-cli_vmware">5.3.1. Migrating from a VMware vSphere source provider</a></span></li><li><span class="section"><a href="#new-migrating-virtual-machines-cli_rhv">5.3.2. Migrating from a Red Hat Virtualization source provider</a></span></li><li><span class="section"><a href="#new-migrating-virtual-machines-cli_ostack">5.3.3. Migrating from an OpenStack source provider</a></span></li><li><span class="section"><a href="#new-migrating-virtual-machines-cli_ova">5.3.4. Migrating from an Open Virtual Appliance (OVA) source provider</a></span></li><li><span class="section"><a href="#new-migrating-virtual-machines-cli_cnv">5.3.5. Migrating from a Red Hat OpenShift Virtualization source provider</a></span></li></ul></li><li><span class="section"><a href="#canceling-migration-cli_mtv">5.4. Canceling a migration</a></span></li></ul></li><li><span class="chapter"><a href="#advanced-migration-options_mtv">6. Advanced migration options</a></span><ul><li><span class="section"><a href="#changing-precopy-intervals_mtv">6.1. Changing precopy intervals for warm migration</a></span></li><li><span class="section"><a href="#creating-custom-rules-for-validation-service">6.2. Creating custom rules for the Validation service</a></span><ul><li><span class="section"><a href="#about-rego-files_mtv">6.2.1. About Rego files</a></span></li><li><span class="section"><a href="#accessing-default-validation-rules_mtv">6.2.2. Checking the default validation rules</a></span></li><li><span class="section"><a href="#creating-validation-rule_mtv">6.2.3. Creating a validation rule</a></span></li><li><span class="section"><a href="#updating-inventory-rules-version_mtv">6.2.4. Updating the inventory rules version</a></span></li></ul></li><li><span class="section"><a href="#retrieving-validation-service-json_mtv">6.3. Retrieving the Inventory service JSON</a></span></li><li><span class="section"><a href="#adding-hooks-migration-plan-using-api">6.4. Adding hooks to a migration plan</a></span><ul><li><span class="section"><a href="#about-api-hooks-in-migration-plans_mtv">6.4.1. API-based hooks for MTV migration plans</a></span></li><li><span class="section"><a href="#adding-hook-crs-migration-plans-api_mtv">6.4.2. Adding Hook CRs to a VM migration by using the MTV API</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#upgrading-mtv-ui_mtv">7. Upgrading the Migration Toolkit for Virtualization</a></span></li><li><span class="chapter"><a href="#uninstalling-mtv_mtv">8. Uninstalling the Migration Toolkit for Virtualization</a></span><ul><li><span class="section"><a href="#uninstalling-mtv-ui_mtv">8.1. Uninstalling MTV by using the Red Hat OpenShift web console</a></span></li><li><span class="section"><a href="#uninstalling-mtv-cli_mtv">8.2. Uninstalling MTV from the command line interface</a></span></li></ul></li><li><span class="chapter"><a href="#mtv-performance-recommendation_mtv">9. MTV performance recommendations</a></span><ul><li><span class="section"><a href="#mtv-performance-storage-network_mtv">9.1. Ensure fast storage and network speeds</a></span></li><li><span class="section"><a href="#mtv-performance-datastore-read_mtv">9.2. Ensure fast datastore read speeds to ensure efficient and performant migrations.</a></span></li><li><span class="section"><a href="#mtv-performance-endpoint-types_mtv">9.3. Endpoint types </a></span></li><li><span class="section"><a href="#mtv-performance-network-loads_mtv">9.4. Avoid additional network load on VMware networks</a></span></li><li><span class="section"><a href="#mtv-performance-concurrent-disk_mtv">9.5. Control maximum concurrent disk migrations per ESXi host.</a></span></li><li><span class="section"><a href="#mtv-performance-multiple-vms-concurrently_mtv">9.6. Migrations complete faster when migrating multiple VMs concurrently</a></span></li><li><span class="section"><a href="#mtv-performance-multiple-hosts_mtv">9.7. Migrations complete faster using multiple hosts.</a></span></li><li><span class="section"><a href="#mtv-performance-bios-profile_mtv">9.8. Set ESXi hosts BIOS profile and ESXi Host Power Management for High Performance</a></span></li><li><span class="section"><a href="#mtv-performance-multiple-migration-plans_mtv">9.9. Multiple migration plans compared to a single large migration plan</a></span></li><li><span class="section"><a href="#mtv-performance-max-values_mtv">9.10. Maximum values tested</a></span></li></ul></li><li><span class="chapter"><a href="#troubleshooting_mtv">10. Troubleshooting</a></span><ul><li><span class="section"><a href="#error-messages_mtv">10.1. Error messages</a></span></li><li><span class="section"><a href="#using-must-gather_mtv">10.2. Using the must-gather tool</a></span></li><li><span class="section"><a href="#architecture_mtv">10.3. Architecture</a></span><ul><li><span class="section"><a href="#mtv-resources-and-services_mtv">10.3.1. MTV custom resources and services</a></span></li><li><span class="section"><a href="#mtv-workflow_mtv">10.3.2. High-level migration workflow</a></span></li><li><span class="section"><a href="#virt-migration-workflow_mtv">10.3.3. Detailed migration workflow</a></span></li></ul></li><li><span class="section"><a href="#logs-and-crs_mtv">10.4. Logs and custom resources</a></span><ul><li><span class="section"><a href="#collected-logs-cr-info_mtv">10.4.1. Collected logs and custom resource information</a></span></li><li><span class="section"><a href="#accessing-logs-ui_mtv">10.4.2. Downloading logs and custom resource information from the web console</a></span></li><li><span class="section"><a href="#accessing-logs-cli_mtv">10.4.3. Accessing logs and custom resource information from the command line interface</a></span></li></ul></li></ul></li><li><span class="chapter"><a href="#additional_information">11. Additional information</a></span><ul><li><span class="section"><a href="#mtv-performance-addendum_mtv">11.1. MTV performance addendum</a></span><ul><li><span class="section"><a href="#mtv-single-esxi-performance_mtv">11.1.1. Single ESXi performance</a></span></li><li><span class="section"><a href="#mtv-different-migration-network_mtv">11.1.2. Different migration network performance</a></span></li><li><span class="section"><a href="#mtv-multi-esxi-single-datastore_mtv">11.1.3. Multi ESXi hosts and single data store</a></span></li></ul></li></ul></li></ul></div><section class="preface" id="making-open-source-more-inclusive"><div class="titlepage"><div><div><h1 class="title">Making open source more inclusive</h1></div></div></div><p>
 			Red Hat is committed to replacing problematic language in our code, documentation, and web properties. We are beginning with these four terms: master, slave, blacklist, and whitelist. Because of the enormity of this endeavor, these changes will be implemented gradually over several upcoming releases. For more details, see <a class="link" href="https://www.redhat.com/en/blog/making-open-source-more-inclusive-eradicating-problematic-language">our CTO Chris Wright’s message</a>.
 		</p></section><section class="chapter" id="about-mtv_mtv"><div class="titlepage"><div><div><h1 class="title">Chapter 1. About the Migration Toolkit for Virtualization</h1></div></div></div><p>
 			You can use the Migration Toolkit for Virtualization (MTV) to migrate virtual machines from the following source providers to OpenShift Virtualization destination providers:
@@ -58,135 +58,135 @@
 				You must install <a class="link" href="#compatibility-guidelines_mtv" title="2.9. Software compatibility guidelines">compatible versions</a> of Red Hat OpenShift and OpenShift Virtualization.
 			</p></section><section class="section" id="about-storage_mtv"><div class="titlepage"><div><div><h2 class="title">2.2. Storage support and default modes</h2></div></div></div><p>
 				MTV uses the following default volume and access modes for supported storage.
-			</p><div class="table" id="idm46600557090336"><p class="title"><strong>Table 2.1. Default volume and access modes</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm46600553630320" scope="col">Provisioner</th><th align="left" valign="top" id="idm46600553629232" scope="col">Volume mode</th><th align="left" valign="top" id="idm46600553628144" scope="col">Access mode</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46600553630320">
+			</p><div class="table" id="idm45194428346224"><p class="title"><strong>Table 2.1. Default volume and access modes</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm45194429877280" scope="col">Provisioner</th><th align="left" valign="top" id="idm45194429876192" scope="col">Volume mode</th><th align="left" valign="top" id="idm45194428060608" scope="col">Access mode</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45194429877280">
 							<p>
 								kubernetes.io/aws-ebs
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553629232">
+							</td><td align="left" valign="top" headers="idm45194429876192">
 							<p>
 								Block
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553628144">
+							</td><td align="left" valign="top" headers="idm45194428060608">
 							<p>
 								ReadWriteOnce
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600553630320">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194429877280">
 							<p>
 								kubernetes.io/azure-disk
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553629232">
+							</td><td align="left" valign="top" headers="idm45194429876192">
 							<p>
 								Block
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553628144">
+							</td><td align="left" valign="top" headers="idm45194428060608">
 							<p>
 								ReadWriteOnce
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600553630320">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194429877280">
 							<p>
 								kubernetes.io/azure-file
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553629232">
+							</td><td align="left" valign="top" headers="idm45194429876192">
 							<p>
 								Filesystem
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553628144">
+							</td><td align="left" valign="top" headers="idm45194428060608">
 							<p>
 								ReadWriteMany
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600553630320">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194429877280">
 							<p>
 								kubernetes.io/cinder
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553629232">
+							</td><td align="left" valign="top" headers="idm45194429876192">
 							<p>
 								Block
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553628144">
+							</td><td align="left" valign="top" headers="idm45194428060608">
 							<p>
 								ReadWriteOnce
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600553630320">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194429877280">
 							<p>
 								kubernetes.io/gce-pd
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553629232">
+							</td><td align="left" valign="top" headers="idm45194429876192">
 							<p>
 								Block
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553628144">
+							</td><td align="left" valign="top" headers="idm45194428060608">
 							<p>
 								ReadWriteOnce
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600553630320">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194429877280">
 							<p>
 								kubernetes.io/hostpath-provisioner
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553629232">
+							</td><td align="left" valign="top" headers="idm45194429876192">
 							<p>
 								Filesystem
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553628144">
+							</td><td align="left" valign="top" headers="idm45194428060608">
 							<p>
 								ReadWriteOnce
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600553630320">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194429877280">
 							<p>
 								manila.csi.openstack.org
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553629232">
+							</td><td align="left" valign="top" headers="idm45194429876192">
 							<p>
 								Filesystem
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553628144">
+							</td><td align="left" valign="top" headers="idm45194428060608">
 							<p>
 								ReadWriteMany
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600553630320">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194429877280">
 							<p>
 								openshift-storage.cephfs.csi.ceph.com
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553629232">
+							</td><td align="left" valign="top" headers="idm45194429876192">
 							<p>
 								Filesystem
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553628144">
+							</td><td align="left" valign="top" headers="idm45194428060608">
 							<p>
 								ReadWriteMany
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600553630320">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194429877280">
 							<p>
 								openshift-storage.rbd.csi.ceph.com
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553629232">
+							</td><td align="left" valign="top" headers="idm45194429876192">
 							<p>
 								Block
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553628144">
+							</td><td align="left" valign="top" headers="idm45194428060608">
 							<p>
 								ReadWriteOnce
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600553630320">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194429877280">
 							<p>
 								kubernetes.io/rbd
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553629232">
+							</td><td align="left" valign="top" headers="idm45194429876192">
 							<p>
 								Block
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553628144">
+							</td><td align="left" valign="top" headers="idm45194428060608">
 							<p>
 								ReadWriteOnce
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600553630320">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194429877280">
 							<p>
 								kubernetes.io/vsphere-volume
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553629232">
+							</td><td align="left" valign="top" headers="idm45194429876192">
 							<p>
 								Block
 							</p>
-							</td><td align="left" valign="top" headers="idm46600553628144">
+							</td><td align="left" valign="top" headers="idm45194428060608">
 							<p>
 								ReadWriteOnce
 							</p>
@@ -222,129 +222,129 @@
 						If you are mapping more than one source and destination network, you must create a <a class="link" href="https://access.redhat.com/documentation/en-us/openshift_container_platform/4.14/html/virtualization/virtual-machines#virt-creating-network-attachment-definition">network attachment definition</a> for each additional destination network.
 					</li></ul></div><section class="section" id="ports_mtv"><div class="titlepage"><div><div><h3 class="title">2.3.1. Ports</h3></div></div></div><p>
 					The firewalls must enable traffic over the following ports:
-				</p><div class="table" id="idm46600552679056"><p class="title"><strong>Table 2.2. Network ports required for migrating from VMware vSphere</strong></p><div class="table-contents"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 17%; " class="col_1"/><col style="width: 17%; " class="col_2"/><col style="width: 17%; " class="col_3"/><col style="width: 17%; " class="col_4"/><col style="width: 33%; " class="col_5"/></colgroup><thead><tr><th align="left" valign="top" id="idm46600553521936" scope="col">Port</th><th align="left" valign="top" id="idm46600555001520" scope="col">Protocol</th><th align="left" valign="top" id="idm46600555000432" scope="col">Source</th><th align="left" valign="top" id="idm46600554999344" scope="col">Destination</th><th align="left" valign="top" id="idm46600554998256" scope="col">Purpose</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46600553521936">
+				</p><div class="table" id="idm45194427997568"><p class="title"><strong>Table 2.2. Network ports required for migrating from VMware vSphere</strong></p><div class="table-contents"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 17%; " class="col_1"/><col style="width: 17%; " class="col_2"/><col style="width: 17%; " class="col_3"/><col style="width: 17%; " class="col_4"/><col style="width: 33%; " class="col_5"/></colgroup><thead><tr><th align="left" valign="top" id="idm45194429545456" scope="col">Port</th><th align="left" valign="top" id="idm45194429544368" scope="col">Protocol</th><th align="left" valign="top" id="idm45194429543280" scope="col">Source</th><th align="left" valign="top" id="idm45194429542192" scope="col">Destination</th><th align="left" valign="top" id="idm45194427796112" scope="col">Purpose</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45194429545456">
 								<p>
 									443
 								</p>
-								</td><td align="left" valign="top" headers="idm46600555001520">
+								</td><td align="left" valign="top" headers="idm45194429544368">
 								<p>
 									TCP
 								</p>
-								</td><td align="left" valign="top" headers="idm46600555000432">
+								</td><td align="left" valign="top" headers="idm45194429543280">
 								<p>
 									OpenShift nodes
 								</p>
-								</td><td align="left" valign="top" headers="idm46600554999344">
+								</td><td align="left" valign="top" headers="idm45194429542192">
 								<p>
 									VMware vCenter
 								</p>
-								</td><td align="left" valign="top" headers="idm46600554998256">
+								</td><td align="left" valign="top" headers="idm45194427796112">
 								<p>
 									VMware provider inventory
 								</p>
 								<p>
 									Disk transfer authentication
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46600553521936">
+								</td></tr><tr><td align="left" valign="top" headers="idm45194429545456">
 								<p>
 									443
 								</p>
-								</td><td align="left" valign="top" headers="idm46600555001520">
+								</td><td align="left" valign="top" headers="idm45194429544368">
 								<p>
 									TCP
 								</p>
-								</td><td align="left" valign="top" headers="idm46600555000432">
+								</td><td align="left" valign="top" headers="idm45194429543280">
 								<p>
 									OpenShift nodes
 								</p>
-								</td><td align="left" valign="top" headers="idm46600554999344">
+								</td><td align="left" valign="top" headers="idm45194429542192">
 								<p>
 									VMware ESXi hosts
 								</p>
-								</td><td align="left" valign="top" headers="idm46600554998256">
+								</td><td align="left" valign="top" headers="idm45194427796112">
 								<p>
 									Disk transfer authentication
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46600553521936">
+								</td></tr><tr><td align="left" valign="top" headers="idm45194429545456">
 								<p>
 									902
 								</p>
-								</td><td align="left" valign="top" headers="idm46600555001520">
+								</td><td align="left" valign="top" headers="idm45194429544368">
 								<p>
 									TCP
 								</p>
-								</td><td align="left" valign="top" headers="idm46600555000432">
+								</td><td align="left" valign="top" headers="idm45194429543280">
 								<p>
 									OpenShift nodes
 								</p>
-								</td><td align="left" valign="top" headers="idm46600554999344">
+								</td><td align="left" valign="top" headers="idm45194429542192">
 								<p>
 									VMware ESXi hosts
 								</p>
-								</td><td align="left" valign="top" headers="idm46600554998256">
+								</td><td align="left" valign="top" headers="idm45194427796112">
 								<p>
 									Disk transfer data copy
 								</p>
-								</td></tr></tbody></table></div></div><div class="table" id="idm46600553104368"><p class="title"><strong>Table 2.3. Network ports required for migrating from Red Hat Virtualization</strong></p><div class="table-contents"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 17%; " class="col_1"/><col style="width: 17%; " class="col_2"/><col style="width: 17%; " class="col_3"/><col style="width: 17%; " class="col_4"/><col style="width: 33%; " class="col_5"/></colgroup><thead><tr><th align="left" valign="top" id="idm46600553636144" scope="col">Port</th><th align="left" valign="top" id="idm46600553635056" scope="col">Protocol</th><th align="left" valign="top" id="idm46600552544064" scope="col">Source</th><th align="left" valign="top" id="idm46600552542976" scope="col">Destination</th><th align="left" valign="top" id="idm46600552541888" scope="col">Purpose</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46600553636144">
+								</td></tr></tbody></table></div></div><div class="table" id="idm45194427609072"><p class="title"><strong>Table 2.3. Network ports required for migrating from Red Hat Virtualization</strong></p><div class="table-contents"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 17%; " class="col_1"/><col style="width: 17%; " class="col_2"/><col style="width: 17%; " class="col_3"/><col style="width: 17%; " class="col_4"/><col style="width: 33%; " class="col_5"/></colgroup><thead><tr><th align="left" valign="top" id="idm45194420186896" scope="col">Port</th><th align="left" valign="top" id="idm45194420185808" scope="col">Protocol</th><th align="left" valign="top" id="idm45194420184720" scope="col">Source</th><th align="left" valign="top" id="idm45194420183632" scope="col">Destination</th><th align="left" valign="top" id="idm45194420436832" scope="col">Purpose</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45194420186896">
 								<p>
 									443
 								</p>
-								</td><td align="left" valign="top" headers="idm46600553635056">
+								</td><td align="left" valign="top" headers="idm45194420185808">
 								<p>
 									TCP
 								</p>
-								</td><td align="left" valign="top" headers="idm46600552544064">
+								</td><td align="left" valign="top" headers="idm45194420184720">
 								<p>
 									OpenShift nodes
 								</p>
-								</td><td align="left" valign="top" headers="idm46600552542976">
+								</td><td align="left" valign="top" headers="idm45194420183632">
 								<p>
 									RHV Engine
 								</p>
-								</td><td align="left" valign="top" headers="idm46600552541888">
+								</td><td align="left" valign="top" headers="idm45194420436832">
 								<p>
 									RHV provider inventory
 								</p>
 								<p>
 									Disk transfer authentication
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46600553636144">
+								</td></tr><tr><td align="left" valign="top" headers="idm45194420186896">
 								<p>
 									443
 								</p>
-								</td><td align="left" valign="top" headers="idm46600553635056">
+								</td><td align="left" valign="top" headers="idm45194420185808">
 								<p>
 									TCP
 								</p>
-								</td><td align="left" valign="top" headers="idm46600552544064">
+								</td><td align="left" valign="top" headers="idm45194420184720">
 								<p>
 									OpenShift nodes
 								</p>
-								</td><td align="left" valign="top" headers="idm46600552542976">
+								</td><td align="left" valign="top" headers="idm45194420183632">
 								<p>
 									RHV hosts
 								</p>
-								</td><td align="left" valign="top" headers="idm46600552541888">
+								</td><td align="left" valign="top" headers="idm45194420436832">
 								<p>
 									Disk transfer authentication
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46600553636144">
+								</td></tr><tr><td align="left" valign="top" headers="idm45194420186896">
 								<p>
 									54322
 								</p>
-								</td><td align="left" valign="top" headers="idm46600553635056">
+								</td><td align="left" valign="top" headers="idm45194420185808">
 								<p>
 									TCP
 								</p>
-								</td><td align="left" valign="top" headers="idm46600552544064">
+								</td><td align="left" valign="top" headers="idm45194420184720">
 								<p>
 									OpenShift nodes
 								</p>
-								</td><td align="left" valign="top" headers="idm46600552542976">
+								</td><td align="left" valign="top" headers="idm45194420183632">
 								<p>
 									RHV hosts
 								</p>
-								</td><td align="left" valign="top" headers="idm46600552541888">
+								</td><td align="left" valign="top" headers="idm45194420436832">
 								<p>
 									Disk transfer data copy
 								</p>
@@ -567,230 +567,230 @@ EOF</pre></li></ul></div></li><li class="listitem">
 					Neither MTV nor OpenShift Virtualization support conversion of Btrfs for migrating VMs from VMWare.
 				</p></div></div><h4 id="vmware-privileges_mtv">VMware privileges</h4><p>
 				The following minimal set of VMware privileges is required to migrate virtual machines to OpenShift Virtualization with the Migration Toolkit for Virtualization (MTV).
-			</p><div class="table" id="idm46600551239376"><p class="title"><strong>Table 2.4. VMware privileges</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm46600551234544" scope="col">Privilege</th><th align="left" valign="top" id="idm46600551233456" scope="col">Description</th></tr></thead><tbody><tr><td colspan="2" align="left" valign="top" headers="idm46600551234544 idm46600551233456">
+			</p><div class="table" id="idm45194427542528"><p class="title"><strong>Table 2.4. VMware privileges</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm45194419090928" scope="col">Privilege</th><th align="left" valign="top" id="idm45194419089840" scope="col">Description</th></tr></thead><tbody><tr><td colspan="2" align="left" valign="top" headers="idm45194419090928 idm45194419089840">
 							<p>
 								<code class="literal">Virtual machine.Interaction</code> privileges:
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Interaction.Power Off</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows powering off a powered-on virtual machine. This operation powers down the guest operating system.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Interaction.Power On</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows powering on a powered-off virtual machine and resuming a suspended virtual machine.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Guest operating system management by VIX API</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows managing a virtual machine by the VMware VIX API.
 							</p>
-							</td></tr><tr><td colspan="2" align="left" valign="top" headers="idm46600551234544 idm46600551233456">
+							</td></tr><tr><td colspan="2" align="left" valign="top" headers="idm45194419090928 idm45194419089840">
 							<p>
 								<code class="literal">Virtual machine.Provisioning</code> privileges:
 							</p>
 							<div class="admonition note"><div class="admonition_header">Note</div><div><p>
 									All <code class="literal">Virtual machine.Provisioning</code> privileges are required.
 								</p></div></div>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Provisioning.Allow disk access</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows opening a disk on a virtual machine for random read and write access. Used mostly for remote disk mounting.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Provisioning.Allow file access</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows operations on files associated with a virtual machine, including VMX, disks, logs, and NVRAM.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Provisioning.Allow read-only disk access</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows opening a disk on a virtual machine for random read access. Used mostly for remote disk mounting.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Provisioning.Allow virtual machine download</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows read operations on files associated with a virtual machine, including VMX, disks, logs, and NVRAM.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Provisioning.Allow virtual machine files upload</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows write operations on files associated with a virtual machine, including VMX, disks, logs, and NVRAM.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Provisioning.Clone template</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows cloning of a template.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Provisioning.Clone virtual machine</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows cloning of an existing virtual machine and allocation of resources.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Provisioning.Create template from virtual machine</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows creation of a new template from a virtual machine.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Provisioning.Customize guest</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows customization of a virtual machine’s guest operating system without moving the virtual machine.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Provisioning.Deploy template</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows deployment of a virtual machine from a template.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Provisioning.Mark as template</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows marking an existing powered-off virtual machine as a template.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Provisioning.Mark as virtual machine</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows marking an existing template as a virtual machine.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Provisioning.Modify customization specification</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows creation, modification, or deletion of customization specifications.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Provisioning.Promote disks</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows promote operations on a virtual machine’s disks.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Provisioning.Read customization specifications</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows reading a customization specification.
 							</p>
-							</td></tr><tr><td colspan="2" align="left" valign="top" headers="idm46600551234544 idm46600551233456">
+							</td></tr><tr><td colspan="2" align="left" valign="top" headers="idm45194419090928 idm45194419089840">
 							<p>
 								<code class="literal">Virtual machine.Snapshot management</code> privileges:
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Snapshot management.Create snapshot</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows creation of a snapshot from the virtual machine’s current state.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Virtual machine.Snapshot management.Remove Snapshot</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows removal of a snapshot from the snapshot history.
 							</p>
-							</td></tr><tr><td colspan="2" align="left" valign="top" headers="idm46600551234544 idm46600551233456">
+							</td></tr><tr><td colspan="2" align="left" valign="top" headers="idm45194419090928 idm45194419089840">
 							<p>
 								<code class="literal">Datastore</code> privileges:
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Datastore.Browse datastore</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows exploring the contents of a datastore.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Datastore.Low level file operations</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows performing low-level file operations - read, write, delete, and rename - in a datastore.
 							</p>
-							</td></tr><tr><td colspan="2" align="left" valign="top" headers="idm46600551234544 idm46600551233456">
+							</td></tr><tr><td colspan="2" align="left" valign="top" headers="idm45194419090928 idm45194419089840">
 							<p>
 								<code class="literal">Sessions</code> privileges:
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Sessions.Validate session</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows verification of the validity of a session.
 							</p>
-							</td></tr><tr><td colspan="2" align="left" valign="top" headers="idm46600551234544 idm46600551233456">
+							</td></tr><tr><td colspan="2" align="left" valign="top" headers="idm45194419090928 idm45194419089840">
 							<p>
 								<code class="literal">Cryptographic</code> privileges:
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Cryptographic.Decrypt</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows decryption of an encrypted virtual machine.
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600551234544">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194419090928">
 							<p>
 								<code class="literal">Cryptographic.Direct access</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600551233456">
+							</td><td align="left" valign="top" headers="idm45194419089840">
 							<p>
 								Allows access to encrypted resources.
 							</p>
@@ -877,27 +877,27 @@ EOF</pre></li><li class="listitem"><p class="simpara">
 								For example, if the NFS share is, <code class="literal">/nfs</code>, then:<br/> The OVF file <code class="literal">/nfs/vm.ovf</code> is scanned.<br/> The OVF file <code class="literal">/nfs/subfolder1/vm.ovf</code> is scanned.<br/> The OVF file <code class="literal">/nfs/subfolder1/subfolder2/vm.ovf</code> is scanned.<br/> But, the OVF file <code class="literal">/nfs/subfolder1/subfolder2/subfolder3/vm.ovf</code> is not scanned.
 							</p></li></ul></div></li></ul></div></section><section class="section" id="compatibility-guidelines_mtv"><div class="titlepage"><div><div><h2 class="title">2.9. Software compatibility guidelines</h2></div></div></div><p>
 				You must install compatible software versions.
-			</p><div class="table" id="idm46600553256944"><p class="title"><strong>Table 2.5. Compatible software versions</strong></p><div class="table-contents"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 17%; " class="col_1"/><col style="width: 17%; " class="col_2"/><col style="width: 17%; " class="col_3"/><col style="width: 17%; " class="col_4"/><col style="width: 17%; " class="col_5"/><col style="width: 17%; " class="col_6"/></colgroup><thead><tr><th align="left" valign="top" id="idm46600552825760" scope="col">Migration Toolkit for Virtualization</th><th align="left" valign="top" id="idm46600552824656" scope="col">Red Hat OpenShift</th><th align="left" valign="top" id="idm46600552823568" scope="col">OpenShift Virtualization</th><th align="left" valign="top" id="idm46600552822464" scope="col">VMware vSphere</th><th align="left" valign="top" id="idm46600552821376" scope="col">Red Hat Virtualization</th><th align="left" valign="top" id="idm46600552820288" scope="col">OpenStack</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46600552825760">
+			</p><div class="table" id="idm45194427448000"><p class="title"><strong>Table 2.5. Compatible software versions</strong></p><div class="table-contents"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 17%; " class="col_1"/><col style="width: 17%; " class="col_2"/><col style="width: 17%; " class="col_3"/><col style="width: 17%; " class="col_4"/><col style="width: 17%; " class="col_5"/><col style="width: 17%; " class="col_6"/></colgroup><thead><tr><th align="left" valign="top" id="idm45194427324144" scope="col">Migration Toolkit for Virtualization</th><th align="left" valign="top" id="idm45194427323040" scope="col">Red Hat OpenShift</th><th align="left" valign="top" id="idm45194427321952" scope="col">OpenShift Virtualization</th><th align="left" valign="top" id="idm45194427320848" scope="col">VMware vSphere</th><th align="left" valign="top" id="idm45194427262368" scope="col">Red Hat Virtualization</th><th align="left" valign="top" id="idm45194427261280" scope="col">OpenStack</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45194427324144">
 							<p>
 								2.6.4
 							</p>
-							</td><td align="left" valign="top" headers="idm46600552824656">
+							</td><td align="left" valign="top" headers="idm45194427323040">
 							<p>
 								4.14 or later
 							</p>
-							</td><td align="left" valign="top" headers="idm46600552823568">
+							</td><td align="left" valign="top" headers="idm45194427321952">
 							<p>
 								4.14 or later
 							</p>
-							</td><td align="left" valign="top" headers="idm46600552822464">
+							</td><td align="left" valign="top" headers="idm45194427320848">
 							<p>
 								6.5 or later
 							</p>
-							</td><td align="left" valign="top" headers="idm46600552821376">
+							</td><td align="left" valign="top" headers="idm45194427262368">
 							<p>
 								4.4 SP1 or later
 							</p>
-							</td><td align="left" valign="top" headers="idm46600552820288">
+							</td><td align="left" valign="top" headers="idm45194427261280">
 							<p>
 								16.1 or later
 							</p>
@@ -1035,113 +1035,113 @@ forklift-volume-populator-controller-85d5cb64b6-mrlmc   1/1     Running   0     
 					</li></ul></div><pre class="screen">spec:
   label: value <span id="CO1-1"/><span class="callout">1</span></pre><div class="calloutlist"><dl class="calloutlist"><dt><a href="#CO1-1"><span class="callout">1</span></a> </dt><dd><div class="para">
 						Labels you can configure using the CLI are shown in the table that follows, along with a description of each label and its default value.
-					</div></dd></dl></div><div class="table" id="idm46600545696912"><p class="title"><strong>Table 3.1. MTV Operator labels</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm46600556443024" scope="col">Label</th><th align="left" valign="top" id="idm46600556441936" scope="col">Description</th><th align="left" valign="top" id="idm46600556440848" scope="col">Default value</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46600556443024">
+					</div></dd></dl></div><div class="table" id="idm45194427270816"><p class="title"><strong>Table 3.1. MTV Operator labels</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm45194431768384" scope="col">Label</th><th align="left" valign="top" id="idm45194431767296" scope="col">Description</th><th align="left" valign="top" id="idm45194431766208" scope="col">Default value</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45194431768384">
 							<p>
 								<code class="literal">controller_max_vm_inflight</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556441936">
+							</td><td align="left" valign="top" headers="idm45194431767296">
 							<p>
 								The maximum number of VMs per plan that can be migrated simultaneously.
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556440848">
+							</td><td align="left" valign="top" headers="idm45194431766208">
 							<p>
 								<code class="literal">20</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600556443024">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194431768384">
 							<p>
 								<code class="literal">must_gather_api_cleanup_max_age</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556441936">
+							</td><td align="left" valign="top" headers="idm45194431767296">
 							<p>
 								The duration in hours for retaining <code class="literal">must gather</code> reports before they are automatically deleted.
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556440848">
+							</td><td align="left" valign="top" headers="idm45194431766208">
 							<p>
 								<code class="literal">-1</code> (disabled)
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600556443024">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194431768384">
 							<p>
 								<code class="literal">controller_container_limits_cpu</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556441936">
+							</td><td align="left" valign="top" headers="idm45194431767296">
 							<p>
 								The CPU limit allocated to the main controller container.
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556440848">
+							</td><td align="left" valign="top" headers="idm45194431766208">
 							<p>
 								<code class="literal">500m</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600556443024">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194431768384">
 							<p>
 								<code class="literal">controller_container_limits_memory</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556441936">
+							</td><td align="left" valign="top" headers="idm45194431767296">
 							<p>
 								The memory limit allocated to the main controller container.
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556440848">
+							</td><td align="left" valign="top" headers="idm45194431766208">
 							<p>
 								<code class="literal">800Mi</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600556443024">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194431768384">
 							<p>
 								<code class="literal">controller_precopy_interval</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556441936">
+							</td><td align="left" valign="top" headers="idm45194431767296">
 							<p>
 								The interval in minutes at which a new snapshot is requested before initiating a warm migration.
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556440848">
+							</td><td align="left" valign="top" headers="idm45194431766208">
 							<p>
 								<code class="literal">60</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600556443024">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194431768384">
 							<p>
 								<code class="literal">controller_snapshot_status_check_rate_seconds</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556441936">
+							</td><td align="left" valign="top" headers="idm45194431767296">
 							<p>
 								The frequency in seconds with which the system checks the status of snapshot creation or removal during a warm migration.
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556440848">
+							</td><td align="left" valign="top" headers="idm45194431766208">
 							<p>
 								<code class="literal">10</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600556443024">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194431768384">
 							<p>
 								<code class="literal">controller_filesystem_overhead</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556441936">
+							</td><td align="left" valign="top" headers="idm45194431767296">
 							<p>
 								Percentage of space in persistent volumes allocated as file system overhead when the <code class="literal">storageclass</code> is <code class="literal">filesystem</code>.
 							</p>
 							<p>
 								<code class="literal">ForkliftController</code> CR only.
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556440848">
+							</td><td align="left" valign="top" headers="idm45194431766208">
 							<p>
 								<code class="literal">10</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600556443024">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194431768384">
 							<p>
 								<code class="literal">controller_block_overhead</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556441936">
+							</td><td align="left" valign="top" headers="idm45194431767296">
 							<p>
 								Fixed amount of additional space allocated in persistent block volumes. This setting is applicable for any <code class="literal">storageclass</code> that is block-based. It can be used when data, such as encryption headers, is written to the persistent volumes in addition to the content of the virtual disk.
 							</p>
 							<p>
 								<code class="literal">ForkliftController</code> CR only.
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556440848">
+							</td><td align="left" valign="top" headers="idm45194431766208">
 							<p>
 								<code class="literal">0</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600556443024">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194431768384">
 							<p>
 								<code class="literal">vsphere_osmap_configmap_name</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556441936">
+							</td><td align="left" valign="top" headers="idm45194431767296">
 							<p>
 								Configuration map for vSphere source providers. This configuration map maps the operating system of the incoming VM to a OpenShift Virtualization preference name. This configuration map needs to be in the namespace where the MTV Operator is deployed.
 							</p>
@@ -1154,15 +1154,15 @@ forklift-volume-populator-controller-85d5cb64b6-mrlmc   1/1     Running   0     
 							<p>
 								<code class="literal">ForkliftController</code> CR only.
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556440848">
+							</td><td align="left" valign="top" headers="idm45194431766208">
 							<p>
 								<code class="literal">forklift-vsphere-osmap</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600556443024">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194431768384">
 							<p>
 								<code class="literal">ovirt_osmap_configmap_name</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556441936">
+							</td><td align="left" valign="top" headers="idm45194431767296">
 							<p>
 								Configuration map for RHV source providers. This configuration map maps the operating system of the incoming VM to a OpenShift Virtualization preference name. This configuration map needs to be in the namespace where the MTV Operator is deployed.
 							</p>
@@ -1175,7 +1175,7 @@ forklift-volume-populator-controller-85d5cb64b6-mrlmc   1/1     Running   0     
 							<p>
 								<code class="literal">ForkliftController</code> CR only.
 							</p>
-							</td><td align="left" valign="top" headers="idm46600556440848">
+							</td><td align="left" valign="top" headers="idm45194431766208">
 							<p>
 								<code class="literal">forklift-ovirt-osmap</code>
 							</p>
@@ -1197,7 +1197,7 @@ forklift-volume-populator-controller-85d5cb64b6-mrlmc   1/1     Running   0     
 				The Migration Toolkit for Virtualization (MTV) user interface is integrated into the OpenShift web console.
 			</p><p>
 				In the left-hand panel, you can choose a page related to a component of the migration progress, for example, <span class="strong strong"><strong>Providers for Migration</strong></span>, or, if you are an administrator, you can choose <span class="strong strong"><strong>Overview</strong></span>, which contains information about migrations and lets you configure MTV settings.
-			</p><div class="figure" id="idm46600544989312"><p class="title"><strong>Figure 4.1. MTV extension interface</strong></p><div class="figure-contents"><div class="mediaobject"><img src="images/modules/images/mtv-ui.png" alt="MTV user interface"/></div></div></div><p>
+			</p><div class="figure" id="idm45194427636128"><p class="title"><strong>Figure 4.1. MTV extension interface</strong></p><div class="figure-contents"><div class="mediaobject"><img src="images/modules/images/mtv-ui.png" alt="MTV user interface"/></div></div></div><p>
 				In pages related to components, you can click on the <span class="strong strong"><strong>Projects</strong></span> list, which is in the upper-left portion of the page, and see which projects (namespaces) you are allowed to work with.
 			</p><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 						If you are an administrator, you can see all projects.
@@ -1265,75 +1265,75 @@ forklift-volume-populator-controller-85d5cb64b6-mrlmc   1/1     Running   0     
 							Chart showing the number of running, failed, and succeeded virtual machine migrations performed using MTV for each of the last 7 days
 						</li></ul></div></section></section><section class="section" id="mtv-settings_mtv"><div class="titlepage"><div><div><h2 class="title">4.3. Configuring MTV settings</h2></div></div></div><p>
 				If you have Administrator privileges, you can access the <span class="strong strong"><strong>Overview</strong></span> page and change the following settings in it:
-			</p><div class="table" id="idm46600547892336"><p class="title"><strong>Table 4.1. MTV settings</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm46600549704352" scope="col">Setting</th><th align="left" valign="top" id="idm46600549703264" scope="col">Description</th><th align="left" valign="top" id="idm46600549702176" scope="col">Default value</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46600549704352">
+			</p><div class="table" id="idm45194431846992"><p class="title"><strong>Table 4.1. MTV settings</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm45194427815824" scope="col">Setting</th><th align="left" valign="top" id="idm45194427814736" scope="col">Description</th><th align="left" valign="top" id="idm45194427813648" scope="col">Default value</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45194427815824">
 							<p>
 								Max concurrent virtual machine migrations
 							</p>
-							</td><td align="left" valign="top" headers="idm46600549703264">
+							</td><td align="left" valign="top" headers="idm45194427814736">
 							<p>
 								The maximum number of VMs per plan that can be migrated simultaneously
 							</p>
-							</td><td align="left" valign="top" headers="idm46600549702176">
+							</td><td align="left" valign="top" headers="idm45194427813648">
 							<p>
 								20
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600549704352">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194427815824">
 							<p>
 								Must gather cleanup after (hours)
 							</p>
-							</td><td align="left" valign="top" headers="idm46600549703264">
+							</td><td align="left" valign="top" headers="idm45194427814736">
 							<p>
 								The duration for retaining <code class="literal">must gather</code> reports before they are automatically deleted
 							</p>
-							</td><td align="left" valign="top" headers="idm46600549702176">
+							</td><td align="left" valign="top" headers="idm45194427813648">
 							<p>
 								Disabled
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600549704352">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194427815824">
 							<p>
 								Controller main container CPU limit
 							</p>
-							</td><td align="left" valign="top" headers="idm46600549703264">
+							</td><td align="left" valign="top" headers="idm45194427814736">
 							<p>
 								The CPU limit allocated to the main controller container
 							</p>
-							</td><td align="left" valign="top" headers="idm46600549702176">
+							</td><td align="left" valign="top" headers="idm45194427813648">
 							<p>
 								500 m
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600549704352">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194427815824">
 							<p>
 								Controller main container Memory limit
 							</p>
-							</td><td align="left" valign="top" headers="idm46600549703264">
+							</td><td align="left" valign="top" headers="idm45194427814736">
 							<p>
 								The memory limit allocated to the main controller container
 							</p>
-							</td><td align="left" valign="top" headers="idm46600549702176">
+							</td><td align="left" valign="top" headers="idm45194427813648">
 							<p>
 								800 Mi
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600549704352">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194427815824">
 							<p>
 								Precopy internal (minutes)
 							</p>
-							</td><td align="left" valign="top" headers="idm46600549703264">
+							</td><td align="left" valign="top" headers="idm45194427814736">
 							<p>
 								The interval at which a new snapshot is requested before initiating a warm migration
 							</p>
-							</td><td align="left" valign="top" headers="idm46600549702176">
+							</td><td align="left" valign="top" headers="idm45194427813648">
 							<p>
 								60
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600549704352">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194427815824">
 							<p>
 								Snapshot polling interval (seconds)
 							</p>
-							</td><td align="left" valign="top" headers="idm46600549703264">
+							</td><td align="left" valign="top" headers="idm45194427814736">
 							<p>
 								The frequency with which the system checks the status of snapshot creation or removal during a warm migration
 							</p>
-							</td><td align="left" valign="top" headers="idm46600549702176">
+							</td><td align="left" valign="top" headers="idm45194427813648">
 							<p>
 								10
 							</p>
@@ -1925,27 +1925,27 @@ forklift-volume-populator-controller-85d5cb64b6-mrlmc   1/1     Running   0     
 				By default, non-administrators have limited ability to work with migration plans and their components. As an administrator, you can modify their roles to allow them full access to all components, or you can give them limited permissions.
 			</p><p>
 				For example, administrators can assign non-administrators one or more of the following cluster roles for migration plans:
-			</p><div class="table" id="idm46600547473056"><p class="title"><strong>Table 5.1. Example migration plan roles and their privileges</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm46600547468192" scope="col">Role</th><th align="left" valign="top" id="idm46600547467104" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46600547468192">
+			</p><div class="table" id="idm45194422612064"><p class="title"><strong>Table 5.1. Example migration plan roles and their privileges</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 50%; " class="col_1"/><col style="width: 50%; " class="col_2"/></colgroup><thead><tr><th align="left" valign="top" id="idm45194422607264" scope="col">Role</th><th align="left" valign="top" id="idm45194422606176" scope="col">Description</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45194422607264">
 							<p>
 								<code class="literal">plans.forklift.konveyor.io-v1beta1-view</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600547467104">
+							</td><td align="left" valign="top" headers="idm45194422606176">
 							<p>
 								Can view migration plans but not to create, delete or modify them
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600547468192">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194422607264">
 							<p>
 								<code class="literal">plans.forklift.konveyor.io-v1beta1-edit</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600547467104">
+							</td><td align="left" valign="top" headers="idm45194422606176">
 							<p>
 								Can create, delete or modify (all parts of <code class="literal">edit</code> permissions) individual migration plans
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600547468192">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194422607264">
 							<p>
 								<code class="literal">plans.forklift.konveyor.io-v1beta1-admin</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600547467104">
+							</td><td align="left" valign="top" headers="idm45194422606176">
 							<p>
 								All <code class="literal">edit</code> privileges and the ability to delete the entire collection of migration plans
 							</p>
@@ -1959,99 +1959,99 @@ forklift-volume-populator-controller-85d5cb64b6-mrlmc   1/1     Running   0     
 						Attach providers created by administrators to storage maps, network maps, and migration plans
 					</li><li class="listitem">
 						Not be able to create providers or to change system settings
-					</li></ul></div><div class="table" id="idm46600554564768"><p class="title"><strong>Table 5.2. Example permissions required for non-adminstrators to work with migration plan components but not create providers</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm46600554558912" scope="col">Actions</th><th align="left" valign="top" id="idm46600554557824" scope="col">API group</th><th align="left" valign="top" id="idm46600554556736" scope="col">Resource</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46600554558912">
+					</li></ul></div><div class="table" id="idm45194423971312"><p class="title"><strong>Table 5.2. Example permissions required for non-adminstrators to work with migration plan components but not create providers</strong></p><div class="table-contents"><table class="lt-4-cols lt-7-rows"><colgroup><col style="width: 33%; " class="col_1"/><col style="width: 33%; " class="col_2"/><col style="width: 33%; " class="col_3"/></colgroup><thead><tr><th align="left" valign="top" id="idm45194423965456" scope="col">Actions</th><th align="left" valign="top" id="idm45194423964368" scope="col">API group</th><th align="left" valign="top" id="idm45194423963280" scope="col">Resource</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45194423965456">
 							<p>
 								<code class="literal">get</code>, <code class="literal">list</code>, <code class="literal">watch</code>, <code class="literal">create</code>, <code class="literal">update</code>, <code class="literal">patch</code>, <code class="literal">delete</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554557824">
+							</td><td align="left" valign="top" headers="idm45194423964368">
 							<p>
 								<code class="literal">forklift.konveyor.io</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554556736">
+							</td><td align="left" valign="top" headers="idm45194423963280">
 							<p>
 								<code class="literal">plans</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600554558912">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194423965456">
 							<p>
 								<code class="literal">get</code>, <code class="literal">list</code>, <code class="literal">watch</code>, <code class="literal">create</code>, <code class="literal">update</code>, <code class="literal">patch</code>, <code class="literal">delete</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554557824">
+							</td><td align="left" valign="top" headers="idm45194423964368">
 							<p>
 								<code class="literal">forklift.konveyor.io</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554556736">
+							</td><td align="left" valign="top" headers="idm45194423963280">
 							<p>
 								<code class="literal">migrations</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600554558912">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194423965456">
 							<p>
 								<code class="literal">get</code>, <code class="literal">list</code>, <code class="literal">watch</code>, <code class="literal">create</code>, <code class="literal">update</code>, <code class="literal">patch</code>, <code class="literal">delete</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554557824">
+							</td><td align="left" valign="top" headers="idm45194423964368">
 							<p>
 								<code class="literal">forklift.konveyor.io</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554556736">
+							</td><td align="left" valign="top" headers="idm45194423963280">
 							<p>
 								<code class="literal">hooks</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600554558912">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194423965456">
 							<p>
 								<code class="literal">get</code>, <code class="literal">list</code>, <code class="literal">watch</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554557824">
+							</td><td align="left" valign="top" headers="idm45194423964368">
 							<p>
 								<code class="literal">forklift.konveyor.io</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554556736">
+							</td><td align="left" valign="top" headers="idm45194423963280">
 							<p>
 								<code class="literal">providers</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600554558912">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194423965456">
 							<p>
 								<code class="literal">get</code>, <code class="literal">list</code>, <code class="literal">watch</code>, <code class="literal">create</code>, <code class="literal">update</code>, <code class="literal">patch</code>, <code class="literal">delete</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554557824">
+							</td><td align="left" valign="top" headers="idm45194423964368">
 							<p>
 								<code class="literal">forklift.konveyor.io</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554556736">
+							</td><td align="left" valign="top" headers="idm45194423963280">
 							<p>
 								<code class="literal">networkmaps</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600554558912">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194423965456">
 							<p>
 								<code class="literal">get</code>, <code class="literal">list</code>, <code class="literal">watch</code>, <code class="literal">create</code>, <code class="literal">update</code>, <code class="literal">patch</code>, <code class="literal">delete</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554557824">
+							</td><td align="left" valign="top" headers="idm45194423964368">
 							<p>
 								<code class="literal">forklift.konveyor.io</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554556736">
+							</td><td align="left" valign="top" headers="idm45194423963280">
 							<p>
 								<code class="literal">storagemaps</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600554558912">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194423965456">
 							<p>
 								<code class="literal">get</code>, <code class="literal">list</code>, <code class="literal">watch</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554557824">
+							</td><td align="left" valign="top" headers="idm45194423964368">
 							<p>
 								<code class="literal">forklift.konveyor.io</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554556736">
+							</td><td align="left" valign="top" headers="idm45194423963280">
 							<p>
 								<code class="literal">forkliftcontrollers</code>
 							</p>
-							</td></tr><tr><td align="left" valign="top" headers="idm46600554558912">
+							</td></tr><tr><td align="left" valign="top" headers="idm45194423965456">
 							<p>
 								<code class="literal">create</code>, <code class="literal">patch</code>, <code class="literal">delete</code>
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554557824">
+							</td><td align="left" valign="top" headers="idm45194423964368">
 							<p>
 								Empty string
 							</p>
-							</td><td align="left" valign="top" headers="idm46600554556736">
+							</td><td align="left" valign="top" headers="idm45194423963280">
 							<p>
 								<code class="literal">secrets</code>
 							</p>
@@ -4016,7 +4016,7 @@ spec:
 				In MTV 2.6, <code class="literal">MAX_VM_INFLIGHT</code> reserves one transfer slot per VM, regardless of current migration activity for a specific snapshot or the number of disks that belong to a single vm. The total set by <code class="literal">MAX_VM_INFLIGHT</code> is used to indicate how many concurrent VM tranfers per ESXi host is allowed.
 			</p><div class="itemizedlist"><p class="title"><strong>Example</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
 						<code class="literal">MAX_VM_INFLIGHT = 20</code> and 2 ESXi hosts defined in the provider mean each host can transfer 20 VMs.
-					</li></ul></div></section><section class="section" id="mtv-performance-multiple-hosts_mtv"><div class="titlepage"><div><div><h2 class="title">9.6. Migrations complete faster using multiple hosts.</h2></div></div></div><p>
+					</li></ul></div></section><section class="section" id="mtv-performance-multiple-vms-concurrently_mtv"><div class="titlepage"><div><div><h2 class="title">9.6. Migrations complete faster when migrating multiple VMs concurrently</h2></div></div></div><p>
 				Migrations complete faster when migrating multiple VMs concurrently. 
 			</p><p>
 				When multiple VMs from a specific ESXi host are to be migrated, starting concurrent migrations for multiple VMs leads to faster migration times. 
@@ -4034,11 +4034,23 @@ spec:
 					From the aforementioned examples, it is evident that the migration of 10 virtual machines simultaneously is three times faster than the migration of identical virtual machines in a sequential manner.
 				</p><p>
 					The migration rate was almost the same when moving 20 virtual machines simultaneously.
-				</p></div></div></section><section class="section" id="mtv-performance-bios-profile_mtv"><div class="titlepage"><div><div><h2 class="title">9.7. Set ESXi hosts BIOS profile and ESXi Host Power Management for High Performance</h2></div></div></div><p>
+				</p></div></div></section><section class="section" id="mtv-performance-multiple-hosts_mtv"><div class="titlepage"><div><div><h2 class="title">9.7. Migrations complete faster using multiple hosts.</h2></div></div></div><p>
+				Using multiple hosts with registered VMs equally distributed among the ESXi hosts used for migrations leads to faster migration times.
+			</p><p>
+				Testing showed that when transferring more than 10 single disk VMS, each containing 35 GiB of data out of a total of 50G total, using an additional host can reduce migration time.
+			</p><div class="itemizedlist"><p class="title"><strong>Example</strong></p><ul class="itemizedlist" type="disc"><li class="listitem">
+						80 single disk VMs, containing 35 GiB of data each, using a single host took 2 hours and 43 minutes, with a migration rate of 294 MiB/s.
+					</li><li class="listitem">
+						80 single disk VMs, containing 35 GiB of data each, using 8 ESXi hosts took 41 minutes, with a migration rate of 1,173 MiB/s.
+					</li></ul></div><div class="admonition note"><div class="admonition_header">Note</div><div><p>
+					From the aforementioned examples, it is evident that migrating 80 VMs from 8 ESXi hosts, 10 from each host, concurrently is four times faster than running the same VMs from a single ESXi host. 
+				</p><p>
+					Migrating a larger number of VMs from more than 8 ESXi hosts concurrently could potentially show increased performance. However, it was not tested and therefore not recommended.
+				</p></div></div></section><section class="section" id="mtv-performance-bios-profile_mtv"><div class="titlepage"><div><div><h2 class="title">9.8. Set ESXi hosts BIOS profile and ESXi Host Power Management for High Performance</h2></div></div></div><p>
 				Where possible, ensure that hosts used to perform migrations are set with BIOS' profiles related to maximum performance.  Hosts which use Host Power Management controlled within vSphere should check that ‘High Performance’ is set.
 			</p><p>
 				Testing showed that when transferring more than 10 VMs with both BIOS and host power management set accordingly, migrations had an increase of 15 MiB in the average datastore read rate.
-			</p></section><section class="section" id="mtv-performance-multiple-migration-plans_mtv"><div class="titlepage"><div><div><h2 class="title">9.8. Multiple migration plans compared to a single large migration plan</h2></div></div></div><p>
+			</p></section><section class="section" id="mtv-performance-multiple-migration-plans_mtv"><div class="titlepage"><div><div><h2 class="title">9.9. Multiple migration plans compared to a single large migration plan</h2></div></div></div><p>
 				The maximum number of disks that can be referenced by a single migration plan is 500. For more details, see <a class="link" href="https://issues.redhat.com/browse/MTV-1203">(MTV-1203)</a>. 
 			</p><p>
 				When attempting to migrate many VMs in a single migration plan, it can take some time for all migrations to start.  By breaking up one migration plan into several migration plans, it is possible to start them at the same time.
@@ -4050,7 +4062,7 @@ spec:
 						800 VMs using 8 ESXi hosts with 8 plans, <code class="literal">max_vm_inflight=100</code>, took 57 minutes.
 					</li></ul></div><p>
 				Testing showed that by breaking one single large plan into multiple moderately sized plans, for example, 100 VMS per plan, the total migration time can be reduced.
-			</p></section><section class="section" id="mtv-performance-max-values_mtv"><div class="titlepage"><div><div><h2 class="title">9.9. Maximum values tested</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
+			</p></section><section class="section" id="mtv-performance-max-values_mtv"><div class="titlepage"><div><div><h2 class="title">9.10. Maximum values tested</h2></div></div></div><div class="itemizedlist"><ul class="itemizedlist" type="disc"><li class="listitem">
 						Maximum number of ESXi hosts tested: 8
 					</li><li class="listitem">
 						Maximum number of VMs in a single migration plan: 500
@@ -4383,171 +4395,171 @@ spec:
 					The results show that migration time is linear when increasing the total VMs (Utilization 70%).
 				</p><p>
 					The optimal number of VMs per ESXi is 10.
-				</p><div class="table" id="idm46600549646192"><p class="title"><strong>Table 11.1. Single ESXi tests</strong></p><div class="table-contents"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 45%; " class="col_1"/><col style="width: 7%; " class="col_2"/><col style="width: 7%; " class="col_3"/><col style="width: 15%; " class="col_4"/><col style="width: 13%; " class="col_5"/><col style="width: 13%; " class="col_6"/></colgroup><thead><tr><th align="left" valign="top" id="idm46600549636816" scope="col">Test Case Description</th><th align="left" valign="top" id="idm46600549635728" scope="col">MTV</th><th align="left" valign="top" id="idm46600549634640" scope="col">VDDK</th><th align="left" valign="top" id="idm46600549633552" scope="col">max_vm inflight</th><th align="left" valign="top" id="idm46600549632464" scope="col">Migration Type</th><th align="left" valign="top" id="idm46600549631376" scope="col">Total Duration</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46600549636816">
+				</p><div class="table" id="idm45194422572144"><p class="title"><strong>Table 11.1. Single ESXi tests</strong></p><div class="table-contents"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 45%; " class="col_1"/><col style="width: 7%; " class="col_2"/><col style="width: 7%; " class="col_3"/><col style="width: 15%; " class="col_4"/><col style="width: 13%; " class="col_5"/><col style="width: 13%; " class="col_6"/></colgroup><thead><tr><th align="left" valign="top" id="idm45194419280320" scope="col">Test Case Description</th><th align="left" valign="top" id="idm45194419279232" scope="col">MTV</th><th align="left" valign="top" id="idm45194419278144" scope="col">VDDK</th><th align="left" valign="top" id="idm45194419277056" scope="col">max_vm inflight</th><th align="left" valign="top" id="idm45194419275968" scope="col">Migration Type</th><th align="left" valign="top" id="idm45194419274880" scope="col">Total Duration</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45194419280320">
 								<p>
 									cold migration , 10 VMs , ESX 02-03 , Private Network <a href="#ftn.note1" class="footnote"><sup class="footnote" id="note1">[a]</sup></a>
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549635728">
+								</td><td align="left" valign="top" headers="idm45194419279232">
 								<p>
 									2.6
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549634640">
+								</td><td align="left" valign="top" headers="idm45194419278144">
 								<p>
 									7.0.3
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549633552">
+								</td><td align="left" valign="top" headers="idm45194419277056">
 								<p>
 									100
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549632464">
+								</td><td align="left" valign="top" headers="idm45194419275968">
 								<p>
 									cold
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549631376">
+								</td><td align="left" valign="top" headers="idm45194419274880">
 								<p>
 									0:21:39
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46600549636816">
+								</td></tr><tr><td align="left" valign="top" headers="idm45194419280320">
 								<p>
 									cold migration , 20 VMs , ESX 02-03 , Private Network
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549635728">
+								</td><td align="left" valign="top" headers="idm45194419279232">
 								<p>
 									2.6
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549634640">
+								</td><td align="left" valign="top" headers="idm45194419278144">
 								<p>
 									7.0.3
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549633552">
+								</td><td align="left" valign="top" headers="idm45194419277056">
 								<p>
 									100
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549632464">
+								</td><td align="left" valign="top" headers="idm45194419275968">
 								<p>
 									cold
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549631376">
+								</td><td align="left" valign="top" headers="idm45194419274880">
 								<p>
 									0:41:16
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46600549636816">
+								</td></tr><tr><td align="left" valign="top" headers="idm45194419280320">
 								<p>
 									cold migration , 30 VMs , ESX 02-03 , Private Network
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549635728">
+								</td><td align="left" valign="top" headers="idm45194419279232">
 								<p>
 									2.6
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549634640">
+								</td><td align="left" valign="top" headers="idm45194419278144">
 								<p>
 									7.0.3
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549633552">
+								</td><td align="left" valign="top" headers="idm45194419277056">
 								<p>
 									100
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549632464">
+								</td><td align="left" valign="top" headers="idm45194419275968">
 								<p>
 									cold
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549631376">
+								</td><td align="left" valign="top" headers="idm45194419274880">
 								<p>
 									1:00:59
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46600549636816">
+								</td></tr><tr><td align="left" valign="top" headers="idm45194419280320">
 								<p>
 									cold migration , 40 VMs , ESX 02-03 , Private Network
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549635728">
+								</td><td align="left" valign="top" headers="idm45194419279232">
 								<p>
 									2.6
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549634640">
+								</td><td align="left" valign="top" headers="idm45194419278144">
 								<p>
 									7.0.3
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549633552">
+								</td><td align="left" valign="top" headers="idm45194419277056">
 								<p>
 									100
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549632464">
+								</td><td align="left" valign="top" headers="idm45194419275968">
 								<p>
 									cold
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549631376">
+								</td><td align="left" valign="top" headers="idm45194419274880">
 								<p>
 									1:23:02
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46600549636816">
+								</td></tr><tr><td align="left" valign="top" headers="idm45194419280320">
 								<p>
 									cold migration , 50 VMs , ESX 02-03 , Private Network
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549635728">
+								</td><td align="left" valign="top" headers="idm45194419279232">
 								<p>
 									2.6
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549634640">
+								</td><td align="left" valign="top" headers="idm45194419278144">
 								<p>
 									7.0.3
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549633552">
+								</td><td align="left" valign="top" headers="idm45194419277056">
 								<p>
 									100
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549632464">
+								</td><td align="left" valign="top" headers="idm45194419275968">
 								<p>
 									cold
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549631376">
+								</td><td align="left" valign="top" headers="idm45194419274880">
 								<p>
 									1:46:24
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46600549636816">
+								</td></tr><tr><td align="left" valign="top" headers="idm45194419280320">
 								<p>
 									cold migration , 80 VMs , ESX 02-03 , Private Network
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549635728">
+								</td><td align="left" valign="top" headers="idm45194419279232">
 								<p>
 									2.6
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549634640">
+								</td><td align="left" valign="top" headers="idm45194419278144">
 								<p>
 									7.0.3
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549633552">
+								</td><td align="left" valign="top" headers="idm45194419277056">
 								<p>
 									100
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549632464">
+								</td><td align="left" valign="top" headers="idm45194419275968">
 								<p>
 									cold
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549631376">
+								</td><td align="left" valign="top" headers="idm45194419274880">
 								<p>
 									2:42:49
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46600549636816">
+								</td></tr><tr><td align="left" valign="top" headers="idm45194419280320">
 								<p>
 									cold migration , 100 VMs , ESX 02-03 , Private Network
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549635728">
+								</td><td align="left" valign="top" headers="idm45194419279232">
 								<p>
 									2.6
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549634640">
+								</td><td align="left" valign="top" headers="idm45194419278144">
 								<p>
 									7.0.3
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549633552">
+								</td><td align="left" valign="top" headers="idm45194419277056">
 								<p>
 									100
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549632464">
+								</td><td align="left" valign="top" headers="idm45194419275968">
 								<p>
 									cold
 								</p>
-								</td><td align="left" valign="top" headers="idm46600549631376">
+								</td><td align="left" valign="top" headers="idm45194419274880">
 								<p>
 									3:25:15
 								</p>
@@ -4557,75 +4569,75 @@ spec:
 					Each iteration the <code class="literal">Migration Network</code> was changed, using the <span class="strong strong"><strong>Provider</strong></span>, to find the fastest network for migration.
 				</p><p>
 					The results show that there is no degradation using management compared to non-managment networks when all interfaces and network speeds are the same.
-				</p><div class="table" id="idm46600547579680"><p class="title"><strong>Table 11.2. Different migration network tests</strong></p><div class="table-contents"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 45%; " class="col_1"/><col style="width: 9%; " class="col_2"/><col style="width: 9%; " class="col_3"/><col style="width: 13%; " class="col_4"/><col style="width: 12%; " class="col_5"/><col style="width: 12%; " class="col_6"/></colgroup><thead><tr><th align="left" valign="top" id="idm46600547570384" scope="col">Test Case Description</th><th align="left" valign="top" id="idm46600547569296" scope="col">MTV</th><th align="left" valign="top" id="idm46600547568208" scope="col">VDDK</th><th align="left" valign="top" id="idm46600547567120" scope="col">max_vm inflight</th><th align="left" valign="top" id="idm46600547566032" scope="col">Migration Type</th><th align="left" valign="top" id="idm46600547564944" scope="col">Total Duration</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46600547570384">
+				</p><div class="table" id="idm45194420044304"><p class="title"><strong>Table 11.2. Different migration network tests</strong></p><div class="table-contents"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 45%; " class="col_1"/><col style="width: 9%; " class="col_2"/><col style="width: 9%; " class="col_3"/><col style="width: 13%; " class="col_4"/><col style="width: 12%; " class="col_5"/><col style="width: 12%; " class="col_6"/></colgroup><thead><tr><th align="left" valign="top" id="idm45194420035008" scope="col">Test Case Description</th><th align="left" valign="top" id="idm45194420033920" scope="col">MTV</th><th align="left" valign="top" id="idm45194420032832" scope="col">VDDK</th><th align="left" valign="top" id="idm45194420031744" scope="col">max_vm inflight</th><th align="left" valign="top" id="idm45194420030656" scope="col">Migration Type</th><th align="left" valign="top" id="idm45194420029568" scope="col">Total Duration</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45194420035008">
 								<p>
 									cold migration , 10 VMs , ESX 02-03 , MGMT Network
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547569296">
+								</td><td align="left" valign="top" headers="idm45194420033920">
 								<p>
 									2.6
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547568208">
+								</td><td align="left" valign="top" headers="idm45194420032832">
 								<p>
 									7.0.3
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547567120">
+								</td><td align="left" valign="top" headers="idm45194420031744">
 								<p>
 									100
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547566032">
+								</td><td align="left" valign="top" headers="idm45194420030656">
 								<p>
 									cold
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547564944">
+								</td><td align="left" valign="top" headers="idm45194420029568">
 								<p>
 									0:21:30
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46600547570384">
+								</td></tr><tr><td align="left" valign="top" headers="idm45194420035008">
 								<p>
 									cold migration , 10 VMs , ESX 01-03 , Private Network <a href="#ftn.note2" class="footnote"><sup class="footnote" id="note2">[a]</sup></a>
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547569296">
+								</td><td align="left" valign="top" headers="idm45194420033920">
 								<p>
 									2.6
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547568208">
+								</td><td align="left" valign="top" headers="idm45194420032832">
 								<p>
 									7.0.3
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547567120">
+								</td><td align="left" valign="top" headers="idm45194420031744">
 								<p>
 									20
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547566032">
+								</td><td align="left" valign="top" headers="idm45194420030656">
 								<p>
 									cold
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547564944">
+								</td><td align="left" valign="top" headers="idm45194420029568">
 								<p>
 									0:21:20
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46600547570384">
+								</td></tr><tr><td align="left" valign="top" headers="idm45194420035008">
 								<p>
 									cold migration , 10 VMs , 1 ESX (0203) , Default Network
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547569296">
+								</td><td align="left" valign="top" headers="idm45194420033920">
 								<p>
 									2.6.2
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547568208">
+								</td><td align="left" valign="top" headers="idm45194420032832">
 								<p>
 									7.0.3
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547567120">
+								</td><td align="left" valign="top" headers="idm45194420031744">
 								<p>
 									20
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547566032">
+								</td><td align="left" valign="top" headers="idm45194420030656">
 								<p>
 									cold
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547564944">
+								</td><td align="left" valign="top" headers="idm45194420029568">
 								<p>
 									0:21:30
 								</p>
@@ -4633,81 +4645,81 @@ spec:
 										Private Network refers to a non-Management network
 									</div></div></td></tr></tbody></table></div></div></section><section class="section" id="mtv-multi-esxi-single-datastore_mtv"><div class="titlepage"><div><div><h3 class="title">11.1.3. Multi ESXi hosts and single data store</h3></div></div></div><p>
 					In each iteration, the number of ESXi hosts were increased, to show that increasing the number of ESXi hosts improves the migration time.
-				</p><div class="table" id="idm46600547727984"><p class="title"><strong>Table 11.3. Multi ESXi hosts and single data store</strong></p><div class="table-contents"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 45%; " class="col_1"/><col style="width: 9%; " class="col_2"/><col style="width: 9%; " class="col_3"/><col style="width: 13%; " class="col_4"/><col style="width: 12%; " class="col_5"/><col style="width: 12%; " class="col_6"/></colgroup><thead><tr><th align="left" valign="top" id="idm46600547718688" scope="col">Test Case Description</th><th align="left" valign="top" id="idm46600547717600" scope="col">MTV</th><th align="left" valign="top" id="idm46600547716512" scope="col">VDDK</th><th align="left" valign="top" id="idm46600547715424" scope="col">Max_vm inflight</th><th align="left" valign="top" id="idm46600547714336" scope="col">Migration Type</th><th align="left" valign="top" id="idm46600547713248" scope="col">Total Duration</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm46600547718688">
+				</p><div class="table" id="idm45194419705872"><p class="title"><strong>Table 11.3. Multi ESXi hosts and single data store</strong></p><div class="table-contents"><table class="gt-4-cols lt-7-rows"><colgroup><col style="width: 45%; " class="col_1"/><col style="width: 9%; " class="col_2"/><col style="width: 9%; " class="col_3"/><col style="width: 13%; " class="col_4"/><col style="width: 12%; " class="col_5"/><col style="width: 12%; " class="col_6"/></colgroup><thead><tr><th align="left" valign="top" id="idm45194419696576" scope="col">Test Case Description</th><th align="left" valign="top" id="idm45194419695488" scope="col">MTV</th><th align="left" valign="top" id="idm45194419694400" scope="col">VDDK</th><th align="left" valign="top" id="idm45194419693312" scope="col">Max_vm inflight</th><th align="left" valign="top" id="idm45194419692224" scope="col">Migration Type</th><th align="left" valign="top" id="idm45194419691136" scope="col">Total Duration</th></tr></thead><tbody><tr><td align="left" valign="top" headers="idm45194419696576">
 								<p>
 									cold migration , 100 VMs , ESX 02-03 , Private Network <a href="#ftn.note3" class="footnote"><sup class="footnote" id="note3">[a]</sup></a>
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547717600">
+								</td><td align="left" valign="top" headers="idm45194419695488">
 								<p>
 									2.6
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547716512">
+								</td><td align="left" valign="top" headers="idm45194419694400">
 								<p>
 									7.0.3
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547715424">
+								</td><td align="left" valign="top" headers="idm45194419693312">
 								<p>
 									100
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547714336">
+								</td><td align="left" valign="top" headers="idm45194419692224">
 								<p>
 									cold
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547713248">
+								</td><td align="left" valign="top" headers="idm45194419691136">
 								<p>
 									3:25:15
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46600547718688">
+								</td></tr><tr><td align="left" valign="top" headers="idm45194419696576">
 								<p>
 									cold migration , 100 VMs , 4 ESXs (25 VMs per ESX) , Private Network
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547717600">
+								</td><td align="left" valign="top" headers="idm45194419695488">
 								<p>
 									2.6
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547716512">
+								</td><td align="left" valign="top" headers="idm45194419694400">
 								<p>
 									7.0.3
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547715424">
+								</td><td align="left" valign="top" headers="idm45194419693312">
 								<p>
 									100
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547714336">
+								</td><td align="left" valign="top" headers="idm45194419692224">
 								<p>
 									cold
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547713248">
+								</td><td align="left" valign="top" headers="idm45194419691136">
 								<p>
 									1:22:27
 								</p>
-								</td></tr><tr><td align="left" valign="top" headers="idm46600547718688">
+								</td></tr><tr><td align="left" valign="top" headers="idm45194419696576">
 								<p>
 									cold migration , 100 VMs , 5 ESXs (20 VMs per ESX) , Private Network , 1 DataStore
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547717600">
+								</td><td align="left" valign="top" headers="idm45194419695488">
 								<p>
 									2.6
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547716512">
+								</td><td align="left" valign="top" headers="idm45194419694400">
 								<p>
 									7.0.3
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547715424">
+								</td><td align="left" valign="top" headers="idm45194419693312">
 								<p>
 									100
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547714336">
+								</td><td align="left" valign="top" headers="idm45194419692224">
 								<p>
 									cold
 								</p>
-								</td><td align="left" valign="top" headers="idm46600547713248">
+								</td><td align="left" valign="top" headers="idm45194419691136">
 								<p>
 									1:04:57
 								</p>
 								</td></tr></tbody><tbody class="footnotes"><tr><td colspan="6"><div id="ftn.note3" class="footnote"><div class="para"><a href="#note3" class="simpara"><sup class="simpara">[a] </sup></a>
 										Private Network refers to a non-Management network
-									</div></div></td></tr></tbody></table></div></div></section></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm46600549445952"><h1 class="legalnotice">Legal Notice</h1><div class="para">
+									</div></div></td></tr></tbody></table></div></div></section></section></section><div><div xml:lang="en-US" class="legalnotice" id="idm45194420727952"><h1 class="legalnotice">Legal Notice</h1><div class="para">
 		Copyright <span class="trademark"/>© 2024 Red Hat, Inc.
 	</div><div class="para">
 		The text of and illustrations in this document are licensed by Red Hat under a Creative Commons Attribution–Share Alike 3.0 Unported license ("CC-BY-SA"). An explanation of CC-BY-SA is available at <a class="uri" href="http://creativecommons.org/licenses/by-sa/3.0/">http://creativecommons.org/licenses/by-sa/3.0/</a>. In accordance with CC-BY-SA, if you distribute this document or an adaptation of it, you must provide the URL for the original version.
